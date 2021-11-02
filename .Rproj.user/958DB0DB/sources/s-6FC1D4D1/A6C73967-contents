@@ -1,0 +1,99 @@
+#' Label layout
+#'
+#' Generate labels options
+#'
+#' @param data data frame to build the labels
+#' @param units units for the label options
+#' @param size label size
+#' @param background background color
+#' @param border_color border color
+#' @param border_width border width
+#' @param margin margin size
+#' @param paper paper size
+#' @param dpi label resolution
+#'
+#' @return data frame
+#'
+#' @export
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' library(gsheet)
+#'
+#' url <- "https://docs.google.com/spreadsheets/d/1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497"
+#' fb <- gsheet2tbl(url)
+#'
+#' label <- label(data = fb
+#'                , size = c(10, 2.5)
+#'                )
+#'
+#' }
+#'
+
+label <- function(data
+                  , size
+                  , background = NA
+                  , border_color = NA
+                  , border_width = NA
+                  , units = "cm"
+                  ) {
+
+# test --------------------------------------------------------------------
+
+if (FALSE) {
+
+  data <- fb
+  size <- c(10, 2.5)
+  background = NA
+  border_color = NA
+  border_width = NA
+  units = "cm"
+
+}
+
+# param -------------------------------------------------------------------
+
+size <- if(any(is.null(size)) || any(is.na(size)) || any(size == "")) {
+  NA
+} else if(is.character(size)) {
+  size %>%
+    gsub("[[:space:]]", "", .) %>%
+    strsplit(., "[*]") %>%
+    unlist() %>% as.numeric()
+} else {size}
+
+border_width <- if(any(is.null(border_width)) || any(is.na(border_width)) || any(border_width == "")) {
+  0.02
+} else if(is.character(border_width)) {
+  border_width %>% as.numeric()
+} else {border_width}
+
+background <- if(any(is.null(background)) || any(is.na(background)) || any(background == "")) {
+  "white"
+} else {background}
+
+border_color <- if(any(is.null(border_color)) || any(is.na(border_color)) || any(border_color == "")) {
+  "black"
+} else {border_color}
+
+# options -----------------------------------------------------------------
+
+opt <- list(size = size %>% paste0(collapse = "*")
+            , color = background
+            , border_color = border_color
+            , border_width = border_width
+            , units = units
+            ) %>%
+  enframe(name = "option") %>%
+  mutate(element = "label") %>%
+  mutate(type = "template") %>%
+  select(element, type, everything())
+
+# result ------------------------------------------------------------------
+
+result <- list(opts = opt
+               , data = data)
+
+}
