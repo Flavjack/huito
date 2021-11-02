@@ -6,10 +6,13 @@
 #' @param mode label in sample or complete mode
 #' @param filename path of the final file
 #' @param dpi images resolution
-#'
+#' @param margin margin between labels
+#' @param paper paper size
+#' @param units units for the label options
 #'
 #' @return png or pdf
 #'
+#' @import ggplot2
 #' @importFrom sysfonts font_add_google
 #' @importFrom cowplot draw_plot
 #' @importFrom grid grid.raster
@@ -22,39 +25,41 @@
 #'
 #' \dontrun{
 #'
+#' library(huito)
 #' library(gsheet)
 #'
-#' url <- "https://docs.google.com/spreadsheets/d/1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497"
+#' url <- paste0("https://docs.google.com/spreadsheets/d/"
+#'        , "1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497")
 #' fb <- gsheet2tbl(url)
 #'
 #' label <- label(data = fb
 #'                , size = c(10, 2.5)
 #'                ) %>%
 #'          include_image(
-#'                value = "https://inkaverse.com/reference/figures/logo.png"
-#'                , size = c(2.2,2.2)
-#'                , position = c(0.2, 0.15)
+#'                value = "https://flavjack.github.io/inti/img/inkaverse.png"
+#'                , size = c(2.4, 2.4)
+#'                , position = c(0.1, 0.05)
 #'                ) %>%
 #'          include_barcode(
 #'                value = "qr-code"
 #'                , size = c(2.2, 2.2)
-#'                , position = c(7, 0.15)
+#'                , position = c(7.2, 0.15)
 #'                ) %>%
-#'          include_text(value = "plots", position = c(9.7, 1.25), angle = 90) %>%
-#'          label_print()
+#'          include_text(value = "plots", position = c(9.7, 1.25), angle = 90, size = 15) %>%
+#'          include_text(value = "Inkaverse", position = c(4.5, 1.25), size = 18) %>%
+#'          label_print("sample")
 #'
 #' }
 #'
 
 label_print <- function(label
-                        , filename = "label"
                         , mode = "sample"
+                        , filename = "label"
                         , margin = NA
                         , paper = NA
                         , units = "cm"
-                        , dpi = 100
+                        , dpi = 600
                          ) {
-
 
 # test --------------------------------------------------------------------
 
@@ -65,12 +70,14 @@ if(FALSE) {
   margin = NA
   paper = NA
   units = "cm"
-  dpi = 100
-  file = "label"
+  dpi = 600
+  filename = "label"
 
 }
 
 # args ------------------------------------------------------------------
+
+  mode <- match.arg(mode, c("complete", "sample"))
 
   paper <- if(any(is.null(paper)) || any(is.na(paper)) || any(paper == "")) {
     c(21.0, 29.7)
@@ -90,26 +97,23 @@ if(FALSE) {
       unlist() %>% as.numeric()
   } else {margin}
 
-  data <- label$data
-
 # parameters --------------------------------------------------------------
 
   info <- label$data %>%
-    mutate(nlabel = row.names(.)) %>%
-    mutate(across(everything(), as.character)) %>%
-    pivot_longer(!.data$nlabel
+    dplyr::mutate(nlabel = row.names(.)) %>%
+    dplyr::mutate(dplyr::across(dplyr::everything(), as.character)) %>%
+    tidyr::pivot_longer(!.data$nlabel
                  , names_to = "value"
                  , values_to = "info")
 
   template <- label$opts %>%
-    filter(element %in% "label") %>%
-    select(option, value) %>%
-    deframe()
+    dplyr::filter(.data$element %in% "label") %>%
+    dplyr::select(.data$option, .data$value) %>%
+    tibble::deframe()
 
   options <- label$opts %>%
-    pivot_wider(names_from = option, values_from = value) %>%
-    mutate(across(everything(), as.character)) %>%
-    mutate(nlayer = row.names(.))
+    tidyr::pivot_wider(names_from = .data$option, values_from = .data$value) %>%
+    dplyr::mutate(dplyr::across(dplyr::everything(), as.character))
 
 # -------------------------------------------------------------------------
 
@@ -123,12 +127,12 @@ if(FALSE) {
 # fonts -------------------------------------------------------------------
 
   fonts <- options %>%
-    select(.data$font) %>%
-    na_if("NULL") %>%
+    dplyr::select(.data$font) %>%
+    dplyr::na_if("NULL") %>%
     unique() %>%
-    drop_na() %>%
-    mutate(fun = paste0("sysfonts::font_add_google(name = ", "'" , .data$font, "'",")")) %>%
-    select(.data$fun) %>%
+    tidyr::drop_na() %>%
+    dplyr::mutate(fun = paste0("sysfonts::font_add_google(name = ", "'" , .data$font, "'",")")) %>%
+    dplyr::select(.data$fun) %>%
     purrr::as_vector() %>%
     paste0(., collapse = "; ")
 
@@ -141,93 +145,131 @@ if(FALSE) {
   tolabel <- merge(options, info
                    , all.x = TRUE
                    , by = "value") %>%
-    separate(.data$position, c("X", "Y"), remove = F, sep = "[*]") %>%
-    separate(.data$size, c("W", "H"), remove = F, sep = "[*]") %>%
-    mutate(layer = case_when(
-      element %in% "label" ~ paste0("cowplot::ggdraw(xlim = c(", 0,",", W,")", ", ylim = c(", 0, "," , H,"))")
-      , element %in% "text" & type %in% "dynamic" ~ paste0("cowplot::draw_label(", "'", info, "'"
+    tidyr::separate(.data$position, c("X", "Y"), remove = F, sep = "[*]") %>%
+    tidyr::separate(.data$size, c("W", "H"), remove = F, sep = "[*]") %>%
+    dplyr::mutate(layer = dplyr::case_when(
+      .data$element %in% "label" ~ paste0("cowplot::ggdraw(xlim = c(", 0,",", W,")", ", ylim = c(", 0, "," , H,"))")
+      , .data$element %in% "text" & .data$type %in% "dynamic" ~ paste0("cowplot::draw_label(", "'", info, "'"
                                                           , ", x =", X, ", y =", Y
                                                           , ", size =", size, ", angle =", angle
                                                           , ", fontfamily =", "'", font, "'"
                                                           , ", color =", "'", color, "'", ")")
-      , element %in% "text" & type %in% "static" ~ paste0("cowplot::draw_label(", "'", value, "'"
+      , .data$element %in% "text" & .data$type %in% "static" ~ paste0("cowplot::draw_label(", "'", value, "'"
                                                           , ", x =", X, ", y =", Y
                                                           , ", size =", size, ", angle =", angle
                                                           , ", fontfamily =", "'", font, "'"
                                                           , ", color =", "'", color, "'", ")")
-      , element %in% "barcode" & type %in% "dynamic" ~ paste0("cowplot::draw_plot(barcode_qr(",  "'", info , "'", ")"
+      , .data$element %in% "barcode" & .data$type %in% "dynamic" ~ paste0("cowplot::draw_plot(barcode_qr(",  "'", info , "'", ")"
                                                              , ", x =", X, ", y =", Y
                                                              , ", width =", W, ", height =", H, ")")
-      , element %in% "barcode" & type %in% "static" ~ paste0("cowplot::draw_plot(barcode_qr(",  "'", value , "'", ")"
+      , .data$element %in% "barcode" & .data$type %in% "static" ~ paste0("cowplot::draw_plot(barcode_qr(",  "'", value , "'", ")"
                                                              , ", x =", X, ", y =", Y
                                                              , ", width =", W, ", height =", H, ")")
-      , element %in% "image" & type %in% "dynamic" ~ paste0("cowplot::draw_plot(", "grid::rasterGrob(magick::image_read(", "'", info, "'", ")", ")"
+      , .data$element %in% "image" & .data$type %in% "dynamic" ~ paste0("cowplot::draw_plot(", "grid::rasterGrob(magick::image_read(", "'", info, "'", ")", ")"
                                                             , ", x =", X, ", y =", Y
                                                             , ", width =", W, ", height =", H, ")")
-      , element %in% "image" & type %in% "static" ~ paste0("cowplot::draw_plot(", "grid::rasterGrob(magick::image_read(", "'", value, "'", ")", ")"
+      , .data$element %in% "image" & .data$type %in% "static" ~ paste0("cowplot::draw_plot(", "grid::rasterGrob(magick::image_read(", "'", value, "'", ")", ")"
                                                             , ", x =", X, ", y =", Y
                                                             , ", width =", W, ", height =", H, ")")
     )) %>%
-    drop_na("layer") %>%
-    select(.data$nlayer, .data$nlabel, .data$value, .data$layer) %>%
-    mutate(across(c(.data$nlayer, .data$nlabel), as.numeric)) %>%
-    arrange(.data$nlayer, .data$nlabel, .by_group = T)
+    dplyr::select(.data$nlayer, .data$nlabel, .data$value, .data$layer) %>%
+    dplyr::mutate(dplyr::across(c(.data$nlayer, .data$nlabel), as.numeric)) %>%
+    dplyr::arrange(.data$nlayer, .data$nlabel, .by_group = T)
 
 # frame -------------------------------------------------------------------
 
-  frame <- theme(panel.background = element_rect(fill = template$label_color, colour = NA)
-                 , panel.border = element_rect(fill = NA, colour = template$label_border)
-                 , plot.margin = unit(margin, template$units)
-                 , complete = TRUE)
+  frame <- theme(
+    panel.background = element_rect(fill = template$color, colour = NA)
+    , panel.border = element_rect(fill = NA, colour = template$border_color)
+    , plot.margin = unit(margin, template$units)
+    , complete = TRUE
+    )
 
 # -------------------------------------------------------------------------
 
+  if (mode =="sample") {
+
   layers <- tolabel %>%
-    filter(.data$nlabel %in% c(NA, 1)) %>%
-    select(.data$layer) %>%
-    deframe() %>%
+    dplyr::filter(.data$nlabel %in% c(NA, 1)) %>%
+    dplyr::select(.data$layer) %>%
+    tibble::deframe() %>%
     paste0(., collapse = " + ")
 
-  label <- eval(parse(text = paste(layers))) + frame
+  label_print <- eval(parse(text = paste(layers))) + frame
 
-  cowplot::ggsave2(filename = file %>% sub("\\..*", "", .) %>% paste0(., ".png")
-                   , plot = label
+  cowplot::ggsave2(
+    filename = filename %>% sub("\\..*", "", .) %>% paste0(., ".png")
+                   , plot = label_print
                    , units = template$units
                    , width = label_dimension[1] + label_margin*2
                    , height = label_dimension[2] + label_margin*2
-                   , dpi = dpi
-                   , limitsize = FALSE)
-
-  # -------------------------------------------------------------------------
-
-  if (mode("complete")) {
-
-    lblist <- 1:nrow(data) %>% purrr::map(
-      function(x) {
-
-        layers <- tolabel %>%
-          filter(.data$nlabel %in% c(NA, tolabel[,2][x+2] )) %>%
-          select(.data$layer) %>%
-          deframe() %>%
-          paste0(., collapse = " + ")
-
-        eval(parse(text = paste(layers))) + frame
-
-      }
-    )
-
-    labels <- cowplot::plot_grid(plotlist = lblist, ncol = ncol)
-
-    cowplot::ggsave2(filename = file
-                     , plot = labels
-                     , units = template$label_unit
-                     , width = (label_dimension[1] + label_margin*2)*ncol
-                     , height = (label_dimension[2] + label_margin*2)*ceiling(nrow(data)/ncol)
-                     , dpi = dpi
-                     , limitsize = FALSE)
+                   , dpi = 120
+                   , limitsize = FALSE
+                   )
 
   }
+
+# -------------------------------------------------------------------------
+
+  if (mode =="complete") {
+
+    ncol <- (paper[1]/label_dimension[1]) %>% trunc()
+    nrow <- (paper[2]/label_dimension[2]) %>% trunc()
+    pages <- ceiling((nrow(label$data)/(ncol*nrow)))
+
+    label_list <- 1:nrow(label$data) %>%
+      purrr::map(function(x) {
+
+            layers <- tolabel %>%
+              dplyr::filter(.data$nlabel %in% c(NA, tolabel[,2][x+2] )) %>%
+              dplyr::select(.data$layer) %>%
+              tibble::deframe() %>%
+              paste0(., collapse = " + ")
+
+            eval(parse(text = paste(layers))) + frame
+
+        })
+
+# -------------------------------------------------------------------------
+
+    grids <- seq(from = 0, to = nrow(label$data), by = ncol*nrow)
+
+    pdf <-1:length(grids) %>%
+      purrr::map(function(x) {
+
+        ini <- grids[x] + 1
+        fin <- grids[x] + ncol*nrow
+
+        plotlabs <- label_list[c(ini:fin)]
+
+        labels <- cowplot::plot_grid(plotlist = plotlabs
+                                     , ncol = ncol)
+
+        pdf_file <- file.path(
+          tempdir()
+          , filename %>% sub("\\..*", "", .) %>% paste0(., x,".pdf")
+          )
+
+        cowplot::ggsave2(
+          filename = pdf_file
+           , plot = labels
+           , units = template$units
+           , width = paper[1]
+           , height = paper[2]
+           , dpi = dpi
+           , limitsize = FALSE
+           )
+
+        }) %>%
+      qpdf::pdf_combine(
+        input = .
+        , output = filename %>% sub("\\..*", "", .) %>% paste0(., ".pdf")
+        )
+  }
+
+# -------------------------------------------------------------------------
 
   "Your label is Ready!" %>% print()
 
 }
+

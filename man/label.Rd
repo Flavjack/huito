@@ -25,12 +25,6 @@ label(
 \item{border_width}{border width}
 
 \item{units}{units for the label options}
-
-\item{margin}{margin size}
-
-\item{paper}{paper size}
-
-\item{dpi}{label resolution}
 }
 \value{
 data frame
@@ -44,7 +38,8 @@ Generate labels options
 
 library(gsheet)
 
-url <- "https://docs.google.com/spreadsheets/d/1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497"
+url <- paste0("https://docs.google.com/spreadsheets/d/"
+       , "1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497")
 fb <- gsheet2tbl(url)
 
 label <- label(data = fb

@@ -8,9 +8,6 @@
 #' @param background background color
 #' @param border_color border color
 #' @param border_width border width
-#' @param margin margin size
-#' @param paper paper size
-#' @param dpi label resolution
 #'
 #' @return data frame
 #'
@@ -22,7 +19,8 @@
 #'
 #' library(gsheet)
 #'
-#' url <- "https://docs.google.com/spreadsheets/d/1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497"
+#' url <- paste0("https://docs.google.com/spreadsheets/d/"
+#'        , "1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497")
 #' fb <- gsheet2tbl(url)
 #'
 #' label <- label(data = fb
@@ -86,10 +84,11 @@ opt <- list(size = size %>% paste0(collapse = "*")
             , border_width = border_width
             , units = units
             ) %>%
-  enframe(name = "option") %>%
-  mutate(element = "label") %>%
-  mutate(type = "template") %>%
-  select(element, type, everything())
+  tibble::enframe(name = "option") %>%
+  dplyr::mutate(element = "label") %>%
+  dplyr::mutate(type = "template") %>%
+  dplyr::select(.data$element, .data$type, dplyr::everything()) %>%
+  dplyr::mutate(nlayer = 0)
 
 # result ------------------------------------------------------------------
 

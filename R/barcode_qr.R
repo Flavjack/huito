@@ -8,7 +8,6 @@
 #'
 #' @return plot
 #'
-#' @importFrom qrcode qrcode_gen
 #' @export
 #'
 #' @examples
@@ -23,9 +22,7 @@
 barcode_qr <- function(text
                           , color = "black"
                           , alpha = 1
-) {
-
-  as_factor <- NULL
+                       ) {
 
   qrmt <- qrcode::qrcode_gen(text
                              , plotQRcode = F
@@ -33,9 +30,10 @@ barcode_qr <- function(text
     as.data.frame()
 
   dt <- qrmt %>%
-    mutate(id = rownames(.)) %>%
-    pivot_longer(!.data$id, names_to = "key", values_to = "value") %>%
-    mutate(across(c(.data$key, .data$id), ~forcats::as_factor(.)))
+    dplyr::mutate(id = rownames(.)) %>%
+    tidyr::pivot_longer(!.data$id, names_to = "key", values_to = "value") %>%
+    dplyr::mutate(dplyr::across(c(.data$key, .data$id)
+                                , ~ forcats::as_factor(.)))
 
   ggplot(dt, aes(x = .data$id, y = .data$key)) +
     geom_tile(aes(fill = .data$value), alpha = alpha) +

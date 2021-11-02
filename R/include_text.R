@@ -21,7 +21,8 @@
 #'
 #' library(gsheet)
 #'
-#' url <- "https://docs.google.com/spreadsheets/d/1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497"
+#' url <- paste0("https://docs.google.com/spreadsheets/d/"
+#'        , "1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497")
 #' fb <- gsheet2tbl(url)
 #'
 #' label <- label(data = fb
@@ -104,11 +105,15 @@ include_text <- function(label
               , color = color
               , angle = angle
               ) %>%
-    enframe(name = "option") %>%
-    mutate(element = "text") %>%
-    mutate(type = type) %>%
-    select(element, type, everything()) %>%
-    bind_rows(label$opts, .)
+    tibble::enframe(name = "option") %>%
+    dplyr::mutate(element = "text") %>%
+    dplyr::mutate(type = type) %>%
+    dplyr::select(.data$element, type, dplyr::everything()) %>%
+    dplyr::bind_rows(label$opts, .) %>%
+    dplyr::mutate(nlayer = dplyr::case_when(
+      is.na(nlayer) ~ length(unique(nlayer)) - 1
+      , TRUE ~ nlayer
+    ))
 
 # result ------------------------------------------------------------------
 

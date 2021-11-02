@@ -6,20 +6,26 @@
 \usage{
 label_print(
   label,
-  filename = "label",
   mode = "sample",
+  filename = "label",
   margin = NA,
   paper = NA,
   units = "cm",
-  dpi = 100
+  dpi = 600
 )
 }
 \arguments{
 \item{label}{data frame to build the labels}
 
+\item{mode}{label in sample or complete mode}
+
 \item{filename}{path of the final file}
 
-\item{mode}{label in sample or complete mode}
+\item{margin}{margin between labels}
+
+\item{paper}{paper size}
+
+\item{units}{units for the label options}
 
 \item{dpi}{images resolution}
 }
@@ -33,26 +39,29 @@ Generate labels based in a data frame
 
 \dontrun{
 
+library(huito)
 library(gsheet)
 
-url <- "https://docs.google.com/spreadsheets/d/1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497"
+url <- paste0("https://docs.google.com/spreadsheets/d/"
+       , "1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497")
 fb <- gsheet2tbl(url)
 
 label <- label(data = fb
                , size = c(10, 2.5)
                ) \%>\%
          include_image(
-               value = "https://inkaverse.com/reference/figures/logo.png"
-               , size = c(2.2,2.2)
-               , position = c(0.2, 0.15)
+               value = "https://flavjack.github.io/inti/img/inkaverse.png"
+               , size = c(2.4, 2.4)
+               , position = c(0.1, 0.05)
                ) \%>\%
          include_barcode(
                value = "qr-code"
                , size = c(2.2, 2.2)
-               , position = c(7, 0.15)
+               , position = c(7.2, 0.15)
                ) \%>\%
-         include_text(value = "plots", position = c(9.7, 1.25), angle = 90) \%>\%
-         label_print()
+         include_text(value = "plots", position = c(9.7, 1.25), angle = 90, size = 15) \%>\%
+         include_text(value = "Inkaverse", position = c(4.5, 1.25), size = 18) \%>\%
+         label_print("sample")
 
 }
 
