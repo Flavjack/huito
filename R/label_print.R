@@ -208,7 +208,10 @@ if(FALSE) {
 
   frame <- theme(
     panel.background = element_rect(fill = template$color, colour = NA)
-    , panel.border = element_rect(fill = NA, colour = template$border_color)
+    , panel.border = element_rect(fill = NA
+                                  , colour = template$border_color
+                                  , size = template$border_width
+                                  )
     , plot.margin = unit(margin, template$units)
     , complete = TRUE
     )

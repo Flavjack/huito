@@ -7,9 +7,9 @@
 label_layout(
   data,
   size,
-  background = NA,
-  border_color = NA,
-  border_width = NA,
+  background = "white",
+  border_color = "black",
+  border_width = 0.5,
   units = "cm"
 )
 }
