@@ -10,9 +10,24 @@ Authors@R: person("Flavio", "Lozano-Isla", email = "flavjack@gmail.com",
                   role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0714-669X"))
 URL: https://huito.inkaverse.com/, https://github.com/flavjack/huito
 BugReports: https://github.com/flavjack/huito/issues/
-Depends: magick, cowplot, ggplot2, dplyr
-Imports: tidyr, tibble, purrr, forcats, sysfonts, showtext, qrcode, qpdf
-Suggests: knitr, rmarkdown, gsheet
+Depends: 
+  magick, 
+  cowplot, 
+  ggplot2, 
+  dplyr
+Imports: 
+  tidyr, 
+  tibble, 
+  purrr, 
+  forcats, 
+  sysfonts, 
+  showtext, 
+  qrcode, 
+  qpdf
+Suggests: 
+  knitr, 
+  rmarkdown, 
+  gsheet
 VignetteBuilder: knitr
 License: GPL-3 | file LICENSE
 Encoding: UTF-8
