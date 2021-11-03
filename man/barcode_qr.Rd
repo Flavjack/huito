@@ -4,7 +4,7 @@
 \alias{barcode_qr}
 \title{Barcode generator}
 \usage{
-barcode_qr(text, color = "black", alpha = 1)
+barcode_qr(text, color = "black", alpha = 1, ecl = "H")
 }
 \arguments{
 \item{text}{text to convert to QR bar code}
@@ -12,19 +12,13 @@ barcode_qr(text, color = "black", alpha = 1)
 \item{color}{Bar code color}
 
 \item{alpha}{Intensity of the bar code color}
+
+\item{ecl}{Error correction level (percentage). "L" (7), "M" (15), "Q" (25)
+and "H" (30). Defaults to "H"}
 }
 \value{
 plot
 }
 \description{
 Generate bar codes using QR codes
-}
-\examples{
-
-\dontrun{
-
-barcode_qr("inkaverse")
-
-}
-
 }
