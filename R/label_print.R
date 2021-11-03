@@ -6,9 +6,11 @@
 #' @param mode label in sample or complete mode
 #' @param filename path of the final file
 #' @param dpi images resolution
-#' @param margin margin between labels
+#' @param margin labels margins. margin(t = 0, r = 0, b = 0, l = 0)
 #' @param paper paper size
 #' @param units units for the label options
+#' @param fonts For add new fonts from google fonts. Only active when you import
+#'   new fonts
 #'
 #' @return png or pdf
 #'
@@ -32,9 +34,9 @@
 #'        , "1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497")
 #' fb <- gsheet2tbl(url)
 #'
-#' label <- label(data = fb
-#'                , size = c(10, 2.5)
-#'                ) %>%
+#' label <- label_layout(data = fb
+#'                      , size = c(10, 2.5)
+#'                      ) %>%
 #'          include_image(
 #'                value = "https://flavjack.github.io/inti/img/inkaverse.png"
 #'                , size = c(2.4, 2.4)
@@ -50,35 +52,37 @@
 #'          label_print("sample")
 #'
 #' }
-#'
+#' 
 
 label_print <- function(label
                         , mode = "sample"
-                        , filename = "label"
-                        , margin = NA
-                        , paper = NA
+                        , filename = "labels"
+                        , margin = 0.05
+                        , paper = c(21.0, 29.7)
                         , units = "cm"
                         , dpi = 600
+                        , fonts = FALSE
                          ) {
 
 # test --------------------------------------------------------------------
 
 if(FALSE) {
-
+  
   label = label
-  mode = "sample"
-  margin = NA
-  paper = NA
+  mode = "c"
+  margin = 0
+  paper = c(21.0, 29.7)
   units = "cm"
   dpi = 600
   filename = "label"
-
+  fonts = F
+  
 }
 
 # args ------------------------------------------------------------------
-
+  
   mode <- match.arg(mode, c("complete", "sample"))
-
+  
   paper <- if(any(is.null(paper)) || any(is.na(paper)) || any(paper == "")) {
     c(21.0, 29.7)
   } else if(is.character(paper)) {
@@ -87,19 +91,32 @@ if(FALSE) {
       strsplit(., "[*]") %>%
       unlist() %>% as.numeric()
   } else {paper}
-
-  margin <- if(any(is.null(margin)) || any(is.na(margin)) || any(margin == "")) {
+  
+  margin <- if(any(is.null(margin)) || any(is.na(margin)) || 
+               any(margin == "") ) {
     rep(0.05, times = 4)
   } else if(is.character(margin)) {
     margin %>%
       gsub("[[:space:]]", "", .) %>%
       strsplit(., "[*]") %>%
       unlist() %>% as.numeric()
+  } else if (length(margin) == 1 && is.numeric(margin)) {
+    rep(margin, times = 4)
   } else {margin}
+  
+  fb <- if(mode == "sample") {
+    
+    label$data %>% dplyr::slice_sample(n = 1)
+    
+  } else if (mode == "complete") {
+    
+    label$data 
+    
+  }
 
 # parameters --------------------------------------------------------------
 
-  info <- label$data %>%
+  info <- fb %>%
     dplyr::mutate(nlabel = row.names(.)) %>%
     dplyr::mutate(dplyr::across(dplyr::everything(), as.character)) %>%
     tidyr::pivot_longer(!.data$nlabel
@@ -111,9 +128,17 @@ if(FALSE) {
     dplyr::select(.data$option, .data$value) %>%
     tibble::deframe()
 
+  cols <- c(value = NA_real_
+            , angle = NA_real_
+            , position = NA_real_
+            , size = NA_real_
+            , font = NA_real_
+            )
+  
   options <- label$opts %>%
     tidyr::pivot_wider(names_from = .data$option, values_from = .data$value) %>%
-    dplyr::mutate(dplyr::across(dplyr::everything(), as.character))
+    dplyr::mutate(dplyr::across(dplyr::everything(), as.character)) %>% 
+    tibble::add_column(!!!cols[!names(cols) %in% names(.)])
 
 # -------------------------------------------------------------------------
 
@@ -122,21 +147,23 @@ if(FALSE) {
     unlist() %>%
     as.numeric()
 
-  label_margin <- margin[1] %>% as.numeric()
-
 # fonts -------------------------------------------------------------------
+  
+  if (isTRUE(fonts)) {
+    
+    fonts <- options %>%
+      dplyr::select(.data$font) %>%
+      dplyr::na_if("NULL") %>%
+      unique() %>%
+      tidyr::drop_na() %>%
+      dplyr::mutate(fun = paste0("sysfonts::font_add_google(name = ", "'" , .data$font, "'",")")) %>%
+      dplyr::select(.data$fun) %>%
+      purrr::as_vector() %>%
+      paste0(., collapse = "; ")
 
-  fonts <- options %>%
-    dplyr::select(.data$font) %>%
-    dplyr::na_if("NULL") %>%
-    unique() %>%
-    tidyr::drop_na() %>%
-    dplyr::mutate(fun = paste0("sysfonts::font_add_google(name = ", "'" , .data$font, "'",")")) %>%
-    dplyr::select(.data$fun) %>%
-    purrr::as_vector() %>%
-    paste0(., collapse = "; ")
-
-  eval(parse(text = fonts))
+    eval(parse(text = fonts))
+    
+  }
 
   showtext::showtext_auto()
 
@@ -144,7 +171,8 @@ if(FALSE) {
 
   tolabel <- merge(options, info
                    , all.x = TRUE
-                   , by = "value") %>%
+                   , by = "value"
+                   ) %>%
     tidyr::separate(.data$position, c("X", "Y"), remove = F, sep = "[*]") %>%
     tidyr::separate(.data$size, c("W", "H"), remove = F, sep = "[*]") %>%
     dplyr::mutate(layer = dplyr::case_when(
@@ -196,17 +224,24 @@ if(FALSE) {
     paste0(., collapse = " + ")
 
   label_print <- eval(parse(text = paste(layers))) + frame
-
+  
+  label_sample <- file.path(
+    tempdir()
+    , "sample.pdf"
+    )
+  
   cowplot::ggsave2(
-    filename = filename %>% sub("\\..*", "", .) %>% paste0(., ".png")
-                   , plot = label_print
-                   , units = template$units
-                   , width = label_dimension[1] + label_margin*2
-                   , height = label_dimension[2] + label_margin*2
-                   , dpi = 120
-                   , limitsize = FALSE
-                   )
-
+    filename = label_sample
+    , plot = label_print
+    , units = template$units
+    , width = (margin[4] + label_dimension[1] + margin[2])
+    , height = (margin[1] + label_dimension[2] + margin[3])
+    , limitsize = FALSE
+    )  
+  
+  label_sample %>% 
+    magick::image_read_pdf(density = 150) %>% 
+    print()
   }
 
 # -------------------------------------------------------------------------
@@ -215,13 +250,13 @@ if(FALSE) {
 
     ncol <- (paper[1]/label_dimension[1]) %>% trunc()
     nrow <- (paper[2]/label_dimension[2]) %>% trunc()
-    pages <- ceiling((nrow(label$data)/(ncol*nrow)))
+    pages <- ceiling((nrow(fb)/(ncol*nrow)))
 
-    label_list <- 1:nrow(label$data) %>%
+    label_list <- 1:nrow(fb) %>%
       purrr::map(function(x) {
 
             layers <- tolabel %>%
-              dplyr::filter(.data$nlabel %in% c(NA, tolabel[,2][x+2] )) %>%
+              dplyr::filter(.data$nlabel %in% c(NA, tolabel[,2][x+1] )) %>%
               dplyr::select(.data$layer) %>%
               tibble::deframe() %>%
               paste0(., collapse = " + ")
@@ -232,7 +267,7 @@ if(FALSE) {
 
 # -------------------------------------------------------------------------
 
-    grids <- seq(from = 0, to = nrow(label$data), by = ncol*nrow)
+    grids <- seq(from = 0, to = nrow(fb), by = ncol*nrow)
 
     pdf <-1:length(grids) %>%
       purrr::map(function(x) {

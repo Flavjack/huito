@@ -23,26 +23,26 @@
 #'        , "1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497")
 #' fb <- gsheet2tbl(url)
 #'
-#' label <- label(data = fb
-#'                , size = c(10, 2.5)
-#'                )
+#' label <- label_layout(data = fb
+#'                      , size = c(10, 2.5)
+#'                      )
 #'
 #' }
 #'
 
-label <- function(data
-                  , size
-                  , background = NA
-                  , border_color = NA
-                  , border_width = NA
-                  , units = "cm"
-                  ) {
+label_layout <- function(data
+                        , size
+                        , background = NA
+                        , border_color = NA
+                        , border_width = NA
+                        , units = "cm"
+                        ) {
 
 # test --------------------------------------------------------------------
 
 if (FALSE) {
 
-  data <- fb
+  data <- label
   size <- c(10, 2.5)
   background = NA
   border_color = NA

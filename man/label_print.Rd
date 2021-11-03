@@ -7,11 +7,12 @@
 label_print(
   label,
   mode = "sample",
-  filename = "label",
-  margin = NA,
-  paper = NA,
+  filename = "labels",
+  margin = 0.05,
+  paper = c(21, 29.7),
   units = "cm",
-  dpi = 600
+  dpi = 600,
+  fonts = FALSE
 )
 }
 \arguments{
@@ -21,13 +22,16 @@ label_print(
 
 \item{filename}{path of the final file}
 
-\item{margin}{margin between labels}
+\item{margin}{labels margins. margin(t = 0, r = 0, b = 0, l = 0)}
 
 \item{paper}{paper size}
 
 \item{units}{units for the label options}
 
 \item{dpi}{images resolution}
+
+\item{fonts}{For add new fonts from google fonts. Only active when you import
+new fonts}
 }
 \value{
 png or pdf
@@ -46,9 +50,9 @@ url <- paste0("https://docs.google.com/spreadsheets/d/"
        , "1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497")
 fb <- gsheet2tbl(url)
 
-label <- label(data = fb
-               , size = c(10, 2.5)
-               ) \%>\%
+label <- label_layout(data = fb
+                     , size = c(10, 2.5)
+                     ) \%>\%
          include_image(
                value = "https://flavjack.github.io/inti/img/inkaverse.png"
                , size = c(2.4, 2.4)
