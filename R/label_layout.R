@@ -34,7 +34,7 @@ label_layout <- function(data
                         , size
                         , background = "white"
                         , border_color = "black"
-                        , border_width = 0.5
+                        , border_width = 0.02
                         , units = "cm"
                         ) {
 
@@ -63,7 +63,7 @@ size <- if(any(is.null(size)) || any(is.na(size)) || any(size == "")) {
 } else {size}
 
 border_width <- if(any(is.null(border_width)) || any(is.na(border_width)) || any(border_width == "")) {
-  0.5
+  0.02
 } else if(is.character(border_width)) {
   border_width %>% as.numeric()
 } else {border_width}

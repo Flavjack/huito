@@ -138,7 +138,8 @@ if(FALSE) {
   options <- label$opts %>%
     tidyr::pivot_wider(names_from = .data$option, values_from = .data$value) %>%
     dplyr::mutate(dplyr::across(dplyr::everything(), as.character)) %>% 
-    tibble::add_column(!!!cols[!names(cols) %in% names(.)])
+    tibble::add_column(!!!cols[!names(cols) %in% names(.)]) %>% 
+    dplyr::na_if("NULL") 
 
 # -------------------------------------------------------------------------
 
@@ -173,8 +174,8 @@ if(FALSE) {
                    , all.x = TRUE
                    , by = "value"
                    ) %>%
-    tidyr::separate(.data$position, c("X", "Y"), remove = F, sep = "[*]") %>%
-    tidyr::separate(.data$size, c("W", "H"), remove = F, sep = "[*]") %>%
+    tidyr::separate(.data$position, c("X", "Y"), remove = F, sep = "[*]", fill = 'right') %>%
+    tidyr::separate(.data$size, c("W", "H"), remove = F, sep = "[*]", fill = 'right') %>%
     dplyr::mutate(layer = dplyr::case_when(
       .data$element %in% "label" ~ paste0("cowplot::ggdraw(xlim = c(", 0,",", W,")", ", ylim = c(", 0, "," , H,"))")
       , .data$element %in% "text" & .data$type %in% "dynamic" ~ paste0("cowplot::draw_label(", "'", info, "'"
@@ -200,10 +201,14 @@ if(FALSE) {
                                                             , ", x =", X, ", y =", Y
                                                             , ", width =", W, ", height =", H, ")")
     )) %>%
-    dplyr::select(.data$nlayer, .data$nlabel, .data$value, .data$layer) %>%
+    dplyr::select(.data$nlayer, .data$nlabel, .data$layer) %>%
     dplyr::mutate(dplyr::across(c(.data$nlayer, .data$nlabel), as.numeric)) %>%
-    dplyr::arrange(.data$nlayer, .data$nlabel, .by_group = T)
-
+    dplyr::arrange(.data$nlayer, .data$nlabel, .by_group = T) %>% 
+    dplyr::select(!.data$nlayer) %>% 
+    replace(is.na(.), 0)
+  
+  # dplyr::filter(!.data$type %in% "static") %>% 
+  
 # frame -------------------------------------------------------------------
 
   frame <- theme(
@@ -221,7 +226,7 @@ if(FALSE) {
   if (mode =="sample") {
 
   layers <- tolabel %>%
-    dplyr::filter(.data$nlabel %in% c(NA, 1)) %>%
+    dplyr::filter(.data$nlabel %in% c(0, 1)) %>%
     dplyr::select(.data$layer) %>%
     tibble::deframe() %>%
     paste0(., collapse = " + ")
@@ -259,7 +264,7 @@ if(FALSE) {
       purrr::map(function(x) {
 
             layers <- tolabel %>%
-              dplyr::filter(.data$nlabel %in% c(NA, tolabel[,2][x+1] )) %>%
+              dplyr::filter(.data$nlabel %in% c(0, x)) %>%
               dplyr::select(.data$layer) %>%
               tibble::deframe() %>%
               paste0(., collapse = " + ")
