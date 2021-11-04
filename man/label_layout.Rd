@@ -9,7 +9,7 @@ label_layout(
   size,
   background = "white",
   border_color = "black",
-  border_width = 0.02,
+  border_width = 0.5,
   units = "cm"
 )
 }

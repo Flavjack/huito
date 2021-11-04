@@ -8,7 +8,7 @@ label_print(
   label,
   mode = "sample",
   filename = "labels",
-  margin = 0.05,
+  margin = 0.04,
   paper = c(21, 29.7),
   units = "cm",
   dpi = 600,

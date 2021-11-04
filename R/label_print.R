@@ -57,7 +57,7 @@
 label_print <- function(label
                         , mode = "sample"
                         , filename = "labels"
-                        , margin = 0.05
+                        , margin = 0.04
                         , paper = c(21.0, 29.7)
                         , units = "cm"
                         , dpi = 600
@@ -94,7 +94,7 @@ if(FALSE) {
   
   margin <- if(any(is.null(margin)) || any(is.na(margin)) || 
                any(margin == "") ) {
-    rep(0.05, times = 4)
+    rep(0.04, times = 4)
   } else if(is.character(margin)) {
     margin %>%
       gsub("[[:space:]]", "", .) %>%
@@ -207,8 +207,6 @@ if(FALSE) {
     dplyr::select(!.data$nlayer) %>% 
     replace(is.na(.), 0)
   
-  # dplyr::filter(!.data$type %in% "static") %>% 
-  
 # frame -------------------------------------------------------------------
 
   frame <- theme(
@@ -255,9 +253,12 @@ if(FALSE) {
 # -------------------------------------------------------------------------
 
   if (mode =="complete") {
+    
+    label_width <- (margin[4] + label_dimension[1] + margin[2])
+    label_height <- (margin[1] + label_dimension[2] + margin[3])
 
-    ncol <- (paper[1]/label_dimension[1]) %>% trunc()
-    nrow <- (paper[2]/label_dimension[2]) %>% trunc()
+    ncol <- (paper[1]/label_width) %>% trunc()
+    nrow <- (paper[2]/label_height) %>% trunc()
     pages <- ceiling((nrow(fb)/(ncol*nrow)))
 
     label_list <- 1:nrow(fb) %>%
@@ -285,24 +286,26 @@ if(FALSE) {
 
         plotlabs <- label_list[c(ini:fin)]
 
-        labels <- cowplot::plot_grid(plotlist = plotlabs
-                                     , ncol = ncol)
+        labels <- cowplot::plot_grid(
+          plotlist = plotlabs
+          , ncol = ncol
+          )
 
         pdf_file <- file.path(
           tempdir()
           , filename %>% sub("\\..*", "", .) %>% paste0(., x,".pdf")
           )
-
+        
         cowplot::ggsave2(
           filename = pdf_file
            , plot = labels
            , units = template$units
-           , width = paper[1]
-           , height = paper[2]
+           , width = ncol*label_width
+           , height = nrow*label_height
            , dpi = dpi
            , limitsize = FALSE
            )
-
+        
         }) %>%
       qpdf::pdf_combine(
         input = .
