@@ -11,16 +11,15 @@ label_print(
   margin = 0.04,
   paper = c(21, 29.7),
   units = "cm",
-  dpi = 600,
   fonts = FALSE
 )
 }
 \arguments{
 \item{label}{data frame to build the labels}
 
-\item{mode}{label in sample or complete mode}
+\item{mode}{label in "sample" or "complete" mode}
 
-\item{filename}{path of the final file}
+\item{filename}{labels file name}
 
 \item{margin}{labels margins. margin(t = 0, r = 0, b = 0, l = 0)}
 
@@ -28,13 +27,11 @@ label_print(
 
 \item{units}{units for the label options}
 
-\item{dpi}{images resolution}
-
 \item{fonts}{For add new fonts from google fonts. Only active when you import
 new fonts}
 }
 \value{
-png or pdf
+pdf
 }
 \description{
 Generate labels based in a data frame

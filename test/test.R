@@ -14,7 +14,6 @@ fb <- gs %>%
 label <- fb %>% 
   label_layout(size = c(10, 2.5)
                , border_color = "red"
-               # , border_width = 0.5
                ) %>% 
   include_barcode(value = "barcode"
                   , size = c(2.5, 2.5)
@@ -26,10 +25,16 @@ label <- fb %>%
                , size = 14
                , color = "red"
                ) %>%
+  include_text(value = "plots"
+               , position = c(0.5, 1.25)
+               , angle = 90
+               , size = 14
+               , color = "red"
+               ) %>%
   include_image(
     value = "https://upload.wikimedia.org/wikipedia/commons/a/a9/Unalm_logo.png"
-    , size = c(2, 2)
-    , position = c(1, 0.25)
+    , size = c(1.8, 1.8)
+    , position = c(1.1, 0.5)
   ) %>%
   include_text(value = "treat"
                , position = c(5, 1.9)
@@ -41,13 +46,13 @@ label <- fb %>%
                , size = 12
                ) %>%
   include_text(value = "HECTOR FRANCISCO MELGAR CHIA"
-               , position = c(5, 0.2)
-               , size = 6
+               , position = c(3.7, 0.2)
+               , size = 8
                , color = "#339966"
                ) %>% 
   label_print("c"
               , fonts = F
-              # , margin = 0.03
+              , filename = "hector"
               )
 
 # -------------------------------------------------------------------------
@@ -97,7 +102,9 @@ label <- fb %>%
                , size = 12
                , color = "#009966"
                ) %>%
-  label_print("c", fonts = F)
+  label_print("c"
+              , fonts = F
+              )
 
 
 

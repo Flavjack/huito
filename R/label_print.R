@@ -3,16 +3,15 @@
 #' Generate labels based in a data frame
 #'
 #' @param label data frame to build the labels
-#' @param mode label in sample or complete mode
-#' @param filename path of the final file
-#' @param dpi images resolution
+#' @param mode label in "sample" or "complete" mode
+#' @param filename labels file name
 #' @param margin labels margins. margin(t = 0, r = 0, b = 0, l = 0)
 #' @param paper paper size
 #' @param units units for the label options
 #' @param fonts For add new fonts from google fonts. Only active when you import
 #'   new fonts
 #'
-#' @return png or pdf
+#' @return pdf
 #'
 #' @import ggplot2
 #' @importFrom sysfonts font_add_google
@@ -60,7 +59,6 @@ label_print <- function(label
                         , margin = 0.04
                         , paper = c(21.0, 29.7)
                         , units = "cm"
-                        , dpi = 600
                         , fonts = FALSE
                          ) {
 
@@ -73,7 +71,6 @@ if(FALSE) {
   margin = 0
   paper = c(21.0, 29.7)
   units = "cm"
-  dpi = 600
   filename = "label"
   fonts = F
   
@@ -302,7 +299,6 @@ if(FALSE) {
            , units = template$units
            , width = ncol*label_width
            , height = nrow*label_height
-           , dpi = dpi
            , limitsize = FALSE
            )
         
@@ -310,7 +306,8 @@ if(FALSE) {
       qpdf::pdf_combine(
         input = .
         , output = filename %>% sub("\\..*", "", .) %>% paste0(., ".pdf")
-        )
+        ) 
+    
   }
 
 # -------------------------------------------------------------------------
