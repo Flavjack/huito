@@ -10,6 +10,7 @@
 #' @param units units for the label options
 #' @param fonts For add new fonts from google fonts. Only active when you import
 #'   new fonts
+#' @param viewer show the sample in the "Plots" or "Viewer" panel
 #'
 #' @return pdf
 #'
@@ -60,20 +61,20 @@ label_print <- function(label
                         , paper = c(21.0, 29.7)
                         , units = "cm"
                         , fonts = FALSE
+                        , viewer = FALSE
                          ) {
 
 # test --------------------------------------------------------------------
 
 if(FALSE) {
   
-  label = label
-  mode = "c"
-  margin = 0
+  mode = "s"
+  margin = 0.04
   paper = c(21.0, 29.7)
   units = "cm"
   filename = "label"
   fonts = F
-  
+  viewer = T
 }
 
 # args ------------------------------------------------------------------
@@ -101,6 +102,17 @@ if(FALSE) {
     rep(margin, times = 4)
   } else {margin}
   
+# -------------------------------------------------------------------------
+  
+  if (!tibble::is_tibble(label$data)) {
+  
+  label$data <- list(huito = NA) %>% 
+    tibble::enframe()
+  
+  } 
+  
+# -------------------------------------------------------------------------
+
   fb <- if(mode == "sample") {
     
     label$data %>% dplyr::slice_sample(n = 1)
@@ -109,7 +121,7 @@ if(FALSE) {
     
     label$data 
     
-  }
+  } 
 
 # parameters --------------------------------------------------------------
 
@@ -119,7 +131,7 @@ if(FALSE) {
     tidyr::pivot_longer(!.data$nlabel
                  , names_to = "value"
                  , values_to = "info")
-
+  
   template <- label$opts %>%
     dplyr::filter(.data$element %in% "label") %>%
     dplyr::select(.data$option, .data$value) %>%
@@ -166,13 +178,13 @@ if(FALSE) {
   showtext::showtext_auto()
 
 # unite-data --------------------------------------------------------------
-
+  
   tolabel <- merge(options, info
                    , all.x = TRUE
                    , by = "value"
                    ) %>%
     tidyr::separate(.data$position, c("X", "Y"), remove = F, sep = "[*]", fill = 'right') %>%
-    tidyr::separate(.data$size, c("W", "H"), remove = F, sep = "[*]", fill = 'right') %>%
+    tidyr::separate(.data$size, c("W", "H"), remove = F, sep = "[*]", fill = 'right') %>% 
     dplyr::mutate(layer = dplyr::case_when(
       .data$element %in% "label" ~ paste0("cowplot::ggdraw(xlim = c(", 0,",", W,")", ", ylim = c(", 0, "," , H,"))")
       , .data$element %in% "text" & .data$type %in% "dynamic" ~ paste0("cowplot::draw_label(", "'", info, "'"
@@ -197,7 +209,23 @@ if(FALSE) {
       , .data$element %in% "image" & .data$type %in% "static" ~ paste0("cowplot::draw_plot(", "grid::rasterGrob(magick::image_read(", "'", value, "'", ")", ")"
                                                             , ", x =", X, ", y =", Y
                                                             , ", width =", W, ", height =", H, ")")
-    )) %>%
+      
+      , .data$element %in% "shape" & .data$type %in% "static" ~   paste0("cowplot::draw_plot(huito::shape_"
+                                                                         , value
+                                                                         , "(border_width = ", border_width
+                                                                         , ", background = '", color
+                                                                         , "', border_color = '", border_color
+                                                                         , "', margin = ", margin
+                                                                         , ", units = '", units
+                                                                         , "')"
+                                                                         , ", width = ", W
+                                                                         , ", height = ", H
+                                                                         , ", x = ", X
+                                                                         , ", y = ", Y
+                                                                         , ", halign = 0, valign = 0"
+                                                                         , ")"
+                                                                         )
+      )) %>%
     dplyr::select(.data$nlayer, .data$nlabel, .data$layer) %>%
     dplyr::mutate(dplyr::across(c(.data$nlayer, .data$nlabel), as.numeric)) %>%
     dplyr::arrange(.data$nlayer, .data$nlabel, .by_group = T) %>% 
@@ -218,15 +246,15 @@ if(FALSE) {
 
 # -------------------------------------------------------------------------
 
-  if (mode =="sample") {
+if (mode =="sample") {
 
   layers <- tolabel %>%
     dplyr::filter(.data$nlabel %in% c(0, 1)) %>%
     dplyr::select(.data$layer) %>%
     tibble::deframe() %>%
     paste0(., collapse = " + ")
-
-  label_print <- eval(parse(text = paste(layers))) + frame
+  
+  label_print <- eval(parse(text = paste(layers))) + frame 
   
   label_sample <- file.path(
     tempdir()
@@ -242,10 +270,20 @@ if(FALSE) {
     , limitsize = FALSE
     )  
   
-  label_sample %>% 
-    magick::image_read_pdf(density = 150) %>% 
-    print()
+  if(isFALSE(viewer)) {
+    
+    label_sample %>% 
+      magick::image_read_pdf(density = 200) %>% 
+      plot(grDevices::as.raster(.))
+    
+  } else {
+    
+    label_sample %>% 
+      magick::image_read_pdf(density = 200) %>% 
+      print()
   }
+
+}
 
 # -------------------------------------------------------------------------
 
@@ -308,11 +346,9 @@ if(FALSE) {
         , output = filename %>% sub("\\..*", "", .) %>% paste0(., ".pdf")
         ) 
     
+    path <- filename %>% sub("\\..*", "", .) %>% paste0(., ".pdf")
+    
   }
-
-# -------------------------------------------------------------------------
-
-  "Your label is Ready!" %>% print()
 
 }
 

@@ -30,7 +30,7 @@
 #' }
 #'
 
-label_layout <- function(data
+label_layout <- function(data = NA
                         , size
                         , background = "white"
                         , border_color = "black"
@@ -42,7 +42,7 @@ label_layout <- function(data
 
 if (FALSE) {
 
-  data <- label
+  data <- NA
   size <- c(10, 2.5)
   background = NA
   border_color = NA

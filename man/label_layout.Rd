@@ -5,7 +5,7 @@
 \title{Label layout}
 \usage{
 label_layout(
-  data,
+  data = NA,
   size,
   background = "white",
   border_color = "black",

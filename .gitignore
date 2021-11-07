@@ -3,3 +3,5 @@
 .RData
 .Ruserdata
 label.pdf
+docs
+inst/doc

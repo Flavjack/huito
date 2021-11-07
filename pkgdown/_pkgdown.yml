@@ -1,0 +1,45 @@
+url: ~
+
+home:
+  title: Huito
+  description: Label designer for multiple porpouses
+  author: Flavio Lozano-Isla
+  links:
+  - text: Support the project
+    href: https://github.com/sponsors/flavjack
+  - text: More apps
+    href: https://inkaverse.com/
+
+template:
+  opengraph:
+    image:
+      src: https://flavjack.github.io/inti/reference/figures/logo.png
+  params:
+    bootswatch: cerulean
+    ganalytics: G-804H2EJ8RN
+    docsearch:
+      api_key: f3d6fbee3fef1a17738422273d5317f5
+      index_name: huito
+
+development:
+  mode: auto
+
+navbar:
+  left:
+    - text: ""
+      icon: fa-home fa-lg
+      href: index.html
+    - text: "Intro"
+      icon: fa-seedling fa-lg
+      href: articles/introduction.html
+    - text: "Functions"
+      icon: fa-file-code fa-lg
+      href: reference/index.html
+    - text: "News"
+      icon: fa-file-alt fa-lg
+      href: news/index.html
+  right:
+    - icon: fab fa-github fa-lg
+      href: https://github.com/flavjack/inti/
+    - icon: fas fa-heart fa-lg
+      href: https://github.com/sponsors/Flavjack

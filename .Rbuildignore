@@ -1,4 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-test
-label.dpf
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^README\.Rmd$
