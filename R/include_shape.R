@@ -27,7 +27,9 @@
 #'          include_shape(
 #'                value = "hexagon"
 #'                ) 
-#'
+#'                
+#' ts <- label$opts
+#'                
 #' }
 #'
 
@@ -65,7 +67,7 @@ include_shape <- function(label
 # -------------------------------------------------------------------------
 
   border_width <- if(any(is.null(border_width)) || any(is.na(border_width)) || any(border_width == "")) {
-    2
+    0
   } else if(is.character(border_width)) {
     border_width %>% as.numeric()
   } else {border_width}
@@ -77,6 +79,18 @@ include_shape <- function(label
   border_color <- if(any(is.null(border_color)) || any(is.na(border_color)) || any(border_color == "")) {
     "transparent"
   } else {border_color}
+  
+  margin <- if(any(is.null(margin)) || any(is.na(margin)) || 
+               any(margin == "") ) {
+    rep(0, times = 4)
+  } else if(is.character(margin)) {
+    margin %>%
+      gsub("[[:space:]]", "", .) %>%
+      strsplit(., "[*]") %>%
+      unlist() %>% as.numeric()
+  } else if (length(margin) == 1 && is.numeric(margin)) {
+    rep(margin, times = 4)
+  } else {margin}
 
 # options -----------------------------------------------------------------
 
@@ -86,7 +100,7 @@ include_shape <- function(label
               , color = background
               , border_color = border_color
               , border_width = border_width
-              , margin = margin
+              , margin = margin %>% paste0(collapse = "*")
               , units = units
               ) %>%
     tibble::enframe(name = "option") %>%

@@ -11,7 +11,6 @@ label_print(
   margin = 0.04,
   paper = c(21, 29.7),
   units = "cm",
-  fonts = FALSE,
   viewer = FALSE
 )
 }
@@ -27,9 +26,6 @@ label_print(
 \item{paper}{paper size}
 
 \item{units}{units for the label options}
-
-\item{fonts}{For add new fonts from google fonts. Only active when you import
-new fonts}
 
 \item{viewer}{show the sample in the "Plots" or "Viewer" panel}
 }

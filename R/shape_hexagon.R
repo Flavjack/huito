@@ -41,7 +41,13 @@ shape_hexagon <- function (border_width = 2
     rep(margin, times = 4)
   } else {margin}
   
-# background <- "red"
+  background <- if(any(is.null(background)) || any(is.na(background)) || any(background == "")) {
+    "transparent"
+  } else {background}
+  
+  border_color <- if(any(is.null(border_color)) || any(is.na(border_color)) || any(border_color == "")) {
+    "transparent"
+  } else {border_color}
   
 # -------------------------------------------------------------------------
 
@@ -54,15 +60,13 @@ shape_hexagon <- function (border_width = 2
   
   hexd <- rbind(hexd, hexd[1, ])
   
-  shape <- ggplot2::ggplot() + 
+  ggplot2::ggplot() + 
   ggplot2::geom_polygon(aes_(x = ~x, y = ~y)
                         , data = hexd
                         , size = border_width
                         , fill = background
                         , color = border_color 
                         ) +
-    ggplot2::scale_x_continuous(expand = c(0.02, 0.02)) +
-    ggplot2::scale_y_continuous(expand = c(0.02, 0.02)) +
     ggplot2::theme(panel.background = element_rect(fill = background)
           , plot.background = element_rect(fill = background, color = NA)
           , line = element_blank()
@@ -80,7 +84,5 @@ shape_hexagon <- function (border_width = 2
           , plot.margin = unit(margin, units)
           , complete = TRUE
           )
-  
-  shape
 
 }

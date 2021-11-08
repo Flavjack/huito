@@ -16,7 +16,7 @@ Depends:
   ggplot2, 
   dplyr
 Imports: 
-  tidyr, 
+  tidyr,
   tibble, 
   purrr, 
   forcats, 

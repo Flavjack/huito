@@ -2,6 +2,7 @@
 
 export("%>%")
 export(barcode_qr)
+export(huito_fonts)
 export(include_barcode)
 export(include_image)
 export(include_shape)

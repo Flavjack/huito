@@ -27,6 +27,8 @@ url <- paste0("https://docs.google.com/spreadsheets/d/"
 fb <- gsheet2tbl(url)
 # browseURL(url)
 
+# huito_fonts('Pacifico')
+
 label <- fb %>% 
   mutate(temp = paste0("Temperatura: ", temperatura)) %>% 
   mutate(var = paste0("Variedad: ", variedad)) %>% 
@@ -36,12 +38,12 @@ label <- fb %>%
   include_image(
     value = "https://flavjack.github.io/inti/img/inkaverse.png"
     , size = c(2.4, 2.4)
-    , position = c(0, 0.05)
+    , position = c(1.2, 1.25)
     ) %>%
   include_barcode(
      value = "qr-code"
      , size = c(2.5, 2.5)
-     , position = c(6.9, 0)
+     , position = c(8.2, 1.25)
      ) %>%
   include_text(value = "plots"
                , position = c(9.7, 1.25)
@@ -50,23 +52,22 @@ label <- fb %>%
                , color = "red"
                ) %>%
   include_text(value = "Inkaverse"
-               , position = c(4.5, 2.1)
+               , position = c(4.6, 2)
                , size = 18
                , color = "brown"
+               , font = 'Pacifico'
                ) %>%
   include_text(value = "temp"
-               , position = c(4.5, 1.2)
-               , size = 12
+               , position = c(4.6, 1.2)
+               , size = 13
                , color = "orange"
                ) %>%
   include_text(value = "var"
-               , position = c(4.5, 0.5)
-               , size = 12
+               , position = c(4.6, 0.5)
+               , size = 13
                , color = "#009966"
                ) %>%
-  label_print(fonts = T
-              , mode = "s"
-              )
+  label_print(mode = "c")
 
 ```
 
@@ -86,13 +87,15 @@ fb <- gs %>%
   mutate(bloque = paste("bloque:\n", block)) %>% 
   mutate(treat = paste("Tratamiento:\n", tratamientos)) 
 
+# huito_fonts()
+
 label <- fb %>% 
   label_layout(size = c(10, 2.5)
                , border_color = "red"
                ) %>% 
   include_barcode(value = "barcode"
                   , size = c(2.5, 2.5)
-                  , position = c(7, 0)
+                  , position = c(8.2, 1.25)
                   ) %>%
   include_text(value = "plots"
                , position = c(9.7, 1.25)
@@ -109,7 +112,7 @@ label <- fb %>%
   include_image(
     value = "https://upload.wikimedia.org/wikipedia/commons/a/a9/Unalm_logo.png"
     , size = c(1.8, 1.8)
-    , position = c(1.1, 0.5)
+    , position = c(2.2, 1.4)
   ) %>%
   include_text(value = "treat"
                , position = c(5, 1.9)
@@ -121,12 +124,11 @@ label <- fb %>%
                , size = 12
                ) %>%
   include_text(value = "HECTOR FRANCISCO MELGAR CHIA"
-               , position = c(3.7, 0.2)
+               , position = c(3.7, 0.25)
                , size = 8
                , color = "#339966"
-               ) %>% 
-  label_print("s"
-              , fonts = F
-              )
+               ) %>%
+  label_print(mode = "c"
+              , viewer = F)
 ```
 

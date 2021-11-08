@@ -51,7 +51,9 @@ label <- label_layout(data = NA
          include_shape(
                value = "hexagon"
                ) 
-
+               
+ts <- label$opts
+               
 }
 
 }

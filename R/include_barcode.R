@@ -52,7 +52,6 @@ include_barcode <- function(label
 
   if (FALSE) {
 
-    label = label
     value = "https://inkaverse.com/reference/figures/logo.png"
     size = c(2, 2)
     position = NA
@@ -73,7 +72,7 @@ include_barcode <- function(label
   } else {"static"}
 
   size <- if(any(is.null(size)) || any(is.na(size)) || any(size == "")) {
-    rep(2, times = 2)
+    rep(2.5, times = 2)
   } else if(is.character(size)) {
     size %>%
       gsub("[[:space:]]", "", .) %>%

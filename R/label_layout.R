@@ -54,7 +54,7 @@ if (FALSE) {
 # param -------------------------------------------------------------------
 
 size <- if(any(is.null(size)) || any(is.na(size)) || any(size == "")) {
-  NA
+  c(10, 2.5)
 } else if(is.character(size)) {
   size %>%
     gsub("[[:space:]]", "", .) %>%
