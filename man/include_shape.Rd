@@ -10,9 +10,9 @@ include_shape(
   size = NA,
   position = NA,
   border_color = "black",
-  border_width = 1,
+  border_width = 2,
   background = NA,
-  margin = 0.1,
+  margin = 0,
   units = "cm"
 )
 }

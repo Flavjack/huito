@@ -36,9 +36,9 @@ include_shape <- function(label
                   , size = NA
                   , position = NA
                   , border_color = "black"
-                  , border_width = 1
+                  , border_width = 2
                   , background = NA
-                  , margin = 0.1
+                  , margin = 0
                   , units = "cm"
                   ) {
   
@@ -65,17 +65,17 @@ include_shape <- function(label
 # -------------------------------------------------------------------------
 
   border_width <- if(any(is.null(border_width)) || any(is.na(border_width)) || any(border_width == "")) {
-    1
+    2
   } else if(is.character(border_width)) {
     border_width %>% as.numeric()
   } else {border_width}
   
   background <- if(any(is.null(background)) || any(is.na(background)) || any(background == "")) {
-    NA
+    "transparent"
   } else {background}
   
   border_color <- if(any(is.null(border_color)) || any(is.na(border_color)) || any(border_color == "")) {
-    "black"
+    "transparent"
   } else {border_color}
 
 # options -----------------------------------------------------------------

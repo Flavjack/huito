@@ -8,6 +8,10 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
 ---
 
+```{r setup, include=FALSE, eval=FALSE}
+source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/docs.r")
+```
+
 # Labels for a experimental design
 
 ## Example label

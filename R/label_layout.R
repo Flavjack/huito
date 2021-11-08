@@ -63,17 +63,17 @@ size <- if(any(is.null(size)) || any(is.na(size)) || any(size == "")) {
 } else {size}
 
 border_width <- if(any(is.null(border_width)) || any(is.na(border_width)) || any(border_width == "")) {
-  0.5
+  0
 } else if(is.character(border_width)) {
   border_width %>% as.numeric()
 } else {border_width}
 
 background <- if(any(is.null(background)) || any(is.na(background)) || any(background == "")) {
-  "white"
+  "transparent"
 } else {background}
 
 border_color <- if(any(is.null(border_color)) || any(is.na(border_color)) || any(border_color == "")) {
-  "black"
+  "transparent"
 } else {border_color}
 
 # options -----------------------------------------------------------------

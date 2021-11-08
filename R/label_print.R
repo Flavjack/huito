@@ -92,7 +92,7 @@ if(FALSE) {
   
   margin <- if(any(is.null(margin)) || any(is.na(margin)) || 
                any(margin == "") ) {
-    rep(0.04, times = 4)
+    rep(0, times = 4)
   } else if(is.character(margin)) {
     margin %>%
       gsub("[[:space:]]", "", .) %>%
@@ -203,13 +203,20 @@ if(FALSE) {
       , .data$element %in% "barcode" & .data$type %in% "static" ~ paste0("cowplot::draw_plot(barcode_qr(",  "'", value , "'", ")"
                                                              , ", x =", X, ", y =", Y
                                                              , ", width =", W, ", height =", H, ")")
-      , .data$element %in% "image" & .data$type %in% "dynamic" ~ paste0("cowplot::draw_plot(", "grid::rasterGrob(magick::image_read(", "'", info, "'", ")", ")"
-                                                            , ", x =", X, ", y =", Y
-                                                            , ", width =", W, ", height =", H, ")")
-      , .data$element %in% "image" & .data$type %in% "static" ~ paste0("cowplot::draw_plot(", "grid::rasterGrob(magick::image_read(", "'", value, "'", ")", ")"
-                                                            , ", x =", X, ", y =", Y
-                                                            , ", width =", W, ", height =", H, ")")
-      
+      , .data$element %in% "image" & .data$type %in% "dynamic" ~ paste0("cowplot::draw_plot("
+                                                                        , "grid::rasterGrob(magick::image_read("
+                                                                        , "'", info, "'", ")", ")"
+                                                                        , ", x =", X, ", y =", Y
+                                                                        , ", width =", W, ", height =", H
+                                                                        , ", halign = 0, valign = 0"
+                                                                        , ")")
+      , .data$element %in% "image" & .data$type %in% "static" ~ paste0("cowplot::draw_plot("
+                                                                       , "grid::rasterGrob(magick::image_read("
+                                                                       , "'", value, "'", ")", ")"
+                                                                       , ", x =", X, ", y =", Y
+                                                                       , ", width =", W, ", height =", H
+                                                                       , ", halign = 0, valign = 0"
+                                                                       , ")")
       , .data$element %in% "shape" & .data$type %in% "static" ~   paste0("cowplot::draw_plot(huito::shape_"
                                                                          , value
                                                                          , "(border_width = ", border_width
@@ -218,13 +225,10 @@ if(FALSE) {
                                                                          , "', margin = ", margin
                                                                          , ", units = '", units
                                                                          , "')"
-                                                                         , ", width = ", W
-                                                                         , ", height = ", H
-                                                                         , ", x = ", X
-                                                                         , ", y = ", Y
+                                                                         , ", width = ", W, ", height = ", H
+                                                                         , ", x = ", X, ", y = ", Y
                                                                          , ", halign = 0, valign = 0"
-                                                                         , ")"
-                                                                         )
+                                                                         , ")")
       )) %>%
     dplyr::select(.data$nlayer, .data$nlabel, .data$layer) %>%
     dplyr::mutate(dplyr::across(c(.data$nlayer, .data$nlabel), as.numeric)) %>%
