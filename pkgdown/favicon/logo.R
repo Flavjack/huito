@@ -25,11 +25,13 @@ label <- label_layout(size = c(5.08, 5.08)
                 , position = c(4.06, 2.6)
                 ) %>%
   include_text(value = "t", size = 45 , position = c(3.33, 2.7), color = "#a9518b") %>%
-  include_shape(size = c(4.39, 5.08)
+  include_shape(size = 4.1
                 , border_width = 3
                 , border_color = "black"
-                , margin = -0.12
+                , margin = -0.8
                 , position = c(2.54, 2.54)
+                , panel_color = "red"
+                , panel_size = 5.08
                 ) %>%
   include_text(value = "inkaverse.com"
                , size = 6
@@ -39,8 +41,8 @@ label <- label_layout(size = c(5.08, 5.08)
   label_print(filename = "pkgdown/favicon/img/huito"
               , margin = 0
               , paper = c(5.5, 5.5)
-              , viewer = F
-              , smpres = 400
+              , viewer = T
+              , smpres = 300
               , mode = "c"
               )
 
@@ -51,20 +53,6 @@ logo <- list.files("pkgdown/favicon/img"
                    , full.names = T
                    , pattern = "huito.pdf") %>%
   image_read_pdf()  %>% 
-  image_transparent('white') %>% 
-  image_write("pkgdown/favicon/img/huito.png")
+  image_transparent('red') %>% 
+  image_write("man/figures/logo.png")
 
-# fruit -------------------------------------------------------------------
-
-imgs <- list.files("pkgdown/favicon/img"
-                   , full.names = T
-) %>% 
-  enframe(name = "img", value = "path") %>% 
-  select(path)
-
-# imgs %>% 
-#   filter(str_detect(path, "fruit")) %>% 
-#   unlist() %>% 
-#   image_read()  %>% 
-#   image_transparent('white') %>% 
-#   image_write("pkgdown/favicon/img/huito_fruit.png")

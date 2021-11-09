@@ -5,15 +5,19 @@
 \title{Shape hexagon}
 \usage{
 shape_hexagon(
+  size = 4.39,
   border_width = 2,
-  background = NA,
+  background = "transparent",
   border_color = "black",
   margin = 0,
   units = "cm",
-  transparent = TRUE
+  panel_color = "green",
+  panel_size = 5.08
 )
 }
 \arguments{
+\item{size}{hexagon size}
+
 \item{border_width}{line width}
 
 \item{background}{background color}
@@ -24,7 +28,9 @@ shape_hexagon(
 
 \item{units}{units for shape}
 
-\item{transparent}{transparent borders}
+\item{panel_color}{panel color}
+
+\item{panel_size}{panel size}
 }
 \value{
 geom
@@ -34,6 +40,6 @@ Hexagon geom shape for ggplot2
 }
 \examples{
 
-shape_hexagon(border_width = 5, background = "red",  border_color = "blue")
+shape_hexagon(border_width = 3)
 
 }

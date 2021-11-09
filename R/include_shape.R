@@ -12,6 +12,8 @@
 #' @param background background color
 #' @param margin = shape margin
 #' @param value column or path
+#' @param panel_color panel color
+#' @param panel_size panel size
 #'
 #' @return data frame
 #'
@@ -35,19 +37,21 @@
 
 include_shape <- function(label
                   , value = "hexagon"
-                  , size = NA
+                  , size = 4.325
                   , position = NA
                   , border_color = "black"
                   , border_width = 2
                   , background = NA
                   , margin = 0
                   , units = "cm"
+                  , panel_color = "green"
+                  , panel_size = 5.08
                   ) {
   
 # param -------------------------------------------------------------------
 
   size <- if(any(is.null(size)) || any(is.na(size)) || any(size == "")) {
-    rep(5, times = 2)
+    4.325
   } else if(is.character(size)) {
     size %>%
       gsub("[[:space:]]", "", .) %>%
@@ -91,6 +95,17 @@ include_shape <- function(label
   } else if (length(margin) == 1 && is.numeric(margin)) {
     rep(margin, times = 4)
   } else {margin}
+  
+  
+  panel_color <- if(any(is.null(panel_color)) || any(is.na(panel_color)) || any(panel_color == "")) {
+    "transparent"
+  } else {panel_color}
+  
+  panel_size <- if(any(is.null(panel_size)) || any(is.na(panel_size)) || any(panel_size == "")) {
+    5.08
+  } else if(is.character(panel_size)) {
+    panel_size %>% as.numeric()
+  } else {panel_size}
 
 # options -----------------------------------------------------------------
 
@@ -102,6 +117,8 @@ include_shape <- function(label
               , border_width = border_width
               , margin = margin %>% paste0(collapse = "*")
               , units = units
+              , panel_color = panel_color
+              , panel_size = panel_size
               ) %>%
     tibble::enframe(name = "option") %>%
     dplyr::mutate("element" := "shape") %>%

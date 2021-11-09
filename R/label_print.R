@@ -67,7 +67,7 @@ label_print <- function(label
   
   if(FALSE) {
     
-    mode = "c"
+    mode = "s"
     margin = 0
     paper = c(6, 6)
     units = "cm"
@@ -142,6 +142,8 @@ label_print <- function(label
             , size = NA_real_
             , font = NA_real_
             , margin = NA_real_
+            , panel_color = NA_real_
+            , panel_size = NA_real_
             )
   
   options <- label$opts %>%
@@ -212,13 +214,16 @@ label_print <- function(label
                                                                        , ")")
       , "shape" %in% .data$element & "static" %in% .data$type ~   paste0("cowplot::draw_plot(huito::shape_"
                                                                          , value
-                                                                         , "(border_width = ", border_width
+                                                                         , "(size = ", size
+                                                                         , ", border_width = ", border_width
                                                                          , ", background = '", color
                                                                          , "', border_color = '", border_color
                                                                          , "' , margin = '", margin
-                                                                         , "' , units = '", units
-                                                                         , "')"
-                                                                         , ", width = ", W, ", height = ", H
+                                                                         , "' , panel_color = '", panel_color
+                                                                         , "' , panel_size = ", panel_size
+                                                                         , ")"
+                                                                         , ", width = ", size
+                                                                         , ", height = ", size
                                                                          , ", x = ", X, ", y = ", Y
                                                                          , ", halign = 0.5, valign = 0.5"
                                                                          , ", hjust = 0.5, vjust = 0.5"
@@ -230,6 +235,9 @@ label_print <- function(label
     dplyr::select(!.data$nlayer) %>% 
     replace(is.na(.), 0)
   
+  # tolabel$layer[8] 
+
+
   # frame -------------------------------------------------------------------
   
   frame <- theme(

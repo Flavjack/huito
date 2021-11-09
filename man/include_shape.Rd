@@ -7,13 +7,15 @@
 include_shape(
   label,
   value = "hexagon",
-  size = NA,
+  size = 4.325,
   position = NA,
   border_color = "black",
   border_width = 2,
   background = NA,
   margin = 0,
-  units = "cm"
+  units = "cm",
+  panel_color = "green",
+  panel_size = 5.08
 )
 }
 \arguments{
@@ -34,6 +36,10 @@ include_shape(
 \item{margin}{= shape margin}
 
 \item{units}{units for shape}
+
+\item{panel_color}{panel color}
+
+\item{panel_size}{panel size}
 }
 \value{
 data frame
