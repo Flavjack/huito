@@ -67,7 +67,7 @@ label <- fb %>%
                , size = 13
                , color = "#009966"
                ) %>%
-  label_print(mode = "c", smpres = 300)
+  label_print(mode = "s", smpres = 300, viewer = T)
 
 ```
 
