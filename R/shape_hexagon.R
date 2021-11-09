@@ -51,12 +51,9 @@ shape_hexagon <- function (border_width = 2
   
 # -------------------------------------------------------------------------
 
-  hexd <- data.frame(x = 1 + c(rep(-sqrt(3)/2, 2)
-                               , 0
-                               , rep(sqrt(3)/2, 2)
-                               , 0)
-                     , y = 1 + c(0.5, -0.5, -1, -0.5, 0.5, 1)
-                     )
+  hexd <- data.frame(x = 1 + c(rep(-sqrt(3) / 2, 2), 0
+                               , rep(sqrt(3) / 2, 2)
+                               , 0), y = 1 + c(0.5, -0.5, -1, -0.5, 0.5, 1))
   
   hexd <- rbind(hexd, hexd[1, ])
   

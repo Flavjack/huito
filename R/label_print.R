@@ -9,6 +9,7 @@
 #' @param paper paper size
 #' @param units units for the label options
 #' @param viewer show the sample in the "Plots" or "Viewer" panel
+#' @param smpres sample resolution
 #'
 #' @return pdf
 #'
@@ -59,7 +60,8 @@ label_print <- function(label
                         , paper = c(21.0, 29.7)
                         , units = "cm"
                         , viewer = FALSE
-) {
+                        , smpres = 200
+                        ) {
   
   # test --------------------------------------------------------------------
   
@@ -276,13 +278,13 @@ label_print <- function(label
     if(isFALSE(viewer)) {
       
       label_sample %>% 
-        magick::image_read_pdf(density = 200) %>% 
+        magick::image_read_pdf(density = smpres) %>% 
         plot(grDevices::as.raster(.))
       
     } else {
       
       label_sample %>% 
-        magick::image_read_pdf(density = 200) %>% 
+        magick::image_read_pdf(density = smpres) %>% 
         print()
     }
     

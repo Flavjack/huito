@@ -11,7 +11,8 @@ label_print(
   margin = 0.04,
   paper = c(21, 29.7),
   units = "cm",
-  viewer = FALSE
+  viewer = FALSE,
+  smpres = 200
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ label_print(
 \item{units}{units for the label options}
 
 \item{viewer}{show the sample in the "Plots" or "Viewer" panel}
+
+\item{smpres}{sample resolution}
 }
 \value{
 pdf

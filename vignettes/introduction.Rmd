@@ -27,7 +27,7 @@ url <- paste0("https://docs.google.com/spreadsheets/d/"
 fb <- gsheet2tbl(url)
 # browseURL(url)
 
-# huito_fonts('Pacifico')
+# huito_fonts('Ceviche One')
 
 label <- fb %>% 
   mutate(temp = paste0("Temperatura: ", temperatura)) %>% 
@@ -53,9 +53,9 @@ label <- fb %>%
                ) %>%
   include_text(value = "Inkaverse"
                , position = c(4.6, 2)
-               , size = 18
+               , size = 30
                , color = "brown"
-               , font = 'Pacifico'
+               , font = 'Ceviche One'
                ) %>%
   include_text(value = "temp"
                , position = c(4.6, 1.2)
@@ -67,7 +67,7 @@ label <- fb %>%
                , size = 13
                , color = "#009966"
                ) %>%
-  label_print(mode = "c")
+  label_print(mode = "c", smpres = 300)
 
 ```
 
