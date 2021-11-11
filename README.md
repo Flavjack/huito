@@ -1,5 +1,5 @@
 
-# huito <img src="man/figures/logo.png" align="right" alt="" width="120" />
+# huito <img src="man/figures/logo.png" align="right" alt="" width="200" />
 
 <!-- badges: start -->
 <!-- [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/GerminaR)](https://cran.r-project.org/package=GerminaR) -->

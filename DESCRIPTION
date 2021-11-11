@@ -23,7 +23,7 @@ Imports:
   sysfonts, 
   showtext, 
   qrcode, 
-  qpdf
+  pdftools
 Suggests: 
   knitr, 
   rmarkdown, 

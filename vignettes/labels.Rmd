@@ -1,24 +1,22 @@
 ---
-title: "labels"
+title: "Labels"
 description: 'Label designer for multiple porpouses'
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{labels}
+  %\VignetteIndexEntry{Labels}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 ---
 
-```{r setup, include=FALSE, eval=FALSE}
+```{r setup, include=FALSE}
 source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/docs.r")
 ```
 
 # Labels for a experimental design
 
-## Example label
+The field book experimental design was deployed with "Tarpuy" <https://inkaverse.com/articles/apps.html>
 
-The experimental design fieldbook were deployed in "Tarpuy" <https://inkaverse.com/articles/apps.html>
-
-```{r, echo=TRUE, eval=FALSE}
+```{r, echo=TRUE}
 library(huito)
 library(gsheet)
 
@@ -27,7 +25,7 @@ url <- paste0("https://docs.google.com/spreadsheets/d/"
 fb <- gsheet2tbl(url)
 # browseURL(url)
 
-# huito_fonts('Ceviche One')
+huito_fonts('Ceviche One')
 
 label <- fb %>% 
   mutate(temp = paste0("Temperatura: ", temperatura)) %>% 
@@ -66,69 +64,29 @@ label <- fb %>%
                , position = c(4.6, 0.5)
                , size = 13
                , color = "#009966"
-               ) %>%
-  label_print(mode = "s", smpres = 300, viewer = T)
-
+               ) 
 ```
 
-After running the chunk the first time. You should change `fonts = F` as we already imported the fonts. If you want print the complete labels change: `mode = "complete"`.
+After running the chunk the first time. You should comment `huito_fonts()` as we already imported the fonts. If you want generate the complete labels list, change: `label_print(mode = "complete")`.
 
+## Preview mode
 
-```{r eval=FALSE, include=FALSE}
-source("https://inkaverse.com/setup.r")
+```{r echo=TRUE}
+label %>% 
+  label_print(mode = "s", smpres = 300, viewer = F)
+```
 
-url <- "https://docs.google.com/spreadsheets/d/1rhIK4kqgp3UZFOAUGuSKQ45W7MpY98IxpQZSRb67LUY/edit#gid=334632135"
-gs <- as_sheets_id(url)
-# browseURL(url)
+## Complete mode
 
-fb <- gs %>% 
-  range_read("fb") %>% 
-  select(1:tratamientos) %>% 
-  mutate(bloque = paste("bloque:\n", block)) %>% 
-  mutate(treat = paste("Tratamiento:\n", tratamientos)) 
+```{r echo=TRUE}
+label %>% 
+  label_print(mode = "c", filename = "etiquetas")
+```
 
-# huito_fonts()
-
-label <- fb %>% 
-  label_layout(size = c(10, 2.5)
-               , border_color = "red"
-               ) %>% 
-  include_barcode(value = "barcode"
-                  , size = c(2.5, 2.5)
-                  , position = c(8.2, 1.25)
-                  ) %>%
-  include_text(value = "plots"
-               , position = c(9.7, 1.25)
-               , angle = 90
-               , size = 14
-               , color = "red"
-               ) %>%
-  include_text(value = "plots"
-               , position = c(0.5, 1.25)
-               , angle = 90
-               , size = 14
-               , color = "red"
-               ) %>%
-  include_image(
-    value = "https://upload.wikimedia.org/wikipedia/commons/a/a9/Unalm_logo.png"
-    , size = c(1.8, 1.8)
-    , position = c(2.2, 1.4)
-  ) %>%
-  include_text(value = "treat"
-               , position = c(5, 1.9)
-               , size = 12
-               , color = "blue"
-               ) %>%
-  include_text(value = "bloque"
-               , position = c(5, 0.9)
-               , size = 12
-               ) %>%
-  include_text(value = "HECTOR FRANCISCO MELGAR CHIA"
-               , position = c(3.7, 0.25)
-               , size = 8
-               , color = "#339966"
-               ) %>%
-  label_print(mode = "c"
-              , viewer = F)
+```{r}
+list.files("."
+           , full.names = T
+           , pattern = "etiquetas.pdf") %>% 
+  image_read_pdf(density = 200, pages = 1) 
 ```
 

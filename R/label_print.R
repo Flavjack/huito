@@ -363,7 +363,7 @@ label_print <- function(label
         )
         
       }) %>%
-      qpdf::pdf_combine(
+      pdftools::pdf_combine(
         input = .
         , output = file_output
       ) 
