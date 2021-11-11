@@ -1,0 +1,50 @@
+---
+title: "Huito"
+description: 'Label designer for multiple porpouses'
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Huito}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/docs.r")
+
+# open https://docs.google.com/document/d/1U_06RwkOWavq2O9CY5j9GRd3_2Ik8OTrfszK-ccbGmQ/edit
+```
+
+```{r, eval=T}
+file <- "introduction"
+dir <- "."
+# dir <- tempdir() %>% chartr("\\", "/", .)
+zip <- list.files(path = "."
+                  , pattern = paste0(file, ".zip")
+                  , full.names = T
+                  ) %>% 
+  unzip(zipfile = .
+        # , exdir = paste0(dir, "/",file)
+        , overwrite = T)
+
+doc <- zip %>% 
+  .[grep('.md', .)] %>% 
+  readLines(.) %>% 
+  gsub("img_", paste0(dir, "/"
+                      # , file
+                      , "/img_"), .) %>% 
+  writeLines(con = paste0(dir, "/"
+                          # , file
+                          , "/_doc.Rmd"))
+
+doc <- list.files(paste0(dir
+                         , "/"
+                         # , file
+                         ), pattern = "_doc", full.names = T)
+```
+
+```{r, echo=FALSE, results='asis'}
+res <- knitr::knit_child(doc, quiet = TRUE)
+cat(res, sep = '\n')
+```
