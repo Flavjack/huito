@@ -11,6 +11,9 @@
 `huito` is a platform base in open source R package to deploy labels and
 repetitive graphics designs.
 
+The package allows to design labels of different shapes and sizes. Huito
+is based in the use of layers to design the labels.
+
 ## Installation
 
 You can install the released version of huito from

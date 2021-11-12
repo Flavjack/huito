@@ -1,6 +1,10 @@
 {
     "sortOrder": [
         {
+            "columnIndex": 4,
+            "ascending": false
+        },
+        {
             "columnIndex": 1,
             "ascending": true
         },

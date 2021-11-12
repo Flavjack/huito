@@ -1,8 +1,9 @@
-url: ~
+url: http://huito.inkaverse.com/
 
 home:
   title: Huito
   description: Label designer for multiple porpouses
+  url: https://flavjack.github.io/huito/
   author: Flavio Lozano-Isla
   links:
   - text: Support the project
@@ -13,7 +14,7 @@ home:
 template:
   opengraph:
     image:
-      src: https://flavjack.github.io/inti/reference/figures/logo.png
+      src: ../man/figures/logo.png
   params:
     bootswatch: cerulean
     ganalytics: G-804H2EJ8RN

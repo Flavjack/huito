@@ -8,43 +8,80 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
   chunk_output_type: console
+params:
+  file: "huito"
+resource_files:
+  - huito
 ---
 
 ```{r setup, include=FALSE}
 source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/docs.r")
-
 # open https://docs.google.com/document/d/1U_06RwkOWavq2O9CY5j9GRd3_2Ik8OTrfszK-ccbGmQ/edit
 ```
 
-```{r, eval=T}
-file <- "introduction"
-dir <- "."
-# dir <- tempdir() %>% chartr("\\", "/", .)
-zip <- list.files(path = "."
-                  , pattern = paste0(file, ".zip")
-                  , full.names = T
-                  ) %>% 
-  unzip(zipfile = .
-        # , exdir = paste0(dir, "/",file)
-        , overwrite = T)
 
-doc <- zip %>% 
-  .[grep('.md', .)] %>% 
-  readLines(.) %>% 
-  gsub("img_", paste0(dir, "/"
-                      # , file
-                      , "/img_"), .) %>% 
-  writeLines(con = paste0(dir, "/"
-                          # , file
-                          , "/_doc.Rmd"))
+```{r, include=FALSE}
 
-doc <- list.files(paste0(dir
-                         , "/"
-                         # , file
-                         ), pattern = "_doc", full.names = T)
+figure_md <- function(text, path = ".") {
+  
+ strlist <- strsplit(text, split = "^(\\!\\[)|\\]\\(|\\)\\{") %>% 
+   unlist() %>% 
+   tibble::enframe() 
+ 
+ cap <- strlist %>% 
+   filter(name %in% 2) %>% 
+   select(value) %>% 
+   deframe() %>% 
+   unlist()
+ 
+  img <- strlist %>% 
+   filter(name %in% 3) %>% 
+   select(value) %>% 
+   deframe() %>% 
+    unlist()
+  
+ fig <- paste0(
+   "\n\n"
+   , "```{r fig.cap= '"
+  , cap
+  , "'}\n"
+  , "knitr::include_graphics('"
+  , paste0(path, "/", img)
+  , "')\n```"
+  , "\n\n"
+ ) 
+ 
+ fig
+ 
+}
+
 ```
 
-```{r, echo=FALSE, results='asis'}
+```{r, eval=T}
+file <- params$file
+zip <- list.files(pattern = ".zip"
+                  , full.names = T
+                  ) %>% 
+  unzip(overwrite = T, exdir = file)
+
+doc <- zip %>% 
+    .[grep('.md', .)] %>%
+    readLines() %>% 
+    tibble::enframe() %>%
+    rowwise() %>%
+    dplyr::mutate(text = case_when(
+      grepl(pattern = "fig:id", value) ~ value %>% figure_md(path = file)
+      , TRUE ~ value
+      )) %>% 
+  select(text) %>% 
+  tibble::deframe() %>% 
+  writeLines(con = paste0(file,"/_doc.Rmd"))
+
+doc <- list.files(path = file, pattern = "_doc", full.names = T)
+```
+
+```{r, echo=FALSE, results='asis', eval=T}
 res <- knitr::knit_child(doc, quiet = TRUE)
 cat(res, sep = '\n')
 ```
+
