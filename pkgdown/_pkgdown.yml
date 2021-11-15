@@ -14,7 +14,7 @@ home:
 template:
   opengraph:
     image:
-      src: ../man/figures/logo.png
+      src: https://huito.inkaverse.com/reference/figures/logo.png
   params:
     bootswatch: cerulean
     ganalytics: G-804H2EJ8RN

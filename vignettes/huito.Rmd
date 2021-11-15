@@ -22,34 +22,48 @@ source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/d
 
 ```{r, include=FALSE}
 
-figure_md <- function(text, path = ".") {
+# text <- doc$value[5]
+
+figure_md <- function(text
+                      , path = "."
+                      , opts = NA
+                      ) {
   
- strlist <- strsplit(text, split = "^(\\!\\[)|\\]\\(|\\)\\{") %>% 
-   unlist() %>% 
-   tibble::enframe() 
- 
- cap <- strlist %>% 
-   filter(name %in% 2) %>% 
-   select(value) %>% 
+ opt <- text %>% 
+   enframe() %>% 
+   separate_rows(value, sep = "^(\\!\\[)") %>% 
+   separate_rows(value, sep = "(\\]\\()") %>% 
+   separate_rows(value, sep = "(\\)\\{)") %>% 
+   separate_rows(value, sep = "(\\{)") %>% 
+   separate_rows(value, sep = "(\\})") %>% 
+   na_if("") %>% 
+   drop_na(value) %>% 
+   rownames_to_column() %>% 
+   mutate(type = case_when(
+     grepl("img_", value) ~ "figure"
+     , grepl("#fig", value) ~ "id"
+     , rowname %in% 1 ~ "title"
+     , TRUE ~ "options"
+   )) %>% 
+   select(type, value) %>% 
    deframe() %>% 
-   unlist()
+   as.list()
  
-  img <- strlist %>% 
-   filter(name %in% 3) %>% 
-   select(value) %>% 
-   deframe() %>% 
-    unlist()
-  
+ if(!is.na(opts)) {
+   opt$options <- opts
+ }
+ 
  fig <- paste0(
    "\n\n"
-   , "```{r fig.cap= '"
-  , cap
-  , "'}\n"
-  , "knitr::include_graphics('"
-  , paste0(path, "/", img)
-  , "')\n```"
-  , "\n\n"
- ) 
+   , "```{r "
+   , opt$options
+   , ", fig.cap= '"
+   , opt$title %>% trimws()
+   , "'}\n\n"
+   , "knitr::include_graphics('"
+   , paste0(path, "/", opt$figure)
+   , "')\n\n```"
+   ) 
  
  fig
  
@@ -84,4 +98,5 @@ doc <- list.files(path = file, pattern = "_doc", full.names = T)
 res <- knitr::knit_child(doc, quiet = TRUE)
 cat(res, sep = '\n')
 ```
+
 

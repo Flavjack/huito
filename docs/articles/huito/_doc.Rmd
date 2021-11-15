@@ -4,11 +4,11 @@ El paquete lleva este nombre ya que el ***huito** *por sus propiedades de colora
 
 
 
-```{r fig.cap= 'Indigena haciendo uso del huito para realizar el diseño en su cuerpo'}
+```{r out.width = "60%", fig.cap= 'Indigena haciendo uso del huito para realizar el diseño en su cuerpo.'}
+
 knitr::include_graphics('huito/img_0.jpg')
+
 ```
-
-
 
 
 
