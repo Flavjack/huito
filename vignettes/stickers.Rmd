@@ -18,7 +18,6 @@ More information and examples for a sticker you can find in the following link: 
 
 ```{r echo=TRUE, eval=T}
 library(huito)
-library(magick)
 
 huito_fonts()
 

@@ -3,11 +3,10 @@
 # -------------------------------------------------------------------------
 
 library(huito)
-library(tidyverse)
 
 #> https://github.com/terinjokes/StickersStandard
 
-# huito_fonts()
+huito_fonts()
 
 label <- label_layout(size = c(5.08, 5.08)
                       , border_color = NA
@@ -21,8 +20,8 @@ label <- label_layout(size = c(5.08, 5.08)
   include_text(value = "u", size = 45 , position = c(2.07, 2.7), color = "#f58735") %>%
   include_text(value = "i", size = 45 , position = c(2.73, 2.7), color = "#4774b8") %>%
   include_image(value = "pkgdown/favicon/img/huito_fruit.png"
-                , size = c(1.3, 1.3) 
-                , position = c(4.06, 2.6)
+                , size = c(1.35, 1.35) 
+                , position = c(4.03, 2.65)
                 ) %>%
   include_text(value = "t", size = 45 , position = c(3.33, 2.7), color = "#a9518b") %>%
   include_shape(size = 4.1
@@ -42,8 +41,8 @@ label <- label_layout(size = c(5.08, 5.08)
               , margin = 0
               , paper = c(5.5, 5.5)
               , viewer = T
-              , smpres = 300
-              , mode = "s"
+              , smpres = 250
+              , mode = "c"
               )
 
 # transparent -------------------------------------------------------------

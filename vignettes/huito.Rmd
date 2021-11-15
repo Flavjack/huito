@@ -84,7 +84,7 @@ doc <- zip %>%
     tibble::enframe() %>%
     rowwise() %>%
     dplyr::mutate(text = case_when(
-      grepl(pattern = "fig:id", value) ~ value %>% figure_md(path = file)
+      grepl(pattern = "#fig:", value) ~ value %>% figure_md(path = file)
       , TRUE ~ value
       )) %>% 
   select(text) %>% 
