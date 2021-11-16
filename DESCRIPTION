@@ -2,9 +2,10 @@ Package: huito
 Type: Package
 Version: 0.1.0
 Title: Label designer for multiple porpouses
-Description: The 'huito' package is part of the 'inkaverse' project for developing 
-    different procedures and tools used in plant science and experimental designs. 
-    Learn more about the 'inkaverse' project at <https://inkaverse.com/>.
+Description: Huito is an open-source R package to deploys flexible and 
+  reproducible labels using layers. The 'huito' package is part of the 'inkaverse'
+  project for developing different procedures and tools used in plant science and 
+  experimental designs. Learn more about the 'inkaverse' project at <https://inkaverse.com/>.
 Date: 2021-11-16
 Authors@R: person("Flavio", "Lozano-Isla", email = "flavjack@gmail.com",
                   role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0714-669X"))

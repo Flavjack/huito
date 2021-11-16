@@ -41,7 +41,7 @@ label <- fb %>%
     , position = c(1.2, 1.25)
     ) %>%
   include_barcode(
-     value = "qr-code"
+     value = "barcode"
      , size = c(2.5, 2.5)
      , position = c(8.2, 1.25)
      ) %>%
