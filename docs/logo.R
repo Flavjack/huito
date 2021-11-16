@@ -29,7 +29,7 @@ label <- label_layout(size = c(5.08, 5.08)
                 , border_color = "black"
                 , margin = -0.8
                 , position = c(2.54, 2.54)
-                , panel_color = "red"
+                , panel_color = "blue"
                 , panel_size = 5.08
                 ) %>%
   include_text(value = "inkaverse.com"
@@ -41,7 +41,7 @@ label <- label_layout(size = c(5.08, 5.08)
               , margin = 0
               , paper = c(5.5, 5.5)
               , viewer = T
-              , smpres = 250
+              , smpres = 300
               , mode = "c"
               )
 
@@ -54,6 +54,6 @@ logo <- list.files("pkgdown/favicon/img"
   image_read_pdf()  %>% 
   image_crop(geometry = "600x600+40") %>% 
   image_crop(geometry = "560x600-40") %>% 
-  image_transparent('red') %>% 
+  image_transparent("blue") %>% 
   image_write("man/figures/logo.png")
 

@@ -113,10 +113,10 @@ if(FALSE) {
   
   inv  <- tibble::tribble(
     ~x,  ~y, 
-   -sq,  sq,
-   -sq, -sq,
     sq, -sq,
     sq,  sq, 
+   -sq,  sq,
+   -sq, -sq,
     )
   inv <- rbind(inv, inv[1, ])
 
