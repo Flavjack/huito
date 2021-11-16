@@ -1,4 +1,4 @@
-***Huito** *es un software de código abierto para el desarrollo de etiquetas de forma flexible desarrollado en el lenguaje de programación R. El paquete lleva este nombre, ya que el ***huito** *posee propiedades colorantes y es usado por los nativos de la amazonia para teñir telares y pintarse el cuerpo.
+***Huito** *es un software de código abierto para el desarrollo de etiquetas de forma flexible y reproducible, implementando en el lenguaje de programación R. El paquete lleva este nombre, ya que el ***huito** *posee propiedades colorantes y es usado por los nativos amazónicos para teñir telares y pintarse el cuerpo.
 
 ![El ***huito*** (*Genipa americana*) es una especie de árbol de la familia Rubiaceae. Originaria de los bosques tropicales de América del Norte y del Sur. Los indígenas lo usan para realizar diseños en su cuerpo y teñir telares. {out.width = "50%"}](img_0.jpg){#fig:id.bl2tuxtg6f7n}
 
@@ -8,7 +8,7 @@ La calidad de datos inicia desde la colecta de la información, y en muchos caso
 
 ## Alternativa
 
-***Huito*** permite el desarrollo de etiquetas reproducibles y personalizadas de acuerdo a los requerimientos de los usuarios. Cada elemento en la etiqueta es adicionado por capas, respetando el orden de acuerdo a su jerarquía en el código.
+***Huito*** permite el desarrollo de etiquetas reproducibles y personalizadas de acuerdo a los requerimientos del usuario. Cada elemento en la etiqueta es adicionado por capas, respetando el orden de acuerdo a su jerarquía en el código.
 
 ![Proceso de etiquetado y colecta de datos de experimentos. Los códigos QR permiten la colecta de datos con un dispositivo móvil de forma rápida y sencilla. {eval = T}](img_1.png){#fig:kix.vd7qxjm1q38u}
 
