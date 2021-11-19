@@ -144,13 +144,15 @@ label_print <- function(label
             , margin = NA_real_
             , panel_color = NA_real_
             , panel_size = NA_real_
+            , opts = NA_real_
             )
   
   options <- label$opts %>%
     tidyr::pivot_wider(names_from = .data$option, values_from = .data$value) %>%
     dplyr::mutate(dplyr::across(dplyr::everything(), as.character)) %>% 
     tibble::add_column(!!!cols[!names(cols) %in% names(.)]) %>% 
-    dplyr::na_if("NULL") 
+    dplyr::na_if("NULL") %>% 
+    dplyr::na_if("NA")
   
   # -------------------------------------------------------------------------
   
@@ -197,16 +199,20 @@ label_print <- function(label
                                                                          , ", hjust = 0.5, vjust = 0.5"
                                                                          , ")")
       , .data$element %in% "image" & .data$type %in% "dynamic" ~ paste0("cowplot::draw_plot("
-                                                                        , "grid::rasterGrob(magick::image_read("
-                                                                        , "'", info, "'", ")", ")"
+                                                                        , "grid::rasterGrob(image_import("
+                                                                        , "'", info, "'"
+                                                                        , ", '", opts, "'"
+                                                                        , ")", ")"
                                                                         , ", x =", X, ", y =", Y
                                                                         , ", width =", W, ", height =", H
                                                                         , ", halign = 0.5, valign = 0.5"
                                                                         , ", hjust = 0.5, vjust = 0.5"
                                                                         , ")")
       , .data$element %in% "image" & .data$type %in% "static" ~ paste0("cowplot::draw_plot("
-                                                                       , "grid::rasterGrob(magick::image_read("
-                                                                       , "'", value, "'", ")", ")"
+                                                                       , "grid::rasterGrob(image_import("
+                                                                       , "'", value, "'"
+                                                                       , ", '", opts, "'"
+                                                                       , ")", ")"
                                                                        , ", x =", X, ", y =", Y
                                                                        , ", width =", W, ", height =", H
                                                                        , ", halign = 0.5, valign = 0.5"
@@ -235,10 +241,7 @@ label_print <- function(label
     dplyr::select(!.data$nlayer) %>% 
     replace(is.na(.), 0)
   
-  # tolabel$layer[8] 
-
-
-  # frame -------------------------------------------------------------------
+# frame -------------------------------------------------------------------
   
   frame <- theme(
     panel.background = element_rect(fill = template$color, colour = NA)

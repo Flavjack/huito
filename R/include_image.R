@@ -7,8 +7,8 @@
 #' @param units units for the label options
 #' @param size image size
 #' @param position position coordinate
-#' @param color image color
 #' @param value column or path
+#' @param opts R magick options
 #'
 #' @return data frame
 #'
@@ -40,8 +40,8 @@ include_image <- function(label
                   , size
                   , position = NA
                   , type = "static"
-                  , color = "auto"
                   , units = "cm"
+                  , opts = NA
                   ) {
 
   # test --------------------------------------------------------------------
@@ -53,8 +53,14 @@ include_image <- function(label
     size = c(2, 2)
     position = NA
     type = "static"
-    color = "auto"
     units = "cm"
+    
+    opts = list(
+      "image_rotate(0)"
+      , "image_flip()"
+      , "image_charcoal()"
+    )
+    
 
   }
 
@@ -88,16 +94,21 @@ include_image <- function(label
 
   # -------------------------------------------------------------------------
 
-  color <- if(any(is.null(color)) || any(is.na(color)) || any(color == "")) {
-    "auto"
-  } else {color}
+  opts <- if(any(is.null(opts)) || any(is.na(opts)) || any(opts == "") || any(opts == "NA")) {
+    NA
+  } else if(is.character(opts)) {
+    opts %>%
+      gsub("[[:space:]]", "", .) %>%
+      strsplit(., "[*]") %>%
+      unlist() 
+  } 
 
 # options -----------------------------------------------------------------
 
   opt <- list(value = value
               , size = size %>% paste0(collapse = "*")
               , position = position %>% paste0(collapse = "*")
-              , color = color
+              , opts = opts %>% unlist() %>% paste0(collapse = "*")
               , units = units
               ) %>%
     tibble::enframe(name = "option") %>%

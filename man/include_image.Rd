@@ -10,8 +10,8 @@ include_image(
   size,
   position = NA,
   type = "static",
-  color = "auto",
-  units = "cm"
+  units = "cm",
+  opts = NA
 )
 }
 \arguments{
@@ -25,9 +25,9 @@ include_image(
 
 \item{type}{type of entry: dynamic or static}
 
-\item{color}{image color}
-
 \item{units}{units for the label options}
+
+\item{opts}{R magick options}
 }
 \value{
 data frame
