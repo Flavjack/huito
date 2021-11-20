@@ -48,9 +48,7 @@ label <- label_layout(size = c(5.08, 5.08)
 # transparent -------------------------------------------------------------
 # -------------------------------------------------------------------------
 
-logo <- list.files("pkgdown/favicon/img"
-                   , full.names = T
-                   , pattern = "huito.pdf") %>%
+label %>% 
   image_read_pdf()  %>% 
   image_crop(geometry = "600x600+40") %>% 
   image_crop(geometry = "560x600-40") %>% 

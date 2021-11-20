@@ -189,9 +189,7 @@
 <a href="#transparent-logo" class="anchor"></a>Transparent logo</h1>
 <p>Import the image in pdf format and cut the border and make the <code>panel_color</code> transparent.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">logo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="st">"."</span>
-                   , full.names <span class="op">=</span> <span class="cn">T</span>
-                   , pattern <span class="op">=</span> <span class="st">"huito.pdf"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+<code class="sourceCode R"><span class="va">label</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://docs.ropensci.org/magick/reference/editing.html">image_read_pdf</a></span><span class="op">(</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://docs.ropensci.org/magick/reference/transform.html">image_crop</a></span><span class="op">(</span>geometry <span class="op">=</span> <span class="st">"600x600+40"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://docs.ropensci.org/magick/reference/transform.html">image_crop</a></span><span class="op">(</span>geometry <span class="op">=</span> <span class="st">"560x600-40"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 

@@ -81,14 +81,12 @@ label %>%
 ## Complete mode
 
 ```{r echo=TRUE}
-label %>% 
+complete <- label %>% 
   label_print(mode = "c", filename = "etiquetas")
 ```
 
 ```{r}
-list.files("."
-           , full.names = T
-           , pattern = "etiquetas.pdf") %>% 
+complete %>% 
   image_read_pdf(density = 200, pages = 1) 
 ```
 

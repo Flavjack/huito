@@ -62,9 +62,8 @@ label <- label_layout(size = c(5.08, 5.08)
 Select at `panel_color()` different from the colors in your stickers background. 
 
 ```{r out.width= "40%", eval=T}
-list.files("."
-           , full.names = T
-           , pattern = "huito.pdf") %>% 
+
+label %>% 
   image_read_pdf(density = 300) 
   
 ```
@@ -74,9 +73,7 @@ list.files("."
 Import the image in pdf format and cut the border and make the `panel_color` transparent.
 
 ```{r, echo=TRUE}
-logo <- list.files("."
-                   , full.names = T
-                   , pattern = "huito.pdf") %>%
+label %>% 
   image_read_pdf()  %>% 
   image_crop(geometry = "600x600+40") %>% 
   image_crop(geometry = "560x600-40") %>% 
