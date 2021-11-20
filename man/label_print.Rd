@@ -63,7 +63,8 @@ label <- label_layout(data = fb
                , position = c(7.2, 0.15)
                ) \%>\%
          include_text(value = "plots", position = c(9.7, 1.25), angle = 90, size = 15) \%>\%
-         include_text(value = "Inkaverse", position = c(4.5, 1.25), size = 18) \%>\%
+         include_text(value = "Inkaverse"
+         , position = c(4.5, 1.25), size = 18, opts = list(hjust = 0.0, vjust = 0.0)) \%>\%
          label_print("sample")
 
 }

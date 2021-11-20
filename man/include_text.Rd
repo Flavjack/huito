@@ -12,7 +12,8 @@ include_text(
   font = NA,
   type = "static",
   color = NA,
-  angle = 0
+  angle = 0,
+  opts = NA
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ include_text(
 \item{color}{image color}
 
 \item{angle}{angle of the text}
+
+\item{opts}{list arguments from draw_label()}
 }
 \value{
 data frame
@@ -54,7 +57,8 @@ label <- label_layout(data = fb
          include_image(value = "https://inkaverse.com/reference/figures/logo.png"
                , size = c(2,2)
                ) \%>\%
-         include_text(value = "plots")
+         include_text(value = "plots", position = "5*1") \%>\% 
+         label_print()
 
 }
 

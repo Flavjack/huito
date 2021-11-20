@@ -47,7 +47,8 @@
 #'                , position = c(7.2, 0.15)
 #'                ) %>%
 #'          include_text(value = "plots", position = c(9.7, 1.25), angle = 90, size = 15) %>%
-#'          include_text(value = "Inkaverse", position = c(4.5, 1.25), size = 18) %>%
+#'          include_text(value = "Inkaverse"
+#'          , position = c(4.5, 1.25), size = 18, opts = list(hjust = 0.0, vjust = 0.0)) %>%
 #'          label_print("sample")
 #'
 #' }
@@ -74,6 +75,7 @@ label_print <- function(label
     filename = "label"
     fonts = F
     viewer = T
+    smpres = 200
   }
   
   # args ------------------------------------------------------------------
@@ -172,32 +174,42 @@ label_print <- function(label
     dplyr::mutate(layer = dplyr::case_when(
       .data$element %in% "label" ~ paste0("cowplot::ggdraw(xlim = c(", 0,",", W,")", ", ylim = c(", 0, ",", H, "), clip = 'on')")
       
-      , .data$element %in% "text" & .data$type %in% "dynamic" ~ paste0("cowplot::draw_label(", "'", info, "'"
-                                                                       , ", x =", X, ", y =", Y
-                                                                       , ", size =", size, ", angle =", angle
-                                                                       , ", fontfamily =", "'", font, "'"
-                                                                       , ", color =", "'", color, "'"
-                                                                       , ", hjust = 0.5, vjust = 0.5"
-                                                                       , ")")
-      , .data$element %in% "text" & .data$type %in% "static" ~ paste0("cowplot::draw_label(", "'", value, "'"
-                                                                      , ", x =", X, ", y =", Y
-                                                                      , ", size =", size, ", angle =", angle
-                                                                      , ", fontfamily =", "'", font, "'"
-                                                                      , ", color =", "'", color, "'"
-                                                                      , ", hjust = 0.5, vjust = 0.5"
-                                                                      , ")")
+      , .data$element %in% "text" & .data$type %in% "dynamic" ~ paste0("do.call(cowplot::draw_label"
+                                                                      , ", list(label = '", info, "'"
+                                                                      , ", x = ", X
+                                                                      , ", y = ", Y
+                                                                      , ", size = ", size
+                                                                      , ", angle = ", angle
+                                                                      , ", fontfamily = '", font, "'"
+                                                                      , ", color = '", color, "'"
+                                                                      , ", ", opts
+                                                                      , "))")
+      
+      , .data$element %in% "text" & .data$type %in% "static" ~ paste0("do.call(cowplot::draw_label"
+                                                                      , ", list(label = '", value, "'"
+                                                                      , ", x = ", X
+                                                                      , ", y = ", Y
+                                                                      , ", size = ", size
+                                                                      , ", angle = ", angle
+                                                                      , ", fontfamily = '", font, "'"
+                                                                      , ", color = '", color, "'"
+                                                                      , ", ", opts
+                                                                      , "))")
+      
       , .data$element %in% "barcode" & .data$type %in% "dynamic" ~ paste0("cowplot::draw_plot(barcode_qr(",  "'", info , "'", ")"
                                                                           , ", x =", X, ", y =", Y
                                                                           , ", width =", W, ", height =", H
                                                                           , ", halign = 0.5, valign = 0.5"
                                                                           , ", hjust = 0.5, vjust = 0.5"
                                                                           , ")")
+
       , .data$element %in% "barcode" & .data$type %in% "static" ~ paste0("cowplot::draw_plot(barcode_qr(",  "'", value , "'", ")"
                                                                          , ", x =", X, ", y =", Y
                                                                          , ", width =", W, ", height =", H
                                                                          , ", halign = 0.5, valign = 0.5"
                                                                          , ", hjust = 0.5, vjust = 0.5"
                                                                          , ")")
+      
       , .data$element %in% "image" & .data$type %in% "dynamic" ~ paste0("cowplot::draw_plot("
                                                                         , "grid::rasterGrob(image_import("
                                                                         , "'", info, "'"
@@ -208,6 +220,7 @@ label_print <- function(label
                                                                         , ", halign = 0.5, valign = 0.5"
                                                                         , ", hjust = 0.5, vjust = 0.5"
                                                                         , ")")
+      
       , .data$element %in% "image" & .data$type %in% "static" ~ paste0("cowplot::draw_plot("
                                                                        , "grid::rasterGrob(image_import("
                                                                        , "'", value, "'"
@@ -218,6 +231,7 @@ label_print <- function(label
                                                                        , ", halign = 0.5, valign = 0.5"
                                                                        , ", hjust = 0.5, vjust = 0.5"
                                                                        , ")")
+      
       , "shape" %in% .data$element & "static" %in% .data$type ~   paste0("cowplot::draw_plot(huito::shape_"
                                                                          , value
                                                                          , "(size = ", size
@@ -234,7 +248,7 @@ label_print <- function(label
                                                                          , ", halign = 0.5, valign = 0.5"
                                                                          , ", hjust = 0.5, vjust = 0.5"
                                                                          , ")")
-    )) %>%
+      )) %>%
     dplyr::select(.data$nlayer, .data$nlabel, .data$layer) %>%
     dplyr::mutate(dplyr::across(c(.data$nlayer, .data$nlabel), as.numeric)) %>%
     dplyr::arrange(.data$nlayer, .data$nlabel, .by_group = T) %>% 

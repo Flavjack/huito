@@ -197,7 +197,8 @@
   font <span class='op'>=</span> <span class='cn'>NA</span>,
   type <span class='op'>=</span> <span class='st'>"static"</span>,
   color <span class='op'>=</span> <span class='cn'>NA</span>,
-  angle <span class='op'>=</span> <span class='fl'>0</span>
+  angle <span class='op'>=</span> <span class='fl'>0</span>,
+  opts <span class='op'>=</span> <span class='cn'>NA</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -235,6 +236,10 @@
       <th>angle</th>
       <td><p>angle of the text</p></td>
     </tr>
+    <tr>
+      <th>opts</th>
+      <td><p>list arguments from draw_label()</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -257,7 +262,8 @@
 <span class='r-in'>         <span class='fu'><a href='include_image.html'>include_image</a></span><span class='op'>(</span>value <span class='op'>=</span> <span class='st'>"https://inkaverse.com/reference/figures/logo.png"</span></span>
 <span class='r-in'>               , size <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>,<span class='fl'>2</span><span class='op'>)</span></span>
 <span class='r-in'>               <span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
-<span class='r-in'>         <span class='fu'>include_text</span><span class='op'>(</span>value <span class='op'>=</span> <span class='st'>"plots"</span><span class='op'>)</span></span>
+<span class='r-in'>         <span class='fu'>include_text</span><span class='op'>(</span>value <span class='op'>=</span> <span class='st'>"plots"</span>, position <span class='op'>=</span> <span class='st'>"5*1"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span class='r-in'>         <span class='fu'><a href='label_print.html'>label_print</a></span><span class='op'>(</span><span class='op'>)</span></span>
 <span class='r-in'></span>
 <span class='r-in'><span class='op'>}</span></span>
 <span class='r-in'></span>

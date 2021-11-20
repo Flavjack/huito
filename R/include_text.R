@@ -10,6 +10,7 @@
 #' @param color image color
 #' @param value column or string
 #' @param angle angle of the text
+#' @param opts list arguments from draw_label()
 #'
 #' @return data frame
 #'
@@ -31,7 +32,8 @@
 #'          include_image(value = "https://inkaverse.com/reference/figures/logo.png"
 #'                , size = c(2,2)
 #'                ) %>%
-#'          include_text(value = "plots")
+#'          include_text(value = "plots", position = "5*1") %>% 
+#'          label_print()
 #'
 #' }
 #'
@@ -44,6 +46,7 @@ include_text <- function(label
                          , type = "static"
                          , color = NA
                          , angle = 0
+                         , opts = NA
                          ) {
 
   # test --------------------------------------------------------------------
@@ -58,6 +61,12 @@ include_text <- function(label
     type = "static"
     color = "black"
     angle = 0
+    
+    opts = list(hjust = 0.5
+               , vjust = 0.5)
+    
+    
+    ts <- do.call(paste, opts)
 
   }
 
@@ -104,6 +113,7 @@ include_text <- function(label
               , position = position %>% paste0(collapse = "*")
               , color = color
               , angle = angle
+              , opts = opts 
               ) %>%
     tibble::enframe(name = "option") %>%
     dplyr::mutate(element = "text") %>%
