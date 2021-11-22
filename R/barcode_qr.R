@@ -46,10 +46,12 @@ barcode_qr <- function(text
   dt <- qrmt %>%
     dplyr::mutate(id = rownames(.)) %>%
     tidyr::pivot_longer(!.data$id, names_to = "key", values_to = "value") %>%
-    dplyr::mutate(dplyr::across(c(.data$key, .data$id)
-                              , ~ forcats::as_factor(.)))
+    dplyr::mutate("keyid" := gsub("[[:alpha:]]", "", .data$key)) %>% 
+    dplyr::mutate(dplyr::across(c(.data$id, .data$keyid), as.numeric)) %>%
+    dplyr::mutate(dplyr::across(c(.data$id, .data$keyid), as.factor))
+
   dt %>% 
-    ggplot(aes(x = .data$id, y = .data$key)) +
+    ggplot(aes(x = .data$id, y = .data$keyid)) +
     geom_tile(aes(fill = .data$value), alpha = alpha) +
     scale_fill_gradient(low = "white", high = color) +
     theme_void() +

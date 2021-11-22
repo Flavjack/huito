@@ -193,21 +193,22 @@
                , size <span class="op">=</span> <span class="fl">13</span>
                , color <span class="op">=</span> <span class="st">"#009966"</span>
                <span class="op">)</span> </code></pre></div>
-<p>After running the chunk the first time. You should comment <code><a href="../reference/huito_fonts.html">huito_fonts()</a></code> as we already imported the fonts. If you want generate the complete labels list, change: <code>label_print(mode = "complete")</code>.</p>
+<p>After running the chunk the first time. You should comment <code><a href="../reference/huito_fonts.html">huito_fonts()</a></code> as we already imported the fonts.</p>
 <div id="preview-mode" class="section level2">
 <h2 class="hasAnchor">
 <a href="#preview-mode" class="anchor"></a>Preview mode</h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">label</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/label_print.html">label_print</a></span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"s"</span>, smpres <span class="op">=</span> <span class="fl">300</span>, viewer <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="../reference/label_print.html">label_print</a></span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"sample"</span>, smpres <span class="op">=</span> <span class="fl">300</span>, viewer <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></code></pre></div>
 <p><img src="labels_files/figure-html/unnamed-chunk-2-1.png" width="98%" style="display: block; margin: auto;"></p>
 </div>
 <div id="complete-mode" class="section level2">
 <h2 class="hasAnchor">
 <a href="#complete-mode" class="anchor"></a>Complete mode</h2>
+<p>If you want generate the complete labels list, change: <code>label_print(mode = "complete")</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">complete</span> <span class="op">&lt;-</span> <span class="va">label</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/label_print.html">label_print</a></span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"c"</span>, filename <span class="op">=</span> <span class="st">"etiquetas"</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="../reference/label_print.html">label_print</a></span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"complete"</span>, filename <span class="op">=</span> <span class="st">"etiquetas"</span><span class="op">)</span></code></pre></div>
 <p><img src="labels_files/figure-html/unnamed-chunk-4-1.png" width="98%" style="display: block; margin: auto;"></p>
 </div>
 </div>
