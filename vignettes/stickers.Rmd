@@ -10,13 +10,13 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include = FALSE}
 source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/docs.r")
 ```
 
 More information and examples for a sticker you can find in the following link: http://hexb.in/
 
-```{r echo=TRUE, eval=T}
+```{r echo = TRUE, eval = T}
 library(huito)
 
 huito_fonts()
@@ -55,13 +55,13 @@ label <- label_layout(size = c(5.08, 5.08)
               , paper = c(5.5, 5.5)
               , viewer = T
               , smpres = 300
-              , mode = "c"
+              , mode = "complete"
               )
 ```
 
 Select at `panel_color()` different from the colors in your stickers background. 
 
-```{r out.width= "40%", eval=T}
+```{r out.width = "40%", eval = T}
 
 label %>% 
   image_read_pdf(density = 300) 
@@ -72,7 +72,7 @@ label %>%
 
 Import the image in pdf format and cut the border and make the `panel_color` transparent.
 
-```{r, echo=TRUE}
+```{r, echo = TRUE}
 label %>% 
   image_read_pdf()  %>% 
   image_crop(geometry = "600x600+40") %>% 
@@ -83,7 +83,7 @@ label %>%
 
 ## Final sticker result:
 
-```{r out.width= "35%", eval=T}
+```{r out.width = "35%", eval = T}
 include_graphics("huito.png")
 ```
 
