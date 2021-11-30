@@ -11,7 +11,7 @@ editor_options:
 params:
   file: "huito"
 resource_files:
-  - huito
+  - params$file
 ---
 
 ```{r setup, include=FALSE}
@@ -19,84 +19,90 @@ source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/d
 # open https://docs.google.com/document/d/1U_06RwkOWavq2O9CY5j9GRd3_2Ik8OTrfszK-ccbGmQ/edit
 ```
 
-
 ```{r, include=FALSE}
 
-# text <- doc$value[5]
-
-figure_md <- function(text
-                      , path = "."
-                      , opts = NA
-                      ) {
+gdoc_rticle <- function(file
+                        , export = "files"
+                        , md = TRUE
+                        ){
   
- opt <- text %>% 
-   enframe() %>% 
-   separate_rows(value, sep = "^(\\!\\[)") %>% 
-   separate_rows(value, sep = "(\\]\\()") %>% 
-   separate_rows(value, sep = "(\\)\\{)") %>% 
-   separate_rows(value, sep = "(\\{)") %>% 
-   separate_rows(value, sep = "(\\})") %>% 
-   na_if("") %>% 
-   drop_na(value) %>% 
-   rownames_to_column() %>% 
-   mutate(type = case_when(
-     grepl("img_", value) ~ "figure"
-     , grepl("#fig", value) ~ "id"
-     , rowname %in% 1 ~ "title"
-     , TRUE ~ "options"
-   )) %>% 
-   select(type, value) %>% 
-   deframe() %>% 
-   as.list()
- 
- if(!is.na(opts)) {
-   opt$options <- opts
- }
- 
- fig <- paste0(
-   "\n\n"
-   , "```{r "
-   , opt$options
-   , ", fig.cap= '"
-   , opt$title %>% trimws()
-   , "'}\n\n"
-   , "knitr::include_graphics('"
-   , paste0(path, "/", opt$figure)
-   , "')\n\n```"
-   ) 
- 
- fig
- 
-}
+  figure_md <- function(text
+                        , path = export
+                        , opts = NA
+                        ) {
+    
+    opt <- text %>% 
+      tibble::enframe() %>% 
+      tidyr::separate_rows(.data$value, sep = "^(\\!\\[)") %>% 
+      tidyr::separate_rows(.data$value, sep = "(\\]\\()") %>% 
+      tidyr::separate_rows(.data$value, sep = "(\\)\\{)") %>% 
+      tidyr::separate_rows(.data$value, sep = "(\\{)") %>% 
+      tidyr::separate_rows(.data$value, sep = "(\\})") %>% 
+      dplyr::na_if("") %>% 
+      tidyr::drop_na(.data$value) %>% 
+      tibble::rownames_to_column() %>% 
+      dplyr::mutate(type = dplyr::case_when(
+        grepl("img_", .data$value) ~ "figure"
+        , grepl("#fig", .data$value) ~ "id"
+        , rowname %in% 1 ~ "title"
+        , TRUE ~ "options"
+      )) %>% 
+      dplyr::select(.data$type, .data$value) %>% 
+      tibble::deframe() %>% 
+      as.list()
+    
+    if(!is.na(opts)) {
+      opt$options <- opts
+    }
+    
+    fig <- paste0(
+      "\n\n"
+      , "```{r "
+      , opt$options
+      , ", fig.cap= '"
+      , opt$title %>% trimws()
+      , "'}\n\n"
+      , "knitr::include_graphics('"
+      , paste0(path, "/", opt$figure)
+      , "')\n\n```"
+    ) 
+    
+    fig
+    
+  }
+  
+# unzip files -------------------------------------------------------------
 
-```
-
-```{r, eval=T}
-file <- params$file
-zip <- list.files(pattern = ".zip"
-                  , full.names = T
-                  ) %>% 
-  unzip(overwrite = T, exdir = file)
-
-doc <- zip %>% 
+  zip <- file %>% 
+    utils::unzip(overwrite = T, exdir = export)
+  
+  doc <- zip %>% 
     .[grep('.md', .)] %>%
     readLines() %>% 
     tibble::enframe() %>%
-    rowwise() %>%
-    dplyr::mutate(text = case_when(
-      grepl(pattern = "#fig:", value) ~ value %>% figure_md(path = file)
+    dplyr::rowwise() %>%
+    dplyr::mutate(text = dplyr::case_when(
+      grepl(pattern = "#fig:", value) ~ value %>% figure_md(path = export)
       , TRUE ~ value
-      )) %>% 
-  select(text) %>% 
-  tibble::deframe() %>% 
-  writeLines(con = paste0(file,"/_doc.Rmd"))
+    )) %>% 
+    dplyr::select(.data$text) %>% 
+    tibble::deframe() %>% 
+    writeLines(con = paste0(export,"/_doc.Rmd"))
+  
+  doc <- list.files(path = export, pattern = "_doc", full.names = T)
 
-doc <- list.files(path = file, pattern = "_doc", full.names = T)
+}
+```
+
+```{r}
+dir <- params$file
+doc <- gdoc_rticle(file = "huito.zip"
+                   , export = dir
+                   )
 ```
 
 ```{r, echo=FALSE, results='asis', eval=T}
 res <- knitr::knit_child(doc, quiet = TRUE)
 cat(res, sep = '\n')
 ```
-
 

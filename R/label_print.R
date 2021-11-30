@@ -24,34 +24,30 @@
 #'
 #' @examples
 #'
-#' \dontrun{
-#'
 #' library(huito)
 #' library(gsheet)
 #'
 #' url <- paste0("https://docs.google.com/spreadsheets/d/"
 #'        , "1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497")
 #' fb <- gsheet2tbl(url)
+#' 
+#' # huito_fonts()
 #'
-#' label <- label_layout(data = fb
-#'                      , size = c(10, 2.5)
-#'                      ) %>%
+#' label <- label_layout(data = fb, size = c(10, 2.5)) %>%
 #'          include_image(
 #'                value = "https://flavjack.github.io/inti/img/inkaverse.png"
-#'                , size = c(2.4, 2.4)
-#'                , position = c(0.1, 0.05)
+#'                , size = c(2.2, 2.2)
+#'                , position = c(1.2, 1.25)
 #'                ) %>%
 #'          include_barcode(
 #'                value = "qr-code"
 #'                , size = c(2.2, 2.2)
-#'                , position = c(7.2, 0.15)
+#'                , position = c(8.3, 1.25)
 #'                ) %>%
 #'          include_text(value = "plots", position = c(9.7, 1.25), angle = 90, size = 15) %>%
 #'          include_text(value = "Inkaverse"
-#'          , position = c(4.5, 1.25), size = 18, opts = list(hjust = 0.0, vjust = 0.0)) %>%
+#'          , position = c(3, 1.25), size = 18, opts = list(hjust = 0.0, vjust = 0.0)) %>%
 #'          label_print("sample")
-#'
-#' }
 #' 
 
 label_print <- function(label

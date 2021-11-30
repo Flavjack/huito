@@ -21,18 +21,20 @@
 #'
 #' @examples
 #'
-#' \dontrun{
 #'
 #' label <- label_layout(data = NA
 #'                , size = c(10, 2.5)
 #'                ) %>%
 #'          include_shape(
 #'                value = "hexagon"
-#'                ) 
+#'                , position = c(1.2, 1.25)
+#'                , size = 3
+#'                )
 #'                
+#' label %>% label_print("sample")
+#' 
 #' ts <- label$opts
 #'                
-#' }
 #'
 
 include_shape <- function(label

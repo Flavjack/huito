@@ -43,7 +43,7 @@ Insert text in label
 }
 \examples{
 
-\dontrun{
+\donttest{
 
 library(gsheet)
 
@@ -56,8 +56,9 @@ label <- label_layout(data = fb
                ) \%>\%
          include_image(value = "https://inkaverse.com/reference/figures/logo.png"
                , size = c(2,2)
+               , position = "1.2*1.25"
                ) \%>\%
-         include_text(value = "plots", position = "5*1") \%>\% 
+         include_text(value = "plots", position = "5*1.25") \%>\% 
          label_print()
 
 }

@@ -15,19 +15,11 @@
 #'
 #' @examples
 #'
-#' \dontrun{
-#'
-#' library(gsheet)
-#'
-#' url <- paste0("https://docs.google.com/spreadsheets/d/"
-#'        , "1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497")
-#' fb <- gsheet2tbl(url)
-#'
-#' label <- label_layout(data = fb
-#'                      , size = c(10, 2.5)
-#'                      )
-#'
-#' }
+#' label <- label_layout(size = c(10, 2.5)
+#'                    , border_color = "red"
+#'                    , border_width = 1
+#'                    ) %>% 
+#'                  label_print()
 #'
 
 label_layout <- function(data = NA

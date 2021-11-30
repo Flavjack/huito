@@ -14,13 +14,10 @@
 #'
 #' @examples
 #'
-#' \dontrun{
-#'
 #' library(huito)
 #' 
 #' barcode_qr("LIMA-2021-11-03_15_3_4")
 #'
-#' }
 #' 
 
 barcode_qr <- function(text
