@@ -27,7 +27,7 @@ url <- paste0("https://docs.google.com/spreadsheets/d/"
 fb <- gsheet2tbl(url)
 # browseURL(url)
 
-# huito_fonts('Ceviche One')
+huito_fonts('Ceviche One')
 
 label <- fb %>% 
   mutate(temp = paste0("Temperatura: ", temperatura)) %>% 

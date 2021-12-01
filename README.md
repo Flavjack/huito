@@ -3,7 +3,11 @@
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/huito)](https://CRAN.R-project.org/package=huito)
 [![R-CMD-check](https://github.com/Flavjack/huito/workflows/R-CMD-check/badge.svg)](https://github.com/Flavjack/huito/actions)
+[![CRAN RStudio mirror
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/huito?color=brightgreen)](https://r-pkg.org/pkg/huito)
 <!-- badges: end -->
 
 ‘Huito’ is an open-source R package to deploys flexible and reproducible

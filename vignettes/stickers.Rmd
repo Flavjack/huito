@@ -19,7 +19,7 @@ More information and examples for a sticker you can find in the following link: 
 ```{r echo = TRUE, eval = T}
 library(huito)
 
-# huito_fonts()
+huito_fonts()
 
 label <- label_layout(size = c(5.08, 5.08)
                       , border_color = NA
