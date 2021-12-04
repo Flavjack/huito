@@ -1,5 +1,5 @@
 
-# huito <img src="man/figures/logo.png" align="right" alt="" width="200" />
+# huito <img src="man/figures/logo.png" align="right" />
 
 <!-- badges: start -->
 

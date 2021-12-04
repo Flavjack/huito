@@ -2,7 +2,15 @@
 output: github_document
 ---
 
-# huito <img src="man/figures/logo.png" align="right" alt="" width="200" />
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(
+  fig.align = 'center'
+  , collapse = TRUE
+  , comment = "#>"
+  )
+```
+
+# huito <img src="man/figures/logo.png" align="right" />
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/huito)](https://CRAN.R-project.org/package=huito)

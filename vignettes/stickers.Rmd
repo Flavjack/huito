@@ -64,7 +64,7 @@ label %>%
 ## Complete mode
 
 ```{r, echo = TRUE}
-sticker <-   label %>% 
+sticker <- label %>% 
   label_print(filename = "huito"
               , margin = 0
               , paper = c(5.5, 5.5)
