@@ -27,7 +27,7 @@ include_image(
 
 \item{units}{units for the label options}
 
-\item{opts}{R magick options}
+\item{opts}{R magick funtions}
 }
 \value{
 data frame

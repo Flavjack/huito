@@ -16,7 +16,7 @@ source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/d
 
 # Labels for a experimental design
 
-The field book experimental design was deployed with "Tarpuy" <https://inkaverse.com/articles/apps.html>
+The field-book experimental design was deployed with "Tarpuy" <https://inkaverse.com/articles/apps.html>
 
 ```{r, echo = TRUE}
 library(huito)

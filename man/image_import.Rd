@@ -9,7 +9,7 @@ image_import(image, opts = NA)
 \arguments{
 \item{image}{path or url}
 
-\item{opts}{R magick options by layers}
+\item{opts}{R magick functions by layers}
 }
 \value{
 image

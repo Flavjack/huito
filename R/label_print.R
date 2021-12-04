@@ -3,7 +3,7 @@
 #' Generate labels based in a data frame
 #'
 #' @param label data frame to build the labels
-#' @param mode label in "sample" or "complete" mode
+#' @param mode label in "sample/preview" or "complete" mode
 #' @param filename labels file name
 #' @param margin labels margins. margin(t = 0, r = 0, b = 0, l = 0)
 #' @param paper paper size
@@ -76,7 +76,7 @@ label_print <- function(label
   
   # args ------------------------------------------------------------------
   
-  mode <- match.arg(mode, c("complete", "sample"))
+  mode <- match.arg(mode, c("complete", "sample", "preview"))
   
   paper <- if(any(is.null(paper)) || any(is.na(paper)) || any(paper == "")) {
     c(21.0, 29.7)
@@ -110,7 +110,7 @@ label_print <- function(label
   
   # -------------------------------------------------------------------------
   
-  fb <- if(mode == "sample") {
+  fb <- if(mode == "sample" | mode == "preview") {
     
     label$data %>% dplyr::slice_sample(n = 1)
     

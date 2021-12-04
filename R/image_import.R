@@ -3,7 +3,7 @@
 #' Import images and include R magick options
 #'
 #' @param image path or url
-#' @param opts R magick options by layers
+#' @param opts R magick functions by layers
 #'
 #' @return image
 #'

@@ -1,48 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://huito.inkaverse.com//index.html</loc>
+    <loc>http://huito.inkaverse.com/404.html</loc>
   </url>
   <url>
-    <loc>http://huito.inkaverse.com//reference/barcode_qr.html</loc>
+    <loc>http://huito.inkaverse.com/articles/huito.html</loc>
   </url>
   <url>
-    <loc>http://huito.inkaverse.com//reference/huito_fonts.html</loc>
+    <loc>http://huito.inkaverse.com/articles/index.html</loc>
   </url>
   <url>
-    <loc>http://huito.inkaverse.com//reference/image_import.html</loc>
+    <loc>http://huito.inkaverse.com/articles/labels.html</loc>
   </url>
   <url>
-    <loc>http://huito.inkaverse.com//reference/include_barcode.html</loc>
+    <loc>http://huito.inkaverse.com/articles/stickers.html</loc>
   </url>
   <url>
-    <loc>http://huito.inkaverse.com//reference/include_image.html</loc>
+    <loc>http://huito.inkaverse.com/authors.html</loc>
   </url>
   <url>
-    <loc>http://huito.inkaverse.com//reference/include_shape.html</loc>
+    <loc>http://huito.inkaverse.com/index.html</loc>
   </url>
   <url>
-    <loc>http://huito.inkaverse.com//reference/include_text.html</loc>
+    <loc>http://huito.inkaverse.com/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>http://huito.inkaverse.com//reference/label_layout.html</loc>
+    <loc>http://huito.inkaverse.com/news/index.html</loc>
   </url>
   <url>
-    <loc>http://huito.inkaverse.com//reference/label_print.html</loc>
+    <loc>http://huito.inkaverse.com/reference/barcode_qr.html</loc>
   </url>
   <url>
-    <loc>http://huito.inkaverse.com//reference/reexports.html</loc>
+    <loc>http://huito.inkaverse.com/reference/huito_fonts.html</loc>
   </url>
   <url>
-    <loc>http://huito.inkaverse.com//reference/shape_hexagon.html</loc>
+    <loc>http://huito.inkaverse.com/reference/image_import.html</loc>
   </url>
   <url>
-    <loc>http://huito.inkaverse.com//articles/huito.html</loc>
+    <loc>http://huito.inkaverse.com/reference/include_barcode.html</loc>
   </url>
   <url>
-    <loc>http://huito.inkaverse.com//articles/labels.html</loc>
+    <loc>http://huito.inkaverse.com/reference/include_image.html</loc>
   </url>
   <url>
-    <loc>http://huito.inkaverse.com//articles/stickers.html</loc>
+    <loc>http://huito.inkaverse.com/reference/include_shape.html</loc>
+  </url>
+  <url>
+    <loc>http://huito.inkaverse.com/reference/include_text.html</loc>
+  </url>
+  <url>
+    <loc>http://huito.inkaverse.com/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>http://huito.inkaverse.com/reference/label_layout.html</loc>
+  </url>
+  <url>
+    <loc>http://huito.inkaverse.com/reference/label_print.html</loc>
+  </url>
+  <url>
+    <loc>http://huito.inkaverse.com/reference/reexports.html</loc>
+  </url>
+  <url>
+    <loc>http://huito.inkaverse.com/reference/shape_hexagon.html</loc>
   </url>
 </urlset>

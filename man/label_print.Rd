@@ -18,7 +18,7 @@ label_print(
 \arguments{
 \item{label}{data frame to build the labels}
 
-\item{mode}{label in "sample" or "complete" mode}
+\item{mode}{label in "sample/preview" or "complete" mode}
 
 \item{filename}{labels file name}
 

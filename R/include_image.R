@@ -8,7 +8,7 @@
 #' @param size image size
 #' @param position position coordinate
 #' @param value column or path
-#' @param opts R magick options
+#' @param opts R magick funtions
 #'
 #' @return data frame
 #'
