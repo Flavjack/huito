@@ -14,7 +14,7 @@ editor_options:
 source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/docs.r")
 ```
 
-# Labels for a experimental design
+# Labels for experimental designs
 
 The field-book experimental design was deployed with "Tarpuy" <https://inkaverse.com/articles/apps.html>
 
