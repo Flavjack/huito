@@ -12,25 +12,28 @@ label_print(
   paper = c(21, 29.7),
   units = "cm",
   viewer = FALSE,
-  smpres = 200
+  smpres = 200,
+  nlabels = NA
 )
 }
 \arguments{
-\item{label}{data frame to build the labels}
+\item{label}{Data frame to build the labels or n repeated labels}
 
-\item{mode}{label in "sample/preview" or "complete" mode}
+\item{mode}{Label in "sample/preview" or "complete" mode}
 
-\item{filename}{labels file name}
+\item{filename}{Labels file name}
 
-\item{margin}{labels margins. margin(t = 0, r = 0, b = 0, l = 0)}
+\item{margin}{Labels margins. margin(t = 0, r = 0, b = 0, l = 0)}
 
-\item{paper}{paper size}
+\item{paper}{Paper size. Default A4 (21.0 x 29.7)}
 
-\item{units}{units for the label options}
+\item{units}{Units for the label options}
 
-\item{viewer}{show the sample in the "Plots" or "Viewer" panel}
+\item{viewer}{Show the sample in the "Plots" or "Viewer" panel}
 
-\item{smpres}{sample resolution}
+\item{smpres}{Sample resolution}
+
+\item{nlabels}{Number of labels to generate}
 }
 \value{
 pdf

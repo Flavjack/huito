@@ -2,14 +2,15 @@
 #'
 #' Generate labels based in a data frame
 #'
-#' @param label data frame to build the labels
-#' @param mode label in "sample/preview" or "complete" mode
-#' @param filename labels file name
-#' @param margin labels margins. margin(t = 0, r = 0, b = 0, l = 0)
-#' @param paper paper size
-#' @param units units for the label options
-#' @param viewer show the sample in the "Plots" or "Viewer" panel
-#' @param smpres sample resolution
+#' @param label Data frame to build the labels or n repeated labels
+#' @param mode Label in "sample/preview" or "complete" mode
+#' @param filename Labels file name
+#' @param margin Labels margins. margin(t = 0, r = 0, b = 0, l = 0)
+#' @param paper Paper size. Default A4 (21.0 x 29.7)
+#' @param units Units for the label options
+#' @param viewer Show the sample in the "Plots" or "Viewer" panel
+#' @param smpres Sample resolution
+#' @param nlabels Number of labels to generate
 #'
 #' @return pdf
 #'
@@ -58,6 +59,7 @@ label_print <- function(label
                         , units = "cm"
                         , viewer = FALSE
                         , smpres = 200
+                        , nlabels = NA
                         ) {
   
   # test --------------------------------------------------------------------
@@ -72,11 +74,21 @@ label_print <- function(label
     fonts = F
     viewer = T
     smpres = 200
+    
+    labels <- 3
   }
   
   # args ------------------------------------------------------------------
   
   mode <- match.arg(mode, c("complete", "sample", "preview"))
+  
+  if (!tibble::is_tibble(label$data)) {
+      
+      label$data <- list(huito = NA) %>% 
+        tibble::enframe()
+      
+    } 
+# -------------------------------------------------------------------------
   
   paper <- if(any(is.null(paper)) || any(is.na(paper)) || any(paper == "")) {
     c(21.0, 29.7)
@@ -98,15 +110,6 @@ label_print <- function(label
   } else if (length(margin) == 1 && is.numeric(margin)) {
     rep(margin, times = 4)
   } else {margin}
-  
-  # -------------------------------------------------------------------------
-  
-  if (!tibble::is_tibble(label$data)) {
-    
-    label$data <- list(huito = NA) %>% 
-      tibble::enframe()
-    
-  } 
   
   # -------------------------------------------------------------------------
   
@@ -313,6 +316,8 @@ label_print <- function(label
   
   # -------------------------------------------------------------------------
   
+  nlabels <- if(is.na(nlabels)) { nrow(fb) } else { nlabels }
+  
   if (mode =="complete") {
     
     label_width <- (margin[4] + label_dimension[1] + margin[2])
@@ -320,9 +325,9 @@ label_print <- function(label
     
     ncol <- (paper[1]/label_width) %>% trunc()
     nrow <- (paper[2]/label_height) %>% trunc()
-    pages <- ceiling((nrow(fb)/(ncol*nrow)))
+    pages <- ceiling((nlabels/(ncol*nrow)))
     
-    label_list <- 1:nrow(fb) %>%
+    label_list <- 1:nlabels %>%
       purrr::map(function(x) {
         
         layers <- tolabel %>%
@@ -337,9 +342,9 @@ label_print <- function(label
     
     # -------------------------------------------------------------------------
     
-    grids <- if(nrow(fb) == 1) { 0 } else {
+    grids <- if(nlabels == 1) { 0 } else {
       
-      seq(from = 0, to = nrow(fb), by = ncol*nrow)
+      seq(from = 0, to = nlabels, by = ncol*nrow)
       
     }
     

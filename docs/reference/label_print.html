@@ -104,28 +104,31 @@
   paper <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">21</span>, <span class="fl">29.7</span><span class="op">)</span>,
   units <span class="op">=</span> <span class="st">"cm"</span>,
   viewer <span class="op">=</span> <span class="cn">FALSE</span>,
-  smpres <span class="op">=</span> <span class="fl">200</span>
+  smpres <span class="op">=</span> <span class="fl">200</span>,
+  nlabels <span class="op">=</span> <span class="cn">NA</span>
 <span class="op">)</span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>label</dt>
-<dd><p>data frame to build the labels</p></dd>
+<dd><p>Data frame to build the labels or n repeated labels</p></dd>
 <dt>mode</dt>
-<dd><p>label in "sample/preview" or "complete" mode</p></dd>
+<dd><p>Label in "sample/preview" or "complete" mode</p></dd>
 <dt>filename</dt>
-<dd><p>labels file name</p></dd>
+<dd><p>Labels file name</p></dd>
 <dt>margin</dt>
-<dd><p>labels margins. margin(t = 0, r = 0, b = 0, l = 0)</p></dd>
+<dd><p>Labels margins. margin(t = 0, r = 0, b = 0, l = 0)</p></dd>
 <dt>paper</dt>
-<dd><p>paper size</p></dd>
+<dd><p>Paper size. Default A4 (21.0 x 29.7)</p></dd>
 <dt>units</dt>
-<dd><p>units for the label options</p></dd>
+<dd><p>Units for the label options</p></dd>
 <dt>viewer</dt>
-<dd><p>show the sample in the "Plots" or "Viewer" panel</p></dd>
+<dd><p>Show the sample in the "Plots" or "Viewer" panel</p></dd>
 <dt>smpres</dt>
-<dd><p>sample resolution</p></dd>
+<dd><p>Sample resolution</p></dd>
+<dt>nlabels</dt>
+<dd><p>Number of labels to generate</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -180,7 +183,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.0.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
     </footer></div>
