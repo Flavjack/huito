@@ -1,7 +1,12 @@
 ---
 title: "Huito"
 description: 'Label designer for multiple porpouses'
-output: rmarkdown::html_vignette
+output:
+  bookdown::html_document2:
+    base_format: rmarkdown::html_vignette
+    number_sections: false
+pkgdown:
+  as_is: true
 vignette: >
   %\VignetteIndexEntry{Huito}
   %\VignetteEncoding{UTF-8}
@@ -19,60 +24,223 @@ source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/d
 # open https://docs.google.com/document/d/1U_06RwkOWavq2O9CY5j9GRd3_2Ik8OTrfszK-ccbGmQ/edit
 ```
 
-```{r, include=FALSE}
-
-gdoc_rticle <- function(file
-                        , export = "files"
-                        , md = TRUE
-                        ){
-  
-  figure_md <- function(text
-                        , path = export
-                        , opts = NA
-                        ) {
+```{r}
+  if(FALSE) {
     
-    opt <- text %>% 
+    file <- "huito.zip"
+    export  <-  "test"
+    md = TRUE
+    
+  zip <- file %>% 
+    utils::unzip(overwrite = T, exdir = export)
+  
+  doc <- zip %>% 
+    .[grep('.md', .)] %>%
+    readLines() %>% 
+    tibble::enframe() 
+    
+    text <- doc[13, 2] %>% unlist() 
+    
+    text <- doc[3, 2] %>% unlist() 
+    
+    text <- doc[1, 2] %>% unlist()
+    
+    opts = NA
+    
+    path = "."
+    
+    prefix = "Figure:"
+  }
+
+figure2rmd <- function(text
+                      , path = "."
+                      , opts = NA
+                      , prefix = "Figure"
+                      ) {
+  
+  result <- if(isTRUE(grepl("^\\!\\[", text))) {
+    
+      opt <- text %>% 
       tibble::enframe() %>% 
-      tidyr::separate_rows(.data$value, sep = "^(\\!\\[)") %>% 
-      tidyr::separate_rows(.data$value, sep = "(\\]\\()") %>% 
-      tidyr::separate_rows(.data$value, sep = "(\\)\\{)") %>% 
-      tidyr::separate_rows(.data$value, sep = "(\\{)") %>% 
-      tidyr::separate_rows(.data$value, sep = "(\\})") %>% 
-      dplyr::na_if("") %>% 
-      tidyr::drop_na(.data$value) %>% 
-      tibble::rownames_to_column() %>% 
-      dplyr::mutate(type = dplyr::case_when(
-        grepl("img_", .data$value) ~ "figure"
-        , grepl("#fig", .data$value) ~ "id"
-        , rowname %in% 1 ~ "title"
-        , TRUE ~ "options"
-      )) %>% 
-      dplyr::select(.data$type, .data$value) %>% 
+      dplyr::mutate(info =  gsub("\\!\\[(.+)", "\\1", .data$value)) %>% 
+      dplyr::mutate(title = gsub("(\\{|\\])(.*)\\}", "", .data$info) %>%  trimws()) %>% 
+      dplyr::mutate(img =  regmatches(.data$info
+                                      , gregexpr("img_[[:digit:]][[:punct:]][[:alpha:]]+"
+                                                 , .data$info, perl=TRUE))) %>% 
+      dplyr::mutate(chunk = regmatches(.data$info
+                                      , gregexpr("\\{(.*)\\}\\]"
+                                                 , .data$info, perl=TRUE)) %>% 
+                      gsub("\\{|\\}|\\]", "",.)) %>% 
+      
+      dplyr::mutate(name =  regmatches(.data$info
+                                       , gregexpr("\\{\\#fig\\:(.*)\\}"
+                                                  , .data$info, perl=TRUE)) %>% 
+                       gsub("\\{\\#fig\\:|\\}", "",.) %>% gsub("\\.", "", .)
+                      ) %>% 
+      dplyr::select(!c(.data$value, .data$info)) %>% 
+      dplyr::mutate(id := "figure") %>% 
+      dplyr::mutate(across(everything(), as.character)) %>% 
+      tidyr::pivot_longer(!.data$id) %>% 
+      dplyr::select(!.data$id) %>% 
+      dplyr::na_if("character(0)") %>% 
       tibble::deframe() %>% 
       as.list()
-    
-    if(!is.na(opts)) {
-      opt$options <- opts
-    }
-    
-    fig <- paste0(
+
+    chunk_opts <- if(!is.na(opts)) { opts 
+      } else if (is.na(opt$chunk)) { opt$name
+        } else { paste(opt$name, opt$chunk, sep = ", ")}
+      
+    chunk <- paste0(
       "\n\n"
       , "```{r "
-      , opt$options
+      , chunk_opts
       , ", fig.cap= '"
-      , opt$title %>% trimws()
+      , opt$title
       , "'}\n\n"
       , "knitr::include_graphics('"
-      , paste0(path, "/", opt$figure)
+      , paste0(path, "/", opt$img)
       , "')\n\n```"
     ) 
     
-    fig
+  } else if(isTRUE(grepl("\\[Figure", text))) {
+    
+    cite <- text %>% 
+      regmatches(.
+                 , gregexpr("\\[Figure(.+)\\]\\:"
+                            , ., perl=TRUE)) %>% 
+      regmatches(.
+                 , gregexpr("\\@fig:(.+)[^\\]\\:]"
+                            , ., perl=TRUE)) %>% 
+      gsub("\\@", "\\@ref(", .) %>% 
+      paste0(prefix, " \\\\", ., ")") %>% 
+      gsub("\\.", "", .)
+      
+    
+    parrafo <- text %>% 
+      gsub("\\[Figure(.+)\\:", cite, .)
+    
+    
+  } else {
+    
+    text
     
   }
   
-# unzip files -------------------------------------------------------------
+  
+  return(result)
+  
+}
+```
 
+```{r}
+
+  if(FALSE) {
+    
+    file <- "huito.zip"
+    export  <-  "test"
+    opts = NA
+    prefix = "Table:"
+    
+  zip <- file %>% 
+    utils::unzip(overwrite = T, exdir = export)
+  
+  doc <- zip %>% 
+    .[grep('.md', .)] %>%
+    readLines() %>% 
+    tibble::enframe() 
+    
+    text <- doc[11, 2] %>% unlist() 
+    
+    text <- doc[28, 2] %>% unlist()
+  }
+
+table2rmd <- function(text
+                      , opts = NA
+                      , prefix = "Table"
+                      ) {
+  
+  # : Table test {#tbl:id.5z0btpk6qupd}
+  
+  # : Table test {#tbl:id.5z0btpk6qupd}
+  
+  result <- if(grepl("\\{\\#tbl", text)) {
+    
+      opt <- text %>% 
+      tibble::enframe() %>% 
+        dplyr::mutate(title =  regmatches(.data$value
+                                          , gregexpr("\\:(.+)\\{"
+                                                 , .data$value, perl=TRUE)) %>% 
+                        gsub("\\:|\\{", "", .) %>% trimws()
+                      ) %>% 
+      dplyr::mutate(chunk = regmatches(.data$value
+                                      , gregexpr("\\{(.*)\\}\\]"
+                                                 , .data$value, perl=TRUE)) %>% 
+                      gsub("\\{|\\}|\\]", "",.)) %>% 
+      dplyr::mutate(name = regmatches(.data$value
+                                       , gregexpr("\\{\\#tbl\\:(.*)\\}"
+                                                  , .data$value, perl=TRUE)) %>% 
+                       gsub("\\{\\#tbl\\:|\\}", "",.) %>% gsub("\\.", "", .)
+                      ) %>% 
+      dplyr::select(!c(.data$value)) %>% 
+      dplyr::mutate(id := "table") %>% 
+      dplyr::mutate(across(everything(), as.character)) %>% 
+      tidyr::pivot_longer(!.data$id) %>% 
+      dplyr::select(!.data$id) %>% 
+      dplyr::na_if("character(0)") %>% 
+      tibble::deframe() %>% 
+      as.list()
+
+    chunk_opts <- if(!is.na(opts)) { opts 
+      } else if (is.na(opt$chunk)) { opt$name
+        } else { paste(opt$name, opt$chunk, sep = ", ")}
+      
+    chunk <- paste0(
+      "\n\n"
+      , "```{r "
+      , chunk_opts
+      , "}\n\n"
+      , "knitr::kable(NA, col.names = NULL, caption ="
+      , "'", opt$title, "')"
+      , "\n\n```"
+    ) 
+    
+  } else if(isTRUE(grepl("\\[Table", text))) {
+    
+    cite <- text %>% 
+      regmatches(.
+                 , gregexpr("\\[Table(.+)\\]\\:"
+                            , ., perl=TRUE)) %>% 
+      regmatches(.
+                 , gregexpr("\\@tbl:(.+)[^\\]\\:\\)]"
+                            , ., perl=TRUE)) %>% 
+      gsub("\\@tbl", "\\@ref(tab", .) %>% 
+      paste0(prefix, " \\\\", ., ")") %>% 
+      gsub("\\.", "", .)
+      
+    
+    parrafo <- text %>% 
+      gsub("\\[Table(.+)\\:", cite, .)
+    
+    
+  } else {
+    
+    text
+    
+  }
+  
+  return(result)
+  
+}
+```
+
+
+```{r, include=FALSE}
+gdoc2rmd <- function(file
+                     , export = "files"
+                     , prefix_fig = "Figure"
+                     , prefix_tab = "Table"
+                     ){
+  
   zip <- file %>% 
     utils::unzip(overwrite = T, exdir = export)
   
@@ -81,11 +249,9 @@ gdoc_rticle <- function(file
     readLines() %>% 
     tibble::enframe() %>%
     dplyr::rowwise() %>%
-    dplyr::mutate(text = dplyr::case_when(
-      grepl(pattern = "#fig:", value) ~ value %>% figure_md(path = export)
-      , TRUE ~ value
-    )) %>% 
-    dplyr::select(.data$text) %>% 
+    dplyr::mutate(value = figure2rmd(.data$value, path = export, prefix = prefix_fig)) %>% 
+    dplyr::mutate(value = table2rmd(.data$value, prefix = prefix_tab)) %>% 
+    dplyr::select(.data$value) %>% 
     tibble::deframe() %>% 
     writeLines(con = paste0(export,"/_doc.Rmd"))
   
@@ -96,9 +262,9 @@ gdoc_rticle <- function(file
 
 ```{r}
 dir <- params$file
-doc <- gdoc_rticle(file = "huito.zip"
-                   , export = dir
-                   )
+doc <- gdoc2rmd(file = "huito.zip"
+                , export = dir
+                )
 ```
 
 ```{r, echo=FALSE, results='asis', eval=T}

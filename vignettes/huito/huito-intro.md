@@ -10,11 +10,5 @@ La calidad de datos inicia desde la colecta de la información, y en muchos caso
 
 ***Huito*** permite el desarrollo de etiquetas reproducibles y personalizadas de acuerdo a los requerimientos del usuario. Cada elemento en la etiqueta es adicionado por capas, respetando el orden de acuerdo a su jerarquía en el código.
 
-![Proceso de etiquetado y colecta de datos de experimentos. Los códigos QR permiten la colecta de datos con un dispositivo móvil de forma rápida y sencilla. {eval = T}](img_1.png){#fig:kix.vd7qxjm1q38u}
-
-
-
-
-
-
+![Proceso de etiquetado y colecta de datos de experimentos. Los códigos QR permiten la colecta de datos con un dispositivo móvil de forma rápida y sencilla.](img_1.png){#fig:kix.vd7qxjm1q38u}
 

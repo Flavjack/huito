@@ -17,7 +17,7 @@ template:
   opengraph:
     image:
       src: man/figures/logo.png
-
+      
 home:
   title: Huito
   description: Flexible and Reproducible Label Designs
