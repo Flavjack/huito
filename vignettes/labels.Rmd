@@ -22,6 +22,8 @@ The field-book experimental design was deployed with "Tarpuy" <https://inkaverse
 library(huito)
 library(gsheet)
 
+#> https://docs.google.com/spreadsheets/d/1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497
+
 url <- paste0("https://docs.google.com/spreadsheets/d/"
        , "1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497")
 fb <- gsheet2tbl(url)

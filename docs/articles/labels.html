@@ -52,7 +52,6 @@
   <a class="nav-link" href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
-    
   </a>
 </li>
 <li class="nav-item">
@@ -63,14 +62,24 @@
   </a>
 </li>
 <li class="active nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown--examples">
-    <span class="fa fa-book fa-lg"></span>
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown--labels">
+    <span class="fa fa-qrcode fa-lg"></span>
      
-    Examples
+    Labels
   </a>
-  <div class="dropdown-menu" aria-labelledby="dropdown--examples">
-    <a class="dropdown-item" href="../articles/labels.html">Labels</a>
-    <a class="dropdown-item" href="../articles/stickers.html">Stickers</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown--labels">
+    <a class="dropdown-item" href="../articles/labels.html">Randomized complete block design</a>
+  </div>
+</li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown--stickers">
+    <span class="fa fa-pencil-alt fa-lg"></span>
+     
+    stickers
+  </a>
+  <div class="dropdown-menu" aria-labelledby="dropdown--stickers">
+    <a class="dropdown-item" href="../articles/stickers.html">Huito</a>
+    <a class="dropdown-item" href="../articles/germinar.html">GerminaR</a>
   </div>
 </li>
 <li class="nav-item">
@@ -130,6 +139,8 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://huito.inkaverse.com/" class="external-link">huito</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/maxconway/gsheet" class="external-link">gsheet</a></span><span class="op">)</span>
+
+<span class="co">#&gt; https://docs.google.com/spreadsheets/d/1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497</span>
 
 <span class="va">url</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"https://docs.google.com/spreadsheets/d/"</span>
        , <span class="st">"1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497"</span><span class="op">)</span>
@@ -203,7 +214,7 @@
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by <a href="https://lozanoisla.com/" class="external-link">Flavio Lozano-Isla</a>.</p>
+<p>Desarrollado por <a href="https://lozanoisla.com/" class="external-link">Flavio Lozano-Isla</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
