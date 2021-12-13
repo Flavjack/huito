@@ -1,6 +1,6 @@
 Package: huito
 Type: Package
-Version: 0.1.0
+Version: 0.1.1
 Title: Flexible and Reproducible Label Designs
 Description: An open-source R package to deploys flexible and reproducible labels using layers. 
   The 'huito' package is part of the 'inkaverse' project for developing different procedures and
