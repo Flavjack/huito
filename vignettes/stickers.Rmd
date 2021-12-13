@@ -58,7 +58,7 @@ Select at `panel_color()` different from the colors in your stickers background.
 
 ```{r, echo = TRUE}
 label %>% 
-  label_print(mode = "sample", smpres = 300, viewer = F)
+  label_print(mode = "preview", smpres = 300, viewer = F)
 ```
 
 ## Complete mode

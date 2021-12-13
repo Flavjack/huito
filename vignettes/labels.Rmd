@@ -77,7 +77,7 @@ After running the chunk the first time. You should comment `huito_fonts()` as we
 
 ```{r echo = TRUE}
 label %>% 
-  label_print(mode = "sample", smpres = 300, viewer = F)
+  label_print(mode = "preview", smpres = 300, viewer = F)
 ```
 
 ## Complete mode

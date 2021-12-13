@@ -36,7 +36,7 @@ label <- label_layout(size = c(5.08, 5.08)
                 , border_color = NA
                 , margin = -0.8
                 , position = c(2.54, 2.54)
-                , panel_color = "white"
+                , panel_color = "blue"
                 , panel_size = 5.08
                 ) %>%
   include_text(value = "GerminaR"
@@ -61,7 +61,7 @@ Select at `panel_color()` different from the colors in your stickers background.
 
 ```{r, echo = TRUE}
 label %>% 
-  label_print(mode = "sample", smpres = 300, viewer = F)
+  label_print(mode = "preview", smpres = 300, viewer = F)
 ```
 
 ## Complete mode
@@ -91,7 +91,7 @@ sticker %>%
   image_read_pdf()  %>% 
   image_crop(geometry = "600x600+40") %>%
   image_crop(geometry = "560x600-40") %>%
-  image_transparent('red') %>% 
+  image_transparent('blue') %>% 
   image_write("GerminaR.png")
 ```
 

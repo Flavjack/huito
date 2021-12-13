@@ -270,7 +270,7 @@ label_print <- function(label
   
   showtext::showtext_auto()
   
-  if (mode =="sample") {
+  if (mode =="sample"| mode == "preview") {
     
     layers <- tolabel %>%
       dplyr::filter(.data$nlabel %in% c(0, 1)) %>%
