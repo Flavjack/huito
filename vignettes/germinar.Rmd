@@ -53,7 +53,7 @@ label <- label_layout(size = c(5.08, 5.08)
                )
 ```
 
-You can add more image option via `magick` R package functions `include_image(opts)` <https://cran.r-project.org/web/packages/magick/vignettes/intro.html>. 
+You can add more image option via `magick` R package functions `include_image(opts)` <https://CRAN.R-project.org/package=magick>. 
 
 Select at `panel_color()` different from the colors in your stickers background. 
 
