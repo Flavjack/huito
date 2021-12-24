@@ -40,6 +40,6 @@ Hexagon geom shape for ggplot2
 }
 \examples{
 
-shape_hexagon(border_width = 3)
+shape_hexagon(border_width = 3, background = "red")
 
 }

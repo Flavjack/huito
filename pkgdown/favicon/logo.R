@@ -42,7 +42,7 @@ label <- label_layout(size = c(5.08, 5.08)
               , paper = c(5.5, 5.5)
               , viewer = T
               , smpres = 300
-              , mode = "c"
+              , mode = "s"
               )
 
 # transparent -------------------------------------------------------------
@@ -54,4 +54,78 @@ label %>%
   image_crop(geometry = "560x600-40") %>% 
   image_transparent("blue") %>% 
   image_write("man/figures/logo.png")
+
+
+# -------------------------------------------------------------------------
+# Flavio Lozano Isla ------------------------------------------------------
+# -------------------------------------------------------------------------
+
+library(huito)
+
+font <- "Fredericka the Great"
+
+huito_fonts(font)
+
+label <- label_layout(size = c(5.08, 5.08)
+                      , border_color = NA
+                      , border_width = 0
+                      ) %>% 
+  include_image(value = "pkgdown/favicon/img/shipibo.png"
+                , size = c(7, 7)
+                , position = c(2.55, 2.52)
+                ) %>%
+  include_shape(size = 4.1
+                , border_width = 2.5
+                , border_color = "black"
+                , margin = -0.8
+                , position = c(2.54, 2.54)
+                , panel_color = "#abc621"
+                , panel_size = 5.08
+                ) %>%
+  include_shape(size = 3.7
+                , border_width = 0.1
+                , border_color = "black"
+                , margin = -0.8
+                , position = c(2.54, 2.54)
+                , panel_size = 5.08
+                , panel_color = NA
+                , background = "white"
+                ) %>%
+  include_text(value = "Flavio"
+               , position = "2.65*3.4"
+               , size = 27
+               , font = font
+               ) %>% 
+  include_text(value = "Lozano"
+               , position = "2.55*2.55"
+               , size = 27
+               , font = font
+               ) %>% 
+  include_text(value = "Isla"
+               , position = "2.6*1.65"
+               , size = 27
+               , font = font
+               ) %>%
+  include_text(value = "lozanoisla.com"
+               , size = 5
+               , position = c(3.6, 0.75)
+               , angle = 30
+               , font = font, color = "white") %>%
+  label_print(filename = "pkgdown/favicon/img/flozano"
+              , margin = 0
+              , paper = c(5.5, 5.5)
+              , viewer = T
+              , smpres = 300
+              , mode = "c"
+              )
+
+# transparent -------------------------------------------------------------
+# -------------------------------------------------------------------------
+
+label %>% 
+  image_read_pdf()  %>% 
+  image_crop(geometry = "600x600+40") %>% 
+  image_crop(geometry = "560x600-40") %>% 
+  image_transparent("#abc621") %>% 
+  image_write("pkgdown/favicon/img/flozano.png")
 

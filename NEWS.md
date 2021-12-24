@@ -1,3 +1,7 @@
+# huito 0.1.2
+
+- Fix background argument in `shape_hexagon()` 
+
 # huito 0.1.1
 
 - Update pkgdown

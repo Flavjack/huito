@@ -17,7 +17,7 @@
 #' 
 #' @examples
 #' 
-#' shape_hexagon(border_width = 3)
+#' shape_hexagon(border_width = 3, background = "red")
 #'
 
 shape_hexagon <- function (size = 4.39
@@ -138,7 +138,7 @@ if(FALSE) {
                           , fill = background
                           , color = border_color
                           ) +
-    ggplot2::theme(panel.background = element_rect(fill = background, color = NA)
+    ggplot2::theme(panel.background = element_rect(fill = NA, color = NA)
                    , line = element_blank()
                    , rect = element_blank()
                    , axis.text = element_blank()
