@@ -1,6 +1,7 @@
 # huito 0.1.2
 
 - Fix background argument in `shape_hexagon()` 
+- Close text device after the output in `label_print()`
 
 # huito 0.1.1
 

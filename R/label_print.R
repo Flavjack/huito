@@ -386,6 +386,8 @@ label_print <- function(label
         , output = file_output
       ) 
     
+    showtext::showtext_auto(FALSE)
+    
     path <- file_output
     
   }

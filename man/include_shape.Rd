@@ -14,7 +14,7 @@ include_shape(
   background = NA,
   margin = 0,
   units = "cm",
-  panel_color = "green",
+  panel_color = NA,
   panel_size = 5.08
 )
 }
