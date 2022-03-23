@@ -64,7 +64,7 @@ navbar:
       icon: fa-qrcode fa-lg
       href: articles/apps.html
       menu:
-      - text: "Randomized complete block design"
+      - text: "Experimental design"
         href: articles/labels.html
     stickers:
       text: "stickers"

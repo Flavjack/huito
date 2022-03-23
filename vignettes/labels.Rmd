@@ -14,26 +14,33 @@ editor_options:
 source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/docs.r")
 ```
 
-# Labels for experimental designs
+# Import field-book
 
 The field-book experimental design was deployed with "Tarpuy" <https://inkaverse.com/articles/apps.html>
 
-```{r, echo = TRUE}
-library(huito)
+```{r}
 library(gsheet)
-
-#> https://docs.google.com/spreadsheets/d/1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497
 
 url <- paste0("https://docs.google.com/spreadsheets/d/"
        , "1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497")
-fb <- gsheet2tbl(url)
+
 # browseURL(url)
+
+fb <- gsheet2tbl(url)
+
+fb %>% web_table()
+```
+
+> [Field-book](https://docs.google.com/spreadsheets/d/1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497)
+
+# Label design
+
+```{r, echo = TRUE}
+library(huito)
 
 huito_fonts('Ceviche One')
 
 label <- fb %>% 
-  mutate(temp = paste0("Temperatura: ", temperatura)) %>% 
-  mutate(var = paste0("Variedad: ", variedad)) %>% 
   label_layout(size = c(10, 2.5)
                , border_color = "blue"
                ) %>%
@@ -59,12 +66,12 @@ label <- fb %>%
                , color = "brown"
                , font = 'Ceviche One'
                ) %>%
-  include_text(value = "temp"
+  include_text(value = "temperatura"
                , position = c(4.6, 1.2)
                , size = 13
                , color = "orange"
                ) %>%
-  include_text(value = "var"
+  include_text(value = "variedad"
                , position = c(4.6, 0.5)
                , size = 13
                , color = "#009966"
@@ -74,6 +81,8 @@ label <- fb %>%
 After running the chunk the first time. You should comment `huito_fonts()` as we already imported the fonts. 
 
 ## Preview mode
+
+The preview mode `label_print(mode = "preview")` generate a example of the label design from a random row of the data set.
 
 ```{r echo = TRUE}
 label %>% 
@@ -89,8 +98,5 @@ complete <- label %>%
   label_print(mode = "complete", filename = "etiquetas")
 ```
 
-```{r}
-complete %>% 
-  image_read_pdf(density = 200, pages = 1) 
-```
+<embed src="etiquetas.pdf" height="600" width="100%" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
 

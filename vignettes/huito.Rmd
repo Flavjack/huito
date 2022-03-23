@@ -1,6 +1,6 @@
 ---
 title: "Huito"
-description: 'Label designer for multiple porpouses'
+description: 'Labels designs for multiple porpouses'
 output:
   bookdown::html_document2:
     base_format: rmarkdown::html_vignette

@@ -1,3 +1,7 @@
+# huito 0.1.3
+
+- Update vignettes
+
 # huito 0.1.2
 
 - Fix background argument in `shape_hexagon()` 
