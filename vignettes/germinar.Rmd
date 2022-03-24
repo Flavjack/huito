@@ -67,8 +67,9 @@ label %>%
 ## Complete mode
 
 ```{r, echo = TRUE}
-sticker <- label %>% 
-  label_print(filename = "GerminaR"
+file <- tempfile()
+sticker <- label %>%
+  label_print(filename = file
               , margin = 0
               , paper = c(5.5, 5.5)
               , viewer = T

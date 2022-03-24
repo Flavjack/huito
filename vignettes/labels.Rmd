@@ -95,7 +95,7 @@ If you want generate the complete labels list, change: `label_print(mode = "comp
 
 ```{r echo = TRUE}
 complete <- label %>% 
-  label_print(mode = "complete", filename = "etiquetas")
+  label_print(mode = "complete", filename = "etiquetas", nlabels = 10)
 ```
 
 <embed src="etiquetas.pdf" height="600" width="100%" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
