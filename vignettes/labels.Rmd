@@ -28,8 +28,7 @@ treats <- list(temperature = c("10", "20", "30", "40")
 fb <- tarpuy_design(data = treats, nfactors = 2
                     , type = "rcbd", rep = 4
                     , barcode = "huito") %>% 
-  purrr::pluck(1) %>% 
-  tibble()
+  purrr::pluck(1) 
 
 fb %>% web_table()
 ```

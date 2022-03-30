@@ -44,7 +44,11 @@ if (FALSE) {
 }
 
 # param -------------------------------------------------------------------
-
+  
+data <- if(any(is.null(data)) || any(is.na(data)) || any(data == "")) {
+   NA
+  } else { data %>% tibble::tibble() }  
+  
 size <- if(any(is.null(size)) || any(is.na(size)) || any(size == "")) {
   c(10, 2.5)
 } else if(is.character(size)) {

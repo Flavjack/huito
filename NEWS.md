@@ -2,6 +2,7 @@
 
 - Update vignettes
 - Not load any font by default (i.e Permanent Marker)
+- `label_layout()` use tibble as default
 
 # huito 0.1.2
 
