@@ -7,7 +7,7 @@
 huito_fonts(fonts = NA)
 }
 \arguments{
-\item{fonts}{fonts names. Default "Permanent Marker"}
+\item{fonts}{fonts names}
 }
 \value{
 fonts

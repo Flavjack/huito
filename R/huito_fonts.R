@@ -2,7 +2,7 @@
 #'
 #' Import fonts from Google fonts
 #'
-#' @param fonts fonts names. Default "Permanent Marker"
+#' @param fonts fonts names
 #' 
 #' @details 
 #' 
@@ -17,10 +17,8 @@ huito_fonts <- function(fonts = NA
                          ) {
   
   list_fonts <- if(any(is.null(fonts)) || any(is.na(fonts)) || any(fonts == "")) {
-    "Permanent Marker"
-  } else {
-    c("Permanent Marker", fonts)
-  }
+    stop("Add fonts from Google fonts")
+  } else { fonts }
   
     fonts <- list_fonts %>%
       tibble::enframe(value = "font") %>% 

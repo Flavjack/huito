@@ -31,8 +31,6 @@
 #' url <- paste0("https://docs.google.com/spreadsheets/d/"
 #'        , "1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497")
 #' fb <- gsheet2tbl(url)
-#' 
-#' # huito_fonts()
 #'
 #' label <- label_layout(data = fb, size = c(10, 2.5)) %>%
 #'          include_image(
@@ -268,7 +266,7 @@ label_print <- function(label
   
   # -------------------------------------------------------------------------
   
-  showtext::showtext_auto()
+  showtext::showtext_auto(enable = TRUE)
   
   if (mode =="sample"| mode == "preview") {
     
@@ -386,7 +384,7 @@ label_print <- function(label
         , output = file_output
       ) 
     
-    showtext::showtext_auto(FALSE)
+    showtext::showtext_auto(enable = FALSE)
     
     path <- file_output
     

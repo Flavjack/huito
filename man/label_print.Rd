@@ -50,8 +50,6 @@ url <- paste0("https://docs.google.com/spreadsheets/d/"
        , "1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497")
 fb <- gsheet2tbl(url)
 
-# huito_fonts()
-
 label <- label_layout(data = fb, size = c(10, 2.5)) \%>\%
          include_image(
                value = "https://flavjack.github.io/inti/img/inkaverse.png"

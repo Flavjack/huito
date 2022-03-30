@@ -6,7 +6,9 @@ library(huito)
 
 #> https://github.com/terinjokes/StickersStandard
 
-huito_fonts()
+font <- "Permanent Marker"
+
+huito_fonts(font)
 
 label <- label_layout(size = c(5.08, 5.08)
                       , border_color = NA
@@ -16,14 +18,14 @@ label <- label_layout(size = c(5.08, 5.08)
                 , size = c(7, 7)
                 , position = c(2.55, 2.52)
                 ) %>%
-  include_text(value = "H", size = 45 , position = c(1.15, 2.7), color = "#00a85a") %>%
-  include_text(value = "u", size = 45 , position = c(2.07, 2.7), color = "#f58735") %>%
-  include_text(value = "i", size = 45 , position = c(2.73, 2.7), color = "#4774b8") %>%
+  include_text(value = "H", size = 45 , position = c(1.15, 2.7), color = "#00a85a", font) %>%
+  include_text(value = "u", size = 45 , position = c(2.07, 2.7), color = "#f58735", font) %>%
+  include_text(value = "i", size = 45 , position = c(2.73, 2.7), color = "#4774b8", font) %>%
   include_image(value = "pkgdown/favicon/img/huito_fruit.png"
                 , size = c(1.35, 1.35) 
                 , position = c(4.03, 2.65)
                 ) %>%
-  include_text(value = "t", size = 45 , position = c(3.33, 2.7), color = "#a9518b") %>%
+  include_text(value = "t", size = 45 , position = c(3.33, 2.7), color = "#a9518b", font) %>%
   include_shape(size = 4.1
                 , border_width = 3
                 , border_color = "black"
@@ -36,7 +38,9 @@ label <- label_layout(size = c(5.08, 5.08)
                , size = 6
                , position = c(3.6, 0.75)
                , angle = 30
-               , color = "white") %>%
+               , color = "white"
+               , font
+               ) %>%
   label_print(filename = "pkgdown/favicon/img/huito"
               , margin = 0
               , paper = c(5.5, 5.5)

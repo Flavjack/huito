@@ -14,31 +14,34 @@ editor_options:
 source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/docs.r")
 ```
 
-# Import field-book
+# Create field-book
 
-The field-book experimental design was deployed with "Tarpuy" <https://inkaverse.com/articles/apps.html>
+The fieldbook experimental design was deployed with `inti` package <https://inkaverse.com/articles/apps.html>
 
-```{r}
-library(gsheet)
+```{r, echo = TRUE}
+library(inti)
 
-url <- paste0("https://docs.google.com/spreadsheets/d/"
-       , "1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497")
+treats <- list(temperature = c("10", "20", "30", "40")
+               , genotypes = c("choclito", "salcedo", "pandel", "puno")
+               ) %>% as.data.frame()
 
-# browseURL(url)
-
-fb <- gsheet2tbl(url)
+fb <- tarpuy_design(data = treats, nfactors = 2
+                    , type = "rcbd", rep = 4
+                    , barcode = "huito") %>% 
+  purrr::pluck(1) %>% 
+  tibble()
 
 fb %>% web_table()
 ```
-
-> [Field-book](https://docs.google.com/spreadsheets/d/1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497)
 
 # Label design
 
 ```{r, echo = TRUE}
 library(huito)
 
-huito_fonts('Ceviche One')
+font <- c('Ceviche One', "Permanent Marker")
+
+huito_fonts(font)
 
 label <- fb %>% 
   label_layout(size = c(10, 2.5)
@@ -64,17 +67,19 @@ label <- fb %>%
                , position = c(4.6, 2)
                , size = 30
                , color = "brown"
-               , font = 'Ceviche One'
+               , font[1]
                ) %>%
-  include_text(value = "temperatura"
+  include_text(value = "temperature"
                , position = c(4.6, 1.2)
                , size = 13
                , color = "orange"
+               , font[2]
                ) %>%
-  include_text(value = "variedad"
+  include_text(value = "genotypes"
                , position = c(4.6, 0.5)
                , size = 13
                , color = "#009966"
+               , font[2]
                ) 
 ```
 

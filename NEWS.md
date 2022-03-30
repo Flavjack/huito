@@ -1,6 +1,7 @@
 # huito 0.1.3
 
 - Update vignettes
+- Not load any font by default (i.e Permanent Marker)
 
 # huito 0.1.2
 

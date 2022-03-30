@@ -82,7 +82,7 @@ include_text <- function(label
   } else {"static"}
 
   font <- if(any(is.null(font)) || any(is.na(font)) || any(font == "")) {
-    "Permanent Marker"
+    "sans"
   } else {font}
 
   size <- if(any(is.null(size)) || any(is.na(size)) || any(size == "")) {
