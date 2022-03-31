@@ -1,0 +1,13 @@
+pandoc: 2.17.1.1
+pkgdown: 2.0.2
+pkgdown_sha: ~
+articles:
+  germinar: germinar.html
+  huito: huito.html
+  labels: labels.html
+  stickers: stickers.html
+last_built: 2022-03-31T18:00Z
+urls:
+  reference: http://huito.inkaverse.com/reference
+  article: http://huito.inkaverse.com/articles
+
