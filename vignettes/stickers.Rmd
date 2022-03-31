@@ -16,7 +16,7 @@ source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/d
 
 More information and examples for a sticker you can find in the following link: http://hexb.in/
 
-```{r echo = TRUE, eval = T}
+```{r echo = TRUE}
 library(huito)
 
 font <- "Permanent Marker"
@@ -60,15 +60,14 @@ Select at `panel_color()` different from the colors in your stickers background.
 
 ```{r, echo = TRUE}
 label %>% 
-  label_print(mode = "preview", smpres = 300, viewer = F)
+  label_print(mode = "preview")
 ```
 
 ## Complete mode
 
 ```{r, echo = TRUE}
-file <- tempfile()
 sticker <- label %>% 
-  label_print(filename = file
+  label_print(filename = "huito"
               , margin = 0
               , paper = c(5.5, 5.5)
               , viewer = T

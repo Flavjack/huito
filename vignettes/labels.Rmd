@@ -14,21 +14,23 @@ editor_options:
 source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/docs.r")
 ```
 
-# Create field-book
+# Create fieldbook
 
 The fieldbook experimental design was deployed with `inti` package <https://inkaverse.com/articles/apps.html>
 
 ```{r, echo = TRUE}
 library(inti)
 
-treats <- list(temperature = c("10", "20", "30", "40")
-               , genotypes = c("choclito", "salcedo", "pandel", "puno")
-               ) %>% as.data.frame()
+treats <- data.frame(condition = c("irrigated", "drought")
+                     , genotypes = c("choclito", "salcedo", "pandela", "puno"))
 
-fb <- tarpuy_design(data = treats, nfactors = 2
-                    , type = "rcbd", rep = 4
-                    , barcode = "huito") %>% 
-  purrr::pluck(1) 
+design <- tarpuy_design(data = treats
+                    , nfactors = 2
+                    , type = "rcbd"
+                    , rep = 3
+                    , barcode = "HUITO") 
+
+fb <- design$fieldbook
 
 fb %>% web_table()
 ```
@@ -68,7 +70,7 @@ label <- fb %>%
                , color = "brown"
                , font[1]
                ) %>%
-  include_text(value = "temperature"
+  include_text(value = "condition"
                , position = c(4.6, 1.2)
                , size = 13
                , color = "orange"
@@ -90,7 +92,7 @@ The preview mode `label_print(mode = "preview")` generate a example of the label
 
 ```{r echo = TRUE}
 label %>% 
-  label_print(mode = "preview", smpres = 300, viewer = F)
+  label_print(mode = "preview")
 ```
 
 ## Complete mode
@@ -98,7 +100,7 @@ label %>%
 If you want generate the complete labels list, change: `label_print(mode = "complete")`.
 
 ```{r echo = TRUE}
-complete <- label %>% 
+label %>% 
   label_print(mode = "complete", filename = "etiquetas", nlabels = 10)
 ```
 

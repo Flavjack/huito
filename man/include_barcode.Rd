@@ -35,33 +35,3 @@ data frame
 \description{
 Insert barcode in label
 }
-\examples{
-
-\donttest{
-
-library(huito)
-library(gsheet)
-
-url <- paste0("https://docs.google.com/spreadsheets/d/"
-       , "1q0EZmZBt52ca-0VbididjJy2jXTwf06laJpzvkQJWvc/edit#gid=107939497")
-fb <- gsheet2tbl(url)
-
-label <- label_layout(data = fb
-               , size = c(10, 2.5)
-               ) \%>\%
-         include_image(
-               value = "https://inkaverse.com/reference/figures/logo.png"
-               , size = c(2,2)
-               , position = "9*1.25"
-               ) \%>\%
-         include_barcode(
-               value = "qr-code"
-               , size = c(2,2)
-               , position = "1.2*1.25"
-               )
-               
-label \%>\% label_print()
-
-}
-
-}

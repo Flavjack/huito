@@ -30,24 +30,11 @@ label_layout <- function(data = NA
                         , units = "cm"
                         ) {
 
-# test --------------------------------------------------------------------
-
-if (FALSE) {
-
-  data <- NA
-  size <- c(10, 2.5)
-  background = NA
-  border_color = NA
-  border_width = NA
-  units = "cm"
-
-}
-
 # param -------------------------------------------------------------------
   
-data <- if(any(is.null(data)) || any(is.na(data)) || any(data == "")) {
-   NA
-  } else { data %>% tibble::tibble() }  
+data <- if(is.data.frame(data)) {
+  data %>% tibble::tibble() 
+} else { data <- NA }
   
 size <- if(any(is.null(size)) || any(is.na(size)) || any(size == "")) {
   c(10, 2.5)

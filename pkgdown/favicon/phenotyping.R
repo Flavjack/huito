@@ -57,58 +57,61 @@ label %>%
 # labels ------------------------------------------------------------------
 # -------------------------------------------------------------------------
 
-url <- "https://docs.google.com/spreadsheets/d/1ywk2jhCKRKy_9-8pH9LPjBN8jmfMr_6ofBB7NY0WY5Y/edit#gid=204727071"
+url <- "https://docs.google.com/spreadsheets/d/1jcXXUzoMsXEMeccfs2AeQLDvC_3_B9QjzeFvnx6AT3Y/edit#gid=1266812467"
 
 gs <- url %>% 
   as_sheets_id()
 
 fb <- gs %>% 
-  range_read("phenomquinoa")
+  range_read("fb") 
 
-
-# huito_fonts("Rubik")
+huito_fonts("Rubik")
 
 label <- fb %>% 
-  label_layout(size = c(10, 2.5)
-               , border_color = "blue"
-  ) %>%
-  include_image(
-    value = "man/figures/logo.png"
-    , size = c(2.2, 2.2)
-    , position = c(1.2, 1.25)
-  ) %>%
+  label_layout(size = c(12, 5)
+               , border_color = "red"
+               , border_width = 2
+               ) %>%
   include_barcode(
     value = "barcode"
-    , size = c(2.5, 2.5)
-    , position = c(8.2, 1.25)
-  ) %>%
+    , size = c(4.5, 4.5)
+    , position = c(9, 2.5)
+    ) %>% 
   include_text(value = "id"
-               , position = c(9.7, 1.25)
+               , position = c(11.5, 2.5)
                , angle = 90
-               , size = 15
-               , color = "red"
+               , size = 20
                , font = "Rubik"
-  ) %>%
+               ) %>% 
+  include_image(
+    value = "man/figures/logo.png"
+    , size = c(3, 3)
+    , position = c(4, 2.3)
+    ) %>% 
   include_text(value = "PhenomQuinoa"
-               , position = c(4.6, 1.8)
-               , size = 18
+               , position = c(4, 4.5)
+               , size = 20
                , color = "brown"
                , font = 'Rubik'
-  ) %>%
+               ) %>% 
   include_text(value = "barcode"
-               , position = c(4.6, 0.8)
-               , size = 13
-               , color = "black"
+               , position = c(0.5, 2.5)
+               , angle = 90
+               , size = 15
+               , font = "Rubik"
+               ) %>% 
+  include_text(value = "12x5 cm"
+               , position = c(4, 0.3)
+               , size = 10
+               , color = "brown"
                , font = 'Rubik'
-  ) 
+               )
 
-
+label %>% label_print()
+  
 label %>% 
   label_print(mode = "c"
-              , filename = "pkgdown/favicon/img/labels"
+              , filename = "pkgdown/favicon/labels"
               , paper = c(100, 100)
               )
-
-
-
 
