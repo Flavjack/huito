@@ -5,6 +5,7 @@
 - `label_layout()` use tibble as default
 - Include a dataset: `fieldbook`
 - Update examples in functions
+- Avoid `tempdir()` when use `label_print()`
 
 # huito 0.1.2
 

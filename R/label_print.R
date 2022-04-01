@@ -348,7 +348,7 @@ label_print <- function(label
       
     }
     
-    file_output <- filename %>% sub("\\..*", "", .) %>% paste0(., ".pdf")
+    file_output <- file.path(paste0(filename, ".pdf"))
     
     pdf <-1:length(grids) %>%
       purrr::map(function(x) {

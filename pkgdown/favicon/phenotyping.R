@@ -65,7 +65,9 @@ gs <- url %>%
 fb <- gs %>% 
   range_read("fb") 
 
-huito_fonts("Rubik")
+font <- "Rubik"
+
+huito_fonts(font)
 
 label <- fb %>% 
   label_layout(size = c(12, 5)
@@ -81,7 +83,7 @@ label <- fb %>%
                , position = c(11.5, 2.5)
                , angle = 90
                , size = 20
-               , font = "Rubik"
+               , font[1]
                ) %>% 
   include_image(
     value = "man/figures/logo.png"
@@ -92,19 +94,19 @@ label <- fb %>%
                , position = c(4, 4.5)
                , size = 20
                , color = "brown"
-               , font = 'Rubik'
+               , font[1]
                ) %>% 
   include_text(value = "barcode"
                , position = c(0.5, 2.5)
                , angle = 90
                , size = 15
-               , font = "Rubik"
+               , font[1]
                ) %>% 
   include_text(value = "12x5 cm"
                , position = c(4, 0.3)
                , size = 10
                , color = "brown"
-               , font = 'Rubik'
+               , font[1]
                )
 
 label %>% label_print()
