@@ -1,3 +1,7 @@
+# huito 0.1.4
+
+- Improve code in `label_print()`
+ 
 # huito 0.1.3
 
 - Update vignettes
