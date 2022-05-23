@@ -342,7 +342,7 @@ label_print <- function(label
     
     # -------------------------------------------------------------------------
     
-    grids <- if(nlabels == 1) { 0 } else {
+    grids <- if(nlabels == 1 | pages == 1) { 0 } else {
       
       seq(from = 0, to = nlabels, by = ncol*nrow)
       

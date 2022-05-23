@@ -1,4 +1,3 @@
-library(huito)
 source("http://inkaverse.com/setup.r")
 
 # import scale ------------------------------------------------------------
@@ -14,26 +13,22 @@ label <- label_layout(size = c(100, 100)
                       , border_color = "black"
                       , border_width = 10
                       , background = "#0099FF"
-                      ) 
+                      ) %>% 
+  include_image(value = "https://inkaverse.com/img/inkaverse.png"
+                , size = c(10, 10)
+                , position = c(5, 94)
+                ) %>% 
+  include_image(value = "man/figures/logo.png"
+                , size = c(10, 10)
+                , position = c(95, 94)
+                )
+
+label %>% label_print()
 
 label %>% 
   label_print(mode = "c"
               , paper = c(110, 110)
-              , filename = "pkgdown/favicon/img/phenotyping_blue")
-
-# phenotyping-bw ----------------------------------------------------------
-# -------------------------------------------------------------------------
-
-label <- label_layout(size = c(100, 100)
-                      , border_color = "black"
-                      , border_width = 10
-                      , background = NA
-                      ) 
-
-label %>% 
-  label_print(mode = "c"
-              , paper = c(110, 110)
-              , filename = "pkgdown/favicon/img/phenotyping_bw")
+              , filename = "pkgdown/favicon/img/phenobg")
 
 # scales ------------------------------------------------------------------
 # -------------------------------------------------------------------------
@@ -47,12 +42,14 @@ label <- label_layout(size = c(12, 6)
                 , position = c(6, 3)
                 ) 
 
-label %>% 
-  label_print(mode = "c"
-              , paper = c(100, 40)
-              , filename = "pkgdown/favicon/img/scale-print"
-              , nlabels = 48
-              )
+label %>% label_print()
+
+label %>% label_print(mode = "c"
+                      , paper = c(100, 50)
+                      , margin = 0
+                      , filename = "pkgdown/favicon/img/scales2print"
+                      , nlabels = 8*8
+                      ) 
 
 # labels ------------------------------------------------------------------
 # -------------------------------------------------------------------------

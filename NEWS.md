@@ -1,6 +1,7 @@
 # huito 0.1.4
 
 - Improve code in `label_print()`
+- Print one page if the label length is lees than 1 page
  
 # huito 0.1.3
 
