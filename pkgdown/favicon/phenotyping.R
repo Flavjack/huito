@@ -11,7 +11,7 @@ scale <- image_read_pdf("pkgdown/favicon/img/scale.pdf", density = 600) %>%
 
 label <- label_layout(size = c(100, 100)
                       , border_color = "black"
-                      , border_width = 10
+                      , border_width = 5
                       , background = "#0099FF"
                       ) %>% 
   include_image(value = "https://inkaverse.com/img/inkaverse.png"
@@ -23,11 +23,11 @@ label <- label_layout(size = c(100, 100)
                 , position = c(95, 94)
                 )
 
-label %>% label_print()
+# label %>% label_print()
 
 label %>% 
   label_print(mode = "c"
-              , paper = c(110, 110)
+              , paper = c(105, 105)
               , filename = "pkgdown/favicon/img/phenobg")
 
 # scales ------------------------------------------------------------------
