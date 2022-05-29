@@ -7,39 +7,36 @@
 include_shape(
   label,
   value = "hexagon",
-  size = 4.325,
+  size = 5.08,
   position = NA,
   border_color = "black",
-  border_width = 2,
+  border_width = 1,
   background = NA,
-  margin = 0,
   units = "cm",
   panel_color = NA,
-  panel_size = 5.08
+  panel_size = NA
 )
 }
 \arguments{
-\item{label}{label output}
+\item{label}{label output (table)}
 
-\item{value}{column or path}
+\item{value}{type of shape (string: "hexagon")}
 
-\item{size}{image size}
+\item{size}{shape size (numeric: 5.08)}
 
-\item{position}{position coordinate}
+\item{position}{position coordinate (numeric: NA)}
 
-\item{border_color}{image color}
+\item{border_color}{image color (string: "black")}
 
-\item{border_width}{shape line width}
+\item{border_width}{shape line width (numeric: 1)}
 
-\item{background}{background color}
+\item{background}{background color (string: "red")}
 
-\item{margin}{= shape margin}
+\item{units}{units for shape (string: "cm")}
 
-\item{units}{units for shape}
+\item{panel_color}{panel color (string: NA)}
 
-\item{panel_color}{panel color}
-
-\item{panel_size}{panel size}
+\item{panel_size}{panel size (numeric: NA)}
 }
 \value{
 data frame
@@ -49,19 +46,23 @@ Insert shape in label
 }
 \examples{
 
+library(huito)
 
 label <- label_layout(data = NA
                , size = c(10, 2.5)
+               , background = "yellow"
                ) \%>\%
          include_shape(
                value = "hexagon"
                , position = c(1.2, 1.25)
-               , size = 3
+               , background = "red"
+               , border_width = 1
+               , size = 2.4
+               #, panel_size = 2.4*1.157175
                )
                
 label \%>\% label_print("sample")
 
 ts <- label$opts
                
-
 }

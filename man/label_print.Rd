@@ -17,23 +17,23 @@ label_print(
 )
 }
 \arguments{
-\item{label}{Data frame to build the labels or n repeated labels}
+\item{label}{Data frame to build the labels or n repeated labels (table/numeric)}
 
-\item{mode}{Label in "sample/preview" or "complete" mode}
+\item{mode}{Label generation (string: "sample/preview", "complete")}
 
-\item{filename}{Labels file name}
+\item{filename}{Labels file name (string: "labels")}
 
-\item{margin}{Labels margins. margin(t = 0, r = 0, b = 0, l = 0)}
+\item{margin}{Labels margins. margin(numeric vector: t = 0, r = 0, b = 0, l = 0)}
 
-\item{paper}{Paper size. Default A4 (21.0 x 29.7)}
+\item{paper}{Paper size. Default A4 (numeric vector: 21.0 x 29.7)}
 
-\item{units}{Units for the label options}
+\item{units}{Units for the label options (string: "cm")}
 
-\item{viewer}{Show the sample in the "Plots" or "Viewer" panel}
+\item{viewer}{Visualization of the label (logial: FALSE)}
 
-\item{smpres}{Sample resolution}
+\item{smpres}{Sample resolution if viewer = TRUE (numeric: 200)}
 
-\item{nlabels}{Number of labels to generate}
+\item{nlabels}{Number of labels to generate (numeric: NA)}
 }
 \value{
 pdf

@@ -2,14 +2,13 @@
 #'
 #' Hexagon geom shape for ggplot2
 #' 
-#' @param size hexagon size
-#' @param border_width line width
-#' @param background background color 
-#' @param border_color border color
-#' @param margin margin 
-#' @param units units for shape
-#' @param panel_color panel color
-#' @param panel_size panel size
+#' @param size hexagon size (numeric: 5.08)
+#' @param border_width line width (numeric: 1)
+#' @param background background color (string: "transparent")
+#' @param border_color border color (string: "black")
+#' @param units units for shape (string: "cm")
+#' @param panel_color panel color (string: "green")
+#' @param panel_size panel size (numeric: NA)
 #' 
 #' @return geom
 #'
@@ -17,18 +16,22 @@
 #' 
 #' @examples
 #' 
-#' shape_hexagon(border_width = 3, background = "red")
+#' library(huito)
+#' 
+#' shape_hexagon(border_width = 1
+#'               , background = "red"
+#'               #, panel_size = 5.08
+#'               )
 #'
 
-shape_hexagon <- function (size = 4.39
-                          , border_width = 2
+shape_hexagon <- function (size = 5.08
+                          , border_width = 1
                           , background = "transparent"
                           , border_color = "black"
-                          , margin = 0
                           , units = "cm"
                           , panel_color = "green"
-                          , panel_size = 5.08
-                          )  {
+                          , panel_size = NA
+                          ) {
   
 
 # -------------------------------------------------------------------------
@@ -37,31 +40,37 @@ shape_hexagon <- function (size = 4.39
   
 if(FALSE) {
   
-  size = 4.39
-  border_width = 2
+  size = 5.08
+  border_width = 3
   background = NA
   border_color = "black"
-  margin = 0
   units = "cm"
   panel_color = "red"
-  panel_size = 5.08
+  panel_size = NA
 
 }
   
 # -------------------------------------------------------------------------
 
-  margin <- if(any(is.null(margin)) || any(is.na(margin)) || 
-               any(margin == "") ) {
-    rep(0, times = 4)
-  } else if(is.character(margin)) {
-    margin %>%
+  panel_size <- if(any(is.null(panel_size)) || any(is.na(panel_size)) || any(panel_size == "")) {
+    size*1.157175
+  } else if(is.character(panel_size)) {
+    panel_size %>% as.numeric()
+  } else { panel_size }
+
+  size <- if(any(is.null(size)) || any(is.na(size)) || any(size == "")) {
+    stop("include hexagon size")
+  } else if(is.character(size)) {
+    size %>%
       gsub("[[:space:]]", "", .) %>%
       strsplit(., "[*]") %>%
       unlist() %>% as.numeric()
-  } else if (length(margin) == 1 && is.numeric(margin)) {
-    rep(margin, times = 4)
-  } else {margin}
+  } else { size }
   
+  if(size > panel_size) "Panel size should be bigger than the hexagon size"
+  
+# -------------------------------------------------------------------------
+
   background <- if(any(is.null(background)) || any(is.na(background)) || any(background == "")) {
     "transparent"
   } else {background}
@@ -73,12 +82,6 @@ if(FALSE) {
   panel_color <- if(any(is.null(panel_color)) || any(is.na(panel_color)) || any(panel_color == "")) {
     "transparent"
   } else {panel_color}
-  
-  panel_size <- if(any(is.null(panel_size)) || any(is.na(panel_size)) || any(panel_size == "")) {
-    5.08
-  } else if(is.character(panel_size)) {
-    panel_size %>% as.numeric()
-  } else {panel_size}
   
 # -------------------------------------------------------------------------
   
@@ -102,43 +105,33 @@ if(FALSE) {
       )
     }
   }
-
+  
   hex <- hexbin(dx = size) %>% 
     dplyr::as_tibble() %>% 
     dplyr::select(.data$x, .data$y) 
   hex <- rbind(hex, hex[1, ])
   
-# -------------------------------------------------------------------------
+  # -------------------------------------------------------------------------
   sq <- panel_size
   
   inv  <- tibble::tribble(
     ~x,  ~y, 
     sq, -sq,
     sq,  sq, 
-   -sq,  sq,
-   -sq, -sq,
-    )
+    -sq,  sq,
+    -sq, -sq,
+  )
   inv <- rbind(inv, inv[1, ])
-
-# -------------------------------------------------------------------------
+  
+  # -------------------------------------------------------------------------
   
   inversion <- rbind(inv, hex) %>% as.data.frame()
   names(inversion) <- c("x","y")
   
-  hexbin <- ggplot2::ggplot() +
-    
-    ggplot2::geom_polygon(aes_(x = ~x, y = ~y)
-                          , data = inversion
-                          , fill = panel_color
-                          ) +
-    
-    ggplot2::geom_polygon(aes_(x = ~x, y = ~y)
-                          , data = hex
-                          , size = border_width
-                          , fill = background
-                          , color = border_color
-                          ) +
-    ggplot2::theme(panel.background = element_rect(fill = NA, color = NA)
+  plot <- ggplot2::ggplot() +
+    scale_x_continuous(expand = c(0, border_width/10)) +
+    scale_y_continuous(expand = c(0, border_width/10)) +
+    ggplot2::theme(panel.background = element_rect(colour = panel_color, size = border_width*2, fill = NA)
                    , line = element_blank()
                    , rect = element_blank()
                    , axis.text = element_blank()
@@ -151,11 +144,32 @@ if(FALSE) {
                    , axis.ticks.length.y.left = NULL
                    , axis.ticks.length.y.right = NULL
                    , legend.box = NULL
-                   , plot.margin = unit(margin, units)
+                   , plot.margin = unit(rep(0, 4), units)
                    , panel.border = element_blank()
-                   ) 
-    
+                   ) +
+    ggplot2::geom_polygon(aes_(x = ~x, y = ~y)
+                          , data = inversion
+                          , fill = panel_color
+    ) +
+    ggplot2::geom_polygon(aes_(x = ~x, y = ~y)
+                          , data = hex
+                          , size = border_width
+                          , fill = background
+                          , color = border_color
+    ) 
+  
+  plot
 
-  hexbin
+  # splot <- plot %>%
+  #   ggsave2(filename = tempfile(fileext = ".pdf")
+  #           , width = panel_size, height = panel_size
+  #           , units = units)
+  # 
+  # browseURL(splot)
+
+  # hexbin <- image_read_pdf(splot) %>%
+  #   grid::rasterGrob()
+  # 
+  # hexbin
 
 }

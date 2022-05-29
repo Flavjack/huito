@@ -2,15 +2,15 @@
 #'
 #' Generate labels based in a data frame
 #'
-#' @param label Data frame to build the labels or n repeated labels
-#' @param mode Label in "sample/preview" or "complete" mode
-#' @param filename Labels file name
-#' @param margin Labels margins. margin(t = 0, r = 0, b = 0, l = 0)
-#' @param paper Paper size. Default A4 (21.0 x 29.7)
-#' @param units Units for the label options
-#' @param viewer Show the sample in the "Plots" or "Viewer" panel
-#' @param smpres Sample resolution
-#' @param nlabels Number of labels to generate
+#' @param label Data frame to build the labels or n repeated labels (table/numeric)
+#' @param mode Label generation (string: "sample/preview", "complete") 
+#' @param filename Labels file name (string: "labels")
+#' @param margin Labels margins. margin(numeric vector: t = 0, r = 0, b = 0, l = 0)
+#' @param paper Paper size. Default A4 (numeric vector: 21.0 x 29.7)
+#' @param units Units for the label options (string: "cm")
+#' @param viewer Visualization of the label (logial: FALSE)
+#' @param smpres Sample resolution if viewer = TRUE (numeric: 200)
+#' @param nlabels Number of labels to generate (numeric: NA)
 #'
 #' @return pdf
 #'
@@ -99,8 +99,7 @@ label_print <- function(label
       unlist() %>% as.numeric()
   } else {paper}
   
-  margin <- if(any(is.null(margin)) || any(is.na(margin)) || 
-               any(margin == "") ) {
+  margin <- if(any(is.null(margin)) || any(is.na(margin)) || any(margin == "") ) {
     rep(0, times = 4)
   } else if(is.character(margin)) {
     margin %>%
@@ -222,28 +221,27 @@ label_print <- function(label
       
       , .data$element %in% "image" & .data$type %in% "static" ~ paste0("cowplot::draw_plot("
                                                                        , "grid::rasterGrob(image_import("
-                                                                       , "'", value, "'"
-                                                                       , ", '", opts, "'"
+                                                                       , "'", .data$value, "'"
+                                                                       , ", '", .data$opts, "'"
                                                                        , ")", ")"
-                                                                       , ", x =", X, ", y =", Y
-                                                                       , ", width =", W, ", height =", H
+                                                                       , ", x =", .data$X, ", y =", .data$Y
+                                                                       , ", width =", .data$W, ", height =", .data$H
                                                                        , ", halign = 0.5, valign = 0.5"
                                                                        , ", hjust = 0.5, vjust = 0.5"
                                                                        , ")")
       
       , "shape" %in% .data$element & "static" %in% .data$type ~   paste0("cowplot::draw_plot(huito::shape_"
-                                                                         , value
-                                                                         , "(size = ", size
-                                                                         , ", border_width = ", border_width
-                                                                         , ", background = '", color
-                                                                         , "', border_color = '", border_color
-                                                                         , "' , margin = '", margin
-                                                                         , "' , panel_color = '", panel_color
-                                                                         , "' , panel_size = ", panel_size
+                                                                         , .data$value
+                                                                         , "(size = ", .data$size
+                                                                         , ", border_width = ", .data$border_width
+                                                                         , ", background = '", .data$color
+                                                                         , "', border_color = '", .data$border_color
+                                                                         , "', panel_color = '", .data$panel_color
+                                                                         , "', panel_size = ", .data$panel_size
                                                                          , ")"
-                                                                         , ", width = ", size
-                                                                         , ", height = ", size
-                                                                         , ", x = ", X, ", y = ", Y
+                                                                         , ", width = ", .data$size
+                                                                         , ", height = ", .data$size
+                                                                         , ", x = ", .data$X, ", y = ", .data$Y
                                                                          , ", halign = 0.5, valign = 0.5"
                                                                          , ", hjust = 0.5, vjust = 0.5"
                                                                          , ")")

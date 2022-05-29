@@ -39,13 +39,11 @@ label <- label_layout(size = c(5.08, 5.08)
                 , position = c(4.06, 2.6)
                 ) %>%
   include_text(value = "t", size = 45 , position = c(3.33, 2.7), color = "#a9518b", font) %>%
-  include_shape(size = 4.1
+  include_shape(size = 5.08
                 , border_width = 3
                 , border_color = "black"
-                , margin = -0.8
                 , position = c(2.54, 2.54)
                 , panel_color = "red"
-                , panel_size = 5.08
                 ) %>%
   include_text(value = "inkaverse.com"
                , size = 6

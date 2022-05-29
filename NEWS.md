@@ -1,3 +1,10 @@
+# huito 0.1.5
+
+- Update `include_shape()`
+  - real size hexagon in stickers
+  - delete argument: `margin`
+- Update vignettes
+
 # huito 0.1.4
 
 - Improve code in `label_print()`
