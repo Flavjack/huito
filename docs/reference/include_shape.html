@@ -108,42 +108,39 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">include_shape</span><span class="op">(</span>
   <span class="va">label</span>,
   value <span class="op">=</span> <span class="st">"hexagon"</span>,
-  size <span class="op">=</span> <span class="fl">4.325</span>,
+  size <span class="op">=</span> <span class="fl">5.08</span>,
   position <span class="op">=</span> <span class="cn">NA</span>,
   border_color <span class="op">=</span> <span class="st">"black"</span>,
-  border_width <span class="op">=</span> <span class="fl">2</span>,
+  border_width <span class="op">=</span> <span class="fl">1</span>,
   background <span class="op">=</span> <span class="cn">NA</span>,
-  margin <span class="op">=</span> <span class="fl">0</span>,
   units <span class="op">=</span> <span class="st">"cm"</span>,
   panel_color <span class="op">=</span> <span class="cn">NA</span>,
-  panel_size <span class="op">=</span> <span class="fl">5.08</span>
+  panel_size <span class="op">=</span> <span class="cn">NA</span>
 <span class="op">)</span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>label</dt>
-<dd><p>label output</p></dd>
+<dd><p>label output (table)</p></dd>
 <dt>value</dt>
-<dd><p>column or path</p></dd>
+<dd><p>type of shape (string: "hexagon")</p></dd>
 <dt>size</dt>
-<dd><p>image size</p></dd>
+<dd><p>shape size (numeric: 5.08)</p></dd>
 <dt>position</dt>
-<dd><p>position coordinate</p></dd>
+<dd><p>position coordinate (numeric: NA)</p></dd>
 <dt>border_color</dt>
-<dd><p>image color</p></dd>
+<dd><p>image color (string: "black")</p></dd>
 <dt>border_width</dt>
-<dd><p>shape line width</p></dd>
+<dd><p>shape line width (numeric: 1)</p></dd>
 <dt>background</dt>
-<dd><p>background color</p></dd>
-<dt>margin</dt>
-<dd><p>= shape margin</p></dd>
+<dd><p>background color (string: "red")</p></dd>
 <dt>units</dt>
-<dd><p>units for shape</p></dd>
+<dd><p>units for shape (string: "cm")</p></dd>
 <dt>panel_color</dt>
-<dd><p>panel color</p></dd>
+<dd><p>panel color (string: NA)</p></dd>
 <dt>panel_size</dt>
-<dd><p>panel size</p></dd>
+<dd><p>panel size (numeric: NA)</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -153,14 +150,19 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
+<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://huito.inkaverse.com/" class="external-link">huito</a></span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">label</span> <span class="op">&lt;-</span> <span class="fu"><a href="label_layout.html">label_layout</a></span><span class="op">(</span>data <span class="op">=</span> <span class="cn">NA</span></span>
 <span class="r-in">               , size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">2.5</span><span class="op">)</span></span>
+<span class="r-in">               , background <span class="op">=</span> <span class="st">"yellow"</span></span>
 <span class="r-in">               <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span class="r-in">         <span class="fu">include_shape</span><span class="op">(</span></span>
 <span class="r-in">               value <span class="op">=</span> <span class="st">"hexagon"</span></span>
 <span class="r-in">               , position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.2</span>, <span class="fl">1.25</span><span class="op">)</span></span>
-<span class="r-in">               , size <span class="op">=</span> <span class="fl">3</span></span>
+<span class="r-in">               , background <span class="op">=</span> <span class="st">"red"</span></span>
+<span class="r-in">               , border_width <span class="op">=</span> <span class="fl">1</span></span>
+<span class="r-in">               , size <span class="op">=</span> <span class="fl">2.4</span></span>
+<span class="r-in">               <span class="co">#, panel_size = 2.4*1.157175</span></span>
 <span class="r-in">               <span class="op">)</span></span>
 <span class="r-in">               </span>
 <span class="r-in"><span class="va">label</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="label_print.html">label_print</a></span><span class="op">(</span><span class="st">"sample"</span><span class="op">)</span></span>
@@ -168,7 +170,6 @@
 <span class="r-in"></span>
 <span class="r-in"><span class="va">ts</span> <span class="op">&lt;-</span> <span class="va">label</span><span class="op">$</span><span class="va">opts</span></span>
 <span class="r-in">               </span>
-<span class="r-in"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
