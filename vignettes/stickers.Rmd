@@ -76,10 +76,7 @@ sticker <- label %>%
               )
 ```
 
-```{r out.width = "40%", eval = T}
-sticker %>% 
-  image_read_pdf(density = 300) 
-```
+<embed src="huito.pdf" height="500" width="100%" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
 
 # Transparent logo
 
