@@ -6,8 +6,8 @@
 \usage{
 shape_hexagon(
   size = 5.08,
-  border_width = 1,
-  background = "transparent",
+  border_width = NA,
+  background = NA,
   border_color = "black",
   units = "cm",
   panel_color = "green",

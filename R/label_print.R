@@ -254,12 +254,15 @@ label_print <- function(label
   
 # frame -------------------------------------------------------------------
   
+  bordes <- if(template$border_width == 0) element_blank() else {
+    
+    element_rect(fill = NA, colour = template$border_color, size = template$border_width)
+    
+  }
+  
   frame <- theme(
     panel.background = element_rect(fill = template$color, colour = NA)
-    , panel.border = element_rect(fill = NA
-                                  , colour = template$border_color
-                                  , size = template$border_width
-    )
+    , panel.border = bordes
     , plot.margin = unit(margin, template$units)
     , complete = TRUE
   )

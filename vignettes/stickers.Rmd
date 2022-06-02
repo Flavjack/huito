@@ -24,12 +24,12 @@ font <- "Permanent Marker"
 huito_fonts(font)
 
 label <- label_layout(size = c(5.08, 5.08)
-                      , border_color = NA
                       , border_width = 0
                       ) %>% 
   include_image(value = "https://flavjack.github.io/huito/img/shipibo.png"
                 , size = c(7, 7)
                 , position = c(2.55, 2.52)
+                , opts = "image_scale(600)"
                 ) %>%
   include_text(value = "H", size = 45 , position = c(1.15, 2.7), color = "#00a85a", font) %>%
   include_text(value = "u", size = 45 , position = c(2.07, 2.7), color = "#f58735", font) %>%
@@ -70,8 +70,6 @@ sticker <- label %>%
   label_print(filename = "huito"
               , margin = 0
               , paper = c(5.5, 5.5)
-              , viewer = T
-              , smpres = 300
               , mode = "complete"
               )
 ```

@@ -12,6 +12,7 @@ editor_options:
 
 ```{r setup, include = FALSE}
 source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/docs.r")
+# source("https://inkaverse.com/docs.r")
 ```
 
 More information from GerminaR project: <https://germinar.inkaverse.com/>
@@ -24,7 +25,6 @@ font <- c("Paytone One", "Permanent Marker")
 huito_fonts(font)
 
 label <- label_layout(size = c(5.08, 5.08)
-                      , border_color = NA
                       , border_width = 0
                       , background = "#b1d842"
                       ) %>% 
@@ -35,7 +35,6 @@ label <- label_layout(size = c(5.08, 5.08)
                 ) %>%
   include_shape(size = 5.08
                 , border_width = 0
-                , border_color = NA
                 , position = c(2.54, 2.54)
                 , panel_color = "blue"
                 ) %>%
@@ -72,8 +71,6 @@ sticker <- label %>%
   label_print(filename = "GerminaR"
               , margin = 0
               , paper = c(5.5, 5.5)
-              , viewer = T
-              , smpres = 300
               , mode = "complete"
               )
 ```

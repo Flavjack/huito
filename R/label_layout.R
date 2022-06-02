@@ -3,11 +3,11 @@
 #' Generate labels options
 #'
 #' @param data data frame to build the labels
-#' @param units units for the label options
-#' @param size label size
-#' @param background background color
-#' @param border_color border color
-#' @param border_width border width
+#' @param size label size (numeric: c(10, 2.5))
+#' @param border_width border width (numeric: 0.5)
+#' @param border_color border color (string: "transparent")
+#' @param background background color (string: "transparent")
+#' @param units units for the label options (string: "cm")
 #'
 #' @return data frame
 #'
@@ -24,9 +24,9 @@
 
 label_layout <- function(data = NA
                         , size
-                        , background = "white"
-                        , border_color = "black"
-                        , border_width = 0.5
+                        , border_width = NA
+                        , border_color = NA
+                        , background = NA
                         , units = "cm"
                         ) {
 
@@ -34,7 +34,7 @@ label_layout <- function(data = NA
   
 data <- if(is.data.frame(data)) {
   data %>% tibble::tibble() 
-} else { data <- NA }
+  } else { data <- NA }
   
 size <- if(any(is.null(size)) || any(is.na(size)) || any(size == "")) {
   c(10, 2.5)
@@ -46,7 +46,7 @@ size <- if(any(is.null(size)) || any(is.na(size)) || any(size == "")) {
 } else {size}
 
 border_width <- if(any(is.null(border_width)) || any(is.na(border_width)) || any(border_width == "")) {
-  0
+  0.5
 } else if(is.character(border_width)) {
   border_width %>% as.numeric()
 } else {border_width}

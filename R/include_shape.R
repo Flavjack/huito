@@ -96,24 +96,24 @@ include_shape <- function(label
   } else {position}
   
 # -------------------------------------------------------------------------
-
+  
+  background <- if(any(is.null(background)) || any(is.na(background)) || any(background == "")) {
+    "transparent"
+  } else {background}
+  
+  panel_color <- if(any(is.null(panel_color)) || any(is.na(panel_color)) || any(panel_color == "")) {
+    "transparent"
+  } else {panel_color}
+  
   border_width <- if(any(is.null(border_width)) || any(is.na(border_width)) || any(border_width == "")) {
     0
   } else if(is.character(border_width)) {
     border_width %>% as.numeric()
   } else {border_width}
   
-  background <- if(any(is.null(background)) || any(is.na(background)) || any(background == "")) {
-    "transparent"
-  } else {background}
-  
   border_color <- if(any(is.null(border_color)) || any(is.na(border_color)) || any(border_color == "")) {
     "transparent"
   } else {border_color}
-  
-  panel_color <- if(any(is.null(panel_color)) || any(is.na(panel_color)) || any(panel_color == "")) {
-    "transparent"
-  } else {panel_color}
   
 # options -----------------------------------------------------------------
 

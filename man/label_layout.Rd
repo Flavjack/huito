@@ -7,24 +7,24 @@
 label_layout(
   data = NA,
   size,
-  background = "white",
-  border_color = "black",
-  border_width = 0.5,
+  border_width = NA,
+  border_color = NA,
+  background = NA,
   units = "cm"
 )
 }
 \arguments{
 \item{data}{data frame to build the labels}
 
-\item{size}{label size}
+\item{size}{label size (numeric: c(10, 2.5))}
 
-\item{background}{background color}
+\item{border_width}{border width (numeric: 0.5)}
 
-\item{border_color}{border color}
+\item{border_color}{border color (string: "transparent")}
 
-\item{border_width}{border width}
+\item{background}{background color (string: "transparent")}
 
-\item{units}{units for the label options}
+\item{units}{units for the label options (string: "cm")}
 }
 \value{
 data frame

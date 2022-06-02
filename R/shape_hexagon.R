@@ -25,8 +25,8 @@
 #'
 
 shape_hexagon <- function (size = 5.08
-                          , border_width = 1
-                          , background = "transparent"
+                          , border_width = NA
+                          , background = NA
                           , border_color = "black"
                           , units = "cm"
                           , panel_color = "green"
@@ -75,13 +75,19 @@ if(FALSE) {
     "transparent"
   } else {background}
   
-  border_color <- if(any(is.null(border_color)) || any(is.na(border_color)) || any(border_color == "")) {
-    "transparent"
-  } else {border_color}
-  
   panel_color <- if(any(is.null(panel_color)) || any(is.na(panel_color)) || any(panel_color == "")) {
     "transparent"
   } else {panel_color}
+  
+  border_width <- if(any(is.null(border_width)) || any(is.na(border_width)) || any(border_width == "")) {
+    0
+  } else if(is.character(border_width)) {
+    border_width %>% as.numeric()
+  } else {border_width}
+  
+  border_color <- if(any(is.null(border_color)) || any(is.na(border_color)) || any(border_color == "")) {
+    "transparent"
+  } else {border_color} 
   
 # -------------------------------------------------------------------------
   
@@ -129,8 +135,8 @@ if(FALSE) {
   names(inversion) <- c("x","y")
   
   plot <- ggplot2::ggplot() +
-    scale_x_continuous(expand = c(0, border_width/10)) +
-    scale_y_continuous(expand = c(0, border_width/10)) +
+    scale_x_continuous(expand = c(0, border_width/11)) +
+    scale_y_continuous(expand = c(0, border_width/11)) +
     ggplot2::theme(panel.background = element_rect(colour = panel_color, size = border_width*2, fill = NA)
                    , line = element_blank()
                    , rect = element_blank()
@@ -150,13 +156,13 @@ if(FALSE) {
     ggplot2::geom_polygon(aes_(x = ~x, y = ~y)
                           , data = inversion
                           , fill = panel_color
-    ) +
+                          ) +
     ggplot2::geom_polygon(aes_(x = ~x, y = ~y)
                           , data = hex
                           , size = border_width
-                          , fill = background
                           , color = border_color
-    ) 
+                          , fill = background
+                          ) 
   
   plot
 

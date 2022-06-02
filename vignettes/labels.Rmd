@@ -25,10 +25,10 @@ treats <- data.frame(condition = c("irrigated", "drought")
                      , genotypes = c("choclito", "salcedo", "pandela", "puno"))
 
 design <- tarpuy_design(data = treats
-                    , nfactors = 2
-                    , type = "rcbd"
-                    , rep = 3
-                    , barcode = "HUITO") 
+                        , nfactors = 2
+                        , type = "rcbd"
+                        , rep = 3
+                        , barcode = "HUITO") 
 
 fb <- design$fieldbook
 
