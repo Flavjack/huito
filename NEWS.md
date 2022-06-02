@@ -2,7 +2,6 @@
 
 - Update `include_shape()`
   - real size hexagon in stickers
-  - delete argument: `margin`
 - Update vignettes
 - Update `label_print()`
   - Argument `width = 0` avoid borders

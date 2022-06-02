@@ -145,12 +145,12 @@ following link: <a href="http://hexb.in/" class="external-link uri">http://hexb.
 <span class="fu"><a href="../reference/huito_fonts.html">huito_fonts</a></span><span class="op">(</span><span class="va">font</span><span class="op">)</span>
 
 <span class="va">label</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/label_layout.html">label_layout</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5.08</span>, <span class="fl">5.08</span><span class="op">)</span>
-                      , border_color <span class="op">=</span> <span class="cn">NA</span>
                       , border_width <span class="op">=</span> <span class="fl">0</span>
                       <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/include_image.html">include_image</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"https://flavjack.github.io/huito/img/shipibo.png"</span>
                 , size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">7</span><span class="op">)</span>
                 , position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.55</span>, <span class="fl">2.52</span><span class="op">)</span>
+                , opts <span class="op">=</span> <span class="st">"image_scale(600)"</span>
                 <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/include_text.html">include_text</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"H"</span>, size <span class="op">=</span> <span class="fl">45</span> , position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.15</span>, <span class="fl">2.7</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"#00a85a"</span>, <span class="va">font</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/include_text.html">include_text</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"u"</span>, size <span class="op">=</span> <span class="fl">45</span> , position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.07</span>, <span class="fl">2.7</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"#f58735"</span>, <span class="va">font</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
@@ -191,8 +191,6 @@ your stickers background.</p>
   <span class="fu"><a href="../reference/label_print.html">label_print</a></span><span class="op">(</span>filename <span class="op">=</span> <span class="st">"huito"</span>
               , margin <span class="op">=</span> <span class="fl">0</span>
               , paper <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5.5</span>, <span class="fl">5.5</span><span class="op">)</span>
-              , viewer <span class="op">=</span> <span class="cn">T</span>
-              , smpres <span class="op">=</span> <span class="fl">300</span>
               , mode <span class="op">=</span> <span class="st">"complete"</span>
               <span class="op">)</span></code></pre></div>
 <embed src="huito.pdf" height="500" width="100%" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html"></embed>
