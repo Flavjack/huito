@@ -25,7 +25,7 @@
 label_layout <- function(data = NA
                         , size
                         , border_width = NA
-                        , border_color = NA
+                        , border_color = "black"
                         , background = NA
                         , units = "cm"
                         ) {

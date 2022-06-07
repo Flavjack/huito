@@ -5,6 +5,7 @@
 - Update vignettes
 - Update `label_print()`
   - Argument `width = 0` avoid borders
+  - "Dynamic" arguments base in columns
 
 # huito 0.1.4
 
