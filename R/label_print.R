@@ -20,6 +20,7 @@
 #' @importFrom grid grid.raster
 #' @importFrom magick image_read
 #' @importFrom showtext showtext_auto
+#' @importFrom utils head
 #'
 #' @export
 #'
@@ -148,36 +149,53 @@ label_print <- function(label
                         , values_to = "info") 
   
   opts <- label$opts %>% 
-    mutate(nlayer = case_when(
+    dplyr::mutate(nlayer = dplyr::case_when(
       .data$element %in% "label" ~ "0-99"
       , TRUE ~ as.character(.data$nlayer)
     )) %>%  
-    tidyr::separate_rows(nlayer, sep = "-") %>% 
-    dplyr::rename(class = element) %>% 
-    dplyr::mutate(type = case_when(
+    tidyr::separate_rows(.data$nlayer, sep = "-") %>% 
+    dplyr::rename(class = .data$element) %>% 
+    dplyr::mutate(type = dplyr::case_when(
       .data$value %in% info$row ~ "dynamic"
       , TRUE ~ "static"
     )) %>%
-    dplyr::mutate(row = case_when(
+    dplyr::mutate(row = dplyr::case_when(
       .data$option %in% "value" ~ as.character(.data$value)
       , .data$class %in% "label" ~ "template"
     )) %>% 
     tidyr::fill(.data$row)
   
+# -------------------------------------------------------------------------
+  
+  label_opts <- opts %>% 
+    dplyr::filter(.data$nlayer %in% 0) %>% 
+    dplyr::select(.data$option, .data$value) %>% 
+    tibble::deframe()
+  
+  label_dimension <- label_opts$size %>% 
+    strsplit(split = "[*]") %>% 
+    unlist() %>% 
+    as.numeric()
+  
+  nlabels <- nrow(fb)
+  
+# -------------------------------------------------------------------------
+
   dynamic <- opts %>% 
     dplyr::filter(.data$type %in% "dynamic") %>% 
     dplyr::select(!.data$row) %>% 
-    dplyr::rename(row = value) %>% 
-    merge(info, ., by = "row") %>% 
+    dplyr::rename(row = .data$value) %>% 
+    merge(info, ., by.y = "row") %>% 
+    dplyr::rename(value = .data$info) %>% 
+    dplyr::select(.data$class, .data$nlabel, .data$nlayer, .data$type, .data$option, .data$value) %>% 
     dplyr::arrange(.data$nlabel, .data$nlayer) %>% 
-    dplyr::select(.data$nlabel, .data$nlayer, .data$class, .data$option, .data$info) %>% 
-    tidyr::pivot_wider(names_from = .data$option, values_from = .data$info) %>% 
-    dplyr::mutate(dplyr::across(dplyr::everything(), as.character)) 
+    dplyr::mutate(dplyr::across(dplyr::everything(), as.character)) %>% 
+    tibble::tibble()
   
   static <- opts %>% 
     dplyr::filter(.data$type %in% "static") %>% 
-    dplyr::select(.data$class, .data$option, .data$value, .data$nlayer) %>% 
-    tidyr::pivot_wider(names_from = .data$option, values_from = .data$value) %>% 
+    data.frame(., nlabel = rep(1:nlabels, ea = NROW(.))) %>% 
+    dplyr::select(.data$class, .data$nlabel, .data$nlayer, .data$type, .data$option, .data$value) %>% 
     dplyr::mutate(dplyr::across(dplyr::everything(), as.character)) 
   
   cols <- c(value = NA_real_
@@ -191,27 +209,21 @@ label_print <- function(label
             , opts = NA_real_
             )
   
-  dt2label <- merge(dynamic, static
-                    , by = c("class", "nlayer"), all = T) %>% 
-    dplyr::select(.data$class, .data$nlabel, .data$nlayer, .data$value, everything()) %>% 
-    dplyr::arrange(.data$nlabel, .data$nlayer) %>% 
-    dplyr::na_if("NULL") %>% 
-    pivot_longer(!c(.data$class:.data$nlayer)) %>% 
-    drop_na(value) %>% 
-    mutate(name = gsub(".x|.y", "", .data$name)) %>% 
-    dplyr::mutate(nlabel = replace_na(.data$nlabel, "0")) %>% 
-    pivot_wider() %>% 
+  dt2label <- dplyr::bind_rows(dynamic, static) %>% 
+    dplyr::select(!.data$type) %>% 
+    dplyr::mutate(dplyr::across(.data$value, ~na_if(., "NA"))) %>% 
+    tidyr::pivot_wider(names_from = .data$option, values_from = .data$value) %>% 
     dplyr::arrange(.data$nlabel, .data$nlayer) %>% 
     tibble::add_column(!!!cols[!names(cols) %in% names(.)]) %>% 
-    #> add conditional opts
     tidyr::separate(.data$position, c("X", "Y"), remove = F, sep = "[*]", fill = 'right') %>%
     tidyr::separate(.data$size, c("W", "H"), remove = F, sep = "[*]", fill = 'right') %>% 
-    dplyr::mutate(border_width = case_when(
-      border_width %in% 0 ~ "element_blank()"
-      , border_width > 0 ~ paste0("element_rect(fill = NA, colour = , '", border_color ,"'"
-                                  , ", size =", border_width, ")")
+    dplyr::mutate(border_width = dplyr::case_when(
+      .data$border_width %in% 0 & .data$class %in% "label" ~ "element_blank()"
+      , .data$border_width > 0 & .data$class %in% "label" ~ paste0("element_rect(fill = NA, colour = , '", .data$border_color ,"'"
+                                                                    , ", size =", .data$border_width, ")")
+      , TRUE ~ as.character(.data$border_width)
     )) %>% 
-    dplyr::mutate(margin = case_when(
+    dplyr::mutate(margin = dplyr::case_when(
       .data$class %in% "label" ~ paste0("c(", paste0({{margin}}, collapse = ","), ")")
       , TRUE ~ as.character(.data$margin)
     ))
@@ -221,12 +233,12 @@ label_print <- function(label
   tolabel <- dt2label %>%
     dplyr::mutate(layer = dplyr::case_when(
       
-      .data$class %in% "label" & nlayer %in% 0 ~ paste0("cowplot::ggdraw(xlim = c(0,",  W ,")"
-                                                        , ", ylim = c(0,", H, ")"
+      .data$class %in% "label" & .data$nlayer %in% 0 ~ paste0("cowplot::ggdraw(xlim = c(0,",  .data$W ,")"
+                                                        , ", ylim = c(0,", .data$H, ")"
                                                         , ", clip = 'on')"
                                                         )
       
-      , .data$class %in% "label" & nlayer %in% 99 ~ paste0("theme(panel.background = element_rect(fill = '" , .data$color, "'"
+      , .data$class %in% "label" & .data$nlayer %in% 99 ~ paste0("theme(panel.background = element_rect(fill = '" , .data$color, "'"
                                             , ", colour = NA)"
                                             , ", panel.border = ", .data$border_width
                                             , ", plot.margin = unit(", .data$margin, ", '", .data$units, "')"
@@ -234,17 +246,17 @@ label_print <- function(label
                                             )
       
       , .data$class %in% "text" ~ paste0("do.call(cowplot::draw_label"
-                                          , ", list(label = '", value, "'"
-                                          , ", x = ", X
-                                          , ", y = ", Y
-                                          , ", size = ", size
-                                          , ", angle = ", angle
-                                          , ", fontfamily = '", font, "'"
-                                          , ", color = '", color, "'"
-                                          , ", ", opts
+                                          , ", list(label = '", .data$value, "'"
+                                          , ", x = ", .data$X
+                                          , ", y = ", .data$Y
+                                          , ", size = ", .data$size
+                                          , ", angle = ", .data$angle
+                                          , ", fontfamily = '", .data$font, "'"
+                                          , ", color = '", .data$color, "'"
+                                          , ", ", .data$opts
                                           , "))")
 
-      , .data$class %in% "barcode" ~ paste0("cowplot::draw_plot(barcode_qr(",  "'", value , "'", ")"
+      , .data$class %in% "barcode" ~ paste0("cowplot::draw_plot(barcode_qr(",  "'", .data$value , "'", ")"
                                            , ", x =", X, ", y =", Y
                                            , ", width =", W, ", height =", H
                                            , ", halign = 0.5, valign = 0.5"
@@ -286,18 +298,6 @@ label_print <- function(label
   
 # -------------------------------------------------------------------------
   
-  label_opts <- opts %>% 
-    dplyr::filter(nlayer %in% 0) %>% 
-    dplyr::select(.data$option, .data$value) %>% 
-    tibble::deframe()
-  
-  label_dimension <- label_opts$size %>% 
-    strsplit(split = "[*]") %>% 
-    unlist() %>% 
-    as.numeric()
-  
-# -------------------------------------------------------------------------
-  
   showtext::showtext_auto(enable = TRUE)
   
   if (mode =="sample"| mode == "preview") {
@@ -314,9 +314,7 @@ label_print <- function(label
       tempdir()
       , "sample.pdf"
     )
-    
-    # open 
-    
+
     ancho <- (margin[4] + label_dimension[1] + margin[2])
     alto <- (margin[1] + label_dimension[2] + margin[3])
     
@@ -344,10 +342,8 @@ label_print <- function(label
     
   }
   
-  # -------------------------------------------------------------------------
-  
-  nlabels <- nrow(fb)
-  
+# -------------------------------------------------------------------------
+
   if (mode =="complete") {
     
     label_width <- (margin[4] + label_dimension[1] + margin[2])
@@ -370,10 +366,10 @@ label_print <- function(label
         
       })
     
-    # -------------------------------------------------------------------------
+# -------------------------------------------------------------------------
     
     grids <- seq(from = 0, to = nlabels, by = ncol*nrow) %>% 
-      head(., pages)
+      utils::head(., pages)
     
     file_output <- paste0(filename, ".pdf")
     

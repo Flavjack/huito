@@ -29,7 +29,9 @@ dtfb <- merge(fbdt, pictures, by = "img") %>%
   ))
   
 label <- dtfb %>% 
-  label_layout(size = "10*10", background = "bgc") %>% 
+  label_layout(size = "10*10"
+               , background = "bgc"
+               ) %>% 
   include_image(value = "path"
                 , size = c(8, 8)
                 , position = c(5, 5)
@@ -41,6 +43,6 @@ label <- dtfb %>%
 
 label %>% label_print()
 
-# label %>% label_print(filename = "vignettes/test/quinoa", mode = "c", margin = 0)
+# label %>% label_print(filename = "vignettes/test/quinoa", mode = "c")
 
 

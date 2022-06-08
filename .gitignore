@@ -4,3 +4,5 @@
 .Ruserdata
 label.pdf
 inst/doc
+test.R
+vignettes/test
