@@ -43,7 +43,7 @@ label <- label_layout(size = c(5.08, 5.08)
                 , border_width = 3
                 , border_color = "black"
                 , position = c(2.54, 2.54)
-                , panel_color = "red"
+                , panel_color = "blue"
                 ) %>%
   include_text(value = "inkaverse.com"
                , size = 6
@@ -83,9 +83,10 @@ Import the image in pdf format and cut the border and make the `panel_color` tra
 ```{r, echo = TRUE}
 sticker %>% 
   image_read_pdf()  %>% 
+  image_transparent("blue") %>% 
   image_crop(geometry = "600x600+40") %>%
   image_crop(geometry = "560x600-40") %>%
-  image_transparent('red') %>% 
+  
   image_write("huito.png")
 ```
 

@@ -135,8 +135,8 @@ if(FALSE) {
   names(inversion) <- c("x","y")
   
   plot <- ggplot2::ggplot() +
-    scale_x_continuous(expand = c(0, border_width/11)) +
-    scale_y_continuous(expand = c(0, border_width/11)) +
+    scale_x_continuous(expand = c(0, border_width/10)) +
+    scale_y_continuous(expand = c(0, border_width/10)) +
     ggplot2::theme(panel.background = element_rect(colour = panel_color, size = border_width*2, fill = NA)
                    , line = element_blank()
                    , rect = element_blank()

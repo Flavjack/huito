@@ -37,6 +37,8 @@ fb %>% web_table()
 
 # Label design
 
+You can change any layer dynamically based in a column. In this case, the color of the text condition will change based in the treatments: "blue" for `irrigated` and "red" for `drought`.
+
 ```{r, echo = TRUE}
 library(huito)
 
@@ -45,6 +47,10 @@ font <- c('Ceviche One', "Permanent Marker")
 huito_fonts(font)
 
 label <- fb %>% 
+  mutate(color = case_when(
+    condition %in% "irrigated" ~ "blue"
+    , condition %in% "drought" ~ "red"
+  )) %>% 
   label_layout(size = c(10, 2.5)
                , border_color = "blue"
                ) %>%
@@ -52,6 +58,7 @@ label <- fb %>%
     value = "https://flavjack.github.io/inti/img/inkaverse.png"
     , size = c(2.4, 2.4)
     , position = c(1.2, 1.25)
+    , opts = "image_scale(200)"
     ) %>%
   include_barcode(
      value = "barcode"
@@ -73,7 +80,7 @@ label <- fb %>%
   include_text(value = "condition"
                , position = c(4.6, 1.2)
                , size = 13
-               , color = "orange"
+               , color = "color" # dynamic column
                , font[2]
                ) %>%
   include_text(value = "genotypes"
