@@ -10,7 +10,7 @@ status](https://www.r-pkg.org/badges/version/huito)](https://CRAN.R-project.org/
 downloads](https://cranlogs.r-pkg.org/badges/grand-total/huito?color=brightgreen)](https://r-pkg.org/pkg/huito)
 <!-- badges: end -->
 
-‘Huito’ is an open-source R package to deploys flexible and reproducible
+‘Huito’ is an open-source R package to deploys reproducible and flexible
 labels using layers. The ‘huito’ package is part of the ‘inkaverse’
 project for developing different procedures and tools used in plant
 science and experimental designs. Learn more about the ‘inkaverse’

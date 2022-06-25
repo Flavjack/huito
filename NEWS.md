@@ -1,3 +1,7 @@
+# huito 0.2.1
+
+- Change package title
+
 # huito 0.2.0
 
 - Update `include_shape()`
