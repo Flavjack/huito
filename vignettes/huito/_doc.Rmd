@@ -3,6 +3,7 @@
 ```{r}
 #| label: fig-id.bl2tuxtg6f7n
 #| fig-cap: 'El ***huito*** (*Genipa americana*) es una especie de árbol de la familia Rubiaceae. Originaria de los bosques tropicales de América. Los indígenas lo usan para realizar diseños en su cuerpo y teñir telares. {out.width = "50%"}'
+#| echo: false
 
 knitr::include_graphics('huito/img_0.jpg')
 ```
@@ -18,6 +19,7 @@ La calidad de datos inicia desde la colecta de la información, y en muchos caso
 ```{r}
 #| label: fig-kix.vd7qxjm1q38u
 #| fig-cap: 'Proceso de etiquetado y colecta de datos de experimentos. Los códigos QR permiten la colecta de datos con un dispositivo móvil de forma rápida y sencilla.'
+#| echo: false
 
 knitr::include_graphics('huito/img_1.png')
 ```
