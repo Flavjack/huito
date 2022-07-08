@@ -1,6 +1,7 @@
 # huito 0.2.1
 
 - Change package title
+- logo update
 
 # huito 0.2.0
 

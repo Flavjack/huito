@@ -137,39 +137,39 @@
     
 <p>More information from GerminaR project: <a href="https://germinar.inkaverse.com/" class="external-link uri">https://germinar.inkaverse.com/</a></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://huito.inkaverse.com/" class="external-link">huito</a></span><span class="op">)</span>
-
-<span class="va">font</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Paytone One"</span>, <span class="st">"Permanent Marker"</span><span class="op">)</span>
-
-<span class="fu"><a href="../reference/huito_fonts.html">huito_fonts</a></span><span class="op">(</span><span class="va">font</span><span class="op">)</span>
-
-<span class="va">label</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/label_layout.html">label_layout</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5.08</span>, <span class="fl">5.08</span><span class="op">)</span>
-                      , border_width <span class="op">=</span> <span class="fl">0</span>
-                      , background <span class="op">=</span> <span class="st">"#b1d842"</span>
-                      <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/include_image.html">include_image</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"https://germinar.inkaverse.com/img/seed_germination.png"</span>
-                , size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5.5</span>, <span class="fl">5.5</span><span class="op">)</span>
-                , position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.55</span>, <span class="fl">1.26</span><span class="op">)</span>
-                , opts <span class="op">=</span> <span class="st">'image_transparent("white")*image_modulate(brightness = 0)'</span>
-                <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="../reference/include_shape.html">include_shape</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">5.08</span>
-                , border_width <span class="op">=</span> <span class="fl">0</span>
-                , position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.54</span>, <span class="fl">2.54</span><span class="op">)</span>
-                , panel_color <span class="op">=</span> <span class="st">"blue"</span>
-                <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="../reference/include_text.html">include_text</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"GerminaR"</span>
-               , <span class="va">font</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>
-               , size <span class="op">=</span> <span class="fl">23</span>
-               , position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.54</span>, <span class="fl">3.55</span><span class="op">)</span>
-               , color <span class="op">=</span> <span class="st">"#a64d79"</span>
-               <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="../reference/include_text.html">include_text</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"inkaverse.com"</span>
-               , <span class="va">font</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>
-               , size <span class="op">=</span> <span class="fl">6</span>
-               , position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3.9</span>, <span class="fl">0.96</span><span class="op">)</span>
-               , angle <span class="op">=</span> <span class="fl">30</span>
-               , color <span class="op">=</span> <span class="st">"white"</span>
-               <span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://huito.inkaverse.com/" class="external-link">huito</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">font</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Paytone One"</span>, <span class="st">"Permanent Marker"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/huito_fonts.html">huito_fonts</a></span><span class="op">(</span><span class="va">font</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">label</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/label_layout.html">label_layout</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5.08</span>, <span class="fl">5.08</span><span class="op">)</span></span>
+<span>                      , border_width <span class="op">=</span> <span class="fl">0</span></span>
+<span>                      , background <span class="op">=</span> <span class="st">"#b1d842"</span></span>
+<span>                      <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/include_image.html">include_image</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"https://germinar.inkaverse.com/img/seed_germination.png"</span></span>
+<span>                , size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5.5</span>, <span class="fl">5.5</span><span class="op">)</span></span>
+<span>                , position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.55</span>, <span class="fl">1.26</span><span class="op">)</span></span>
+<span>                , opts <span class="op">=</span> <span class="st">'image_transparent("white")*image_modulate(brightness = 0)'</span></span>
+<span>                <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/include_shape.html">include_shape</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">5.08</span></span>
+<span>                , border_width <span class="op">=</span> <span class="fl">0</span></span>
+<span>                , position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.54</span>, <span class="fl">2.54</span><span class="op">)</span></span>
+<span>                , panel_color <span class="op">=</span> <span class="st">"blue"</span></span>
+<span>                <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/include_text.html">include_text</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"GerminaR"</span></span>
+<span>               , <span class="va">font</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>               , size <span class="op">=</span> <span class="fl">23</span></span>
+<span>               , position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.54</span>, <span class="fl">3.55</span><span class="op">)</span></span>
+<span>               , color <span class="op">=</span> <span class="st">"#a64d79"</span></span>
+<span>               <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/include_text.html">include_text</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"inkaverse.com"</span></span>
+<span>               , <span class="va">font</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
+<span>               , size <span class="op">=</span> <span class="fl">6</span></span>
+<span>               , position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3.9</span>, <span class="fl">0.96</span><span class="op">)</span></span>
+<span>               , angle <span class="op">=</span> <span class="fl">30</span></span>
+<span>               , color <span class="op">=</span> <span class="st">"white"</span></span>
+<span>               <span class="op">)</span></span></code></pre></div>
 <p>You can add more image option via <code>magick</code> R package
 functions <code>include_image(opts)</code> <a href="https://CRAN.R-project.org/package=magick" class="external-link uri">https://CRAN.R-project.org/package=magick</a>.</p>
 <p>Select at <code>panel_color()</code> different from the colors in
@@ -178,20 +178,20 @@ your stickers background.</p>
 <h3 id="preview-mode">Preview mode<a class="anchor" aria-label="anchor" href="#preview-mode"></a>
 </h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">label</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/label_print.html">label_print</a></span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"preview"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">label</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/label_print.html">label_print</a></span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"preview"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="germinar_files/figure-html/unnamed-chunk-2-1.png" width="98%" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level3">
 <h3 id="complete-mode">Complete mode<a class="anchor" aria-label="anchor" href="#complete-mode"></a>
 </h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sticker</span> <span class="op">&lt;-</span> <span class="va">label</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="../reference/label_print.html">label_print</a></span><span class="op">(</span>filename <span class="op">=</span> <span class="st">"GerminaR"</span>
-              , margin <span class="op">=</span> <span class="fl">0</span>
-              , paper <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5.5</span>, <span class="fl">5.5</span><span class="op">)</span>
-              , mode <span class="op">=</span> <span class="st">"complete"</span>
-              <span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sticker</span> <span class="op">&lt;-</span> <span class="va">label</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/label_print.html">label_print</a></span><span class="op">(</span>filename <span class="op">=</span> <span class="st">"GerminaR"</span></span>
+<span>              , margin <span class="op">=</span> <span class="fl">0</span></span>
+<span>              , paper <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5.5</span>, <span class="fl">5.5</span><span class="op">)</span></span>
+<span>              , mode <span class="op">=</span> <span class="st">"complete"</span></span>
+<span>              <span class="op">)</span></span></code></pre></div>
 <embed src="GerminaR.pdf" height="500" width="100%" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html"></embed>
 </div>
 <div class="section level2">
@@ -200,12 +200,12 @@ your stickers background.</p>
 <p>Import the image in pdf format and cut the border and make the
 <code>panel_color</code> transparent.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sticker</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="https://docs.ropensci.org/magick/reference/editing.html" class="external-link">image_read_pdf</a></span><span class="op">(</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="https://docs.ropensci.org/magick/reference/transform.html" class="external-link">image_crop</a></span><span class="op">(</span>geometry <span class="op">=</span> <span class="st">"600x600+40"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://docs.ropensci.org/magick/reference/transform.html" class="external-link">image_crop</a></span><span class="op">(</span>geometry <span class="op">=</span> <span class="st">"560x600-40"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://docs.ropensci.org/magick/reference/color.html" class="external-link">image_transparent</a></span><span class="op">(</span><span class="st">'blue'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="https://docs.ropensci.org/magick/reference/editing.html" class="external-link">image_write</a></span><span class="op">(</span><span class="st">"GerminaR.png"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sticker</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://docs.ropensci.org/magick/reference/editing.html" class="external-link">image_read_pdf</a></span><span class="op">(</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://docs.ropensci.org/magick/reference/transform.html" class="external-link">image_crop</a></span><span class="op">(</span>geometry <span class="op">=</span> <span class="st">"600x600+40"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://docs.ropensci.org/magick/reference/transform.html" class="external-link">image_crop</a></span><span class="op">(</span>geometry <span class="op">=</span> <span class="st">"560x600-40"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://docs.ropensci.org/magick/reference/color.html" class="external-link">image_transparent</a></span><span class="op">(</span><span class="st">'blue'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://docs.ropensci.org/magick/reference/editing.html" class="external-link">image_write</a></span><span class="op">(</span><span class="st">"GerminaR.png"</span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="final-sticker-result">Final sticker result<a class="anchor" aria-label="anchor" href="#final-sticker-result"></a>
 </h3>

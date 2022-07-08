@@ -9,21 +9,21 @@ font <- "Permanent Marker"
 huito_fonts(font)
 
 label <- label_layout(size = c(5.08, 5.08)
-                      , border_color = NA
                       , border_width = 0
                       ) %>% 
-  include_image(value = "pkgdown/favicon/img/shipibo.png"
+  include_image(value = "https://flavjack.github.io/huito/img/shipibo.png"
                 , size = c(7, 7)
                 , position = c(2.55, 2.52)
+                # , opts = "image_scale(600)"
                 ) %>%
   include_text(value = "H", size = 45 , position = c(1.15, 2.7), color = "#00a85a", font) %>%
   include_text(value = "u", size = 45 , position = c(2.07, 2.7), color = "#f58735", font) %>%
   include_text(value = "i", size = 45 , position = c(2.73, 2.7), color = "#4774b8", font) %>%
-  include_image(value = "pkgdown/favicon/img/huito_fruit.png"
-                , size = c(1.35, 1.35) 
-                , position = c(4.03, 2.65)
+  include_image(value = "https://flavjack.github.io/huito/img/huito_fruit.png"
+                , size = c(1.32, 1.32) 
+                , position = c(4.04, 2.65)
                 ) %>%
-  include_text(value = "t", size = 45 , position = c(3.33, 2.7), color = "#a9518b", font) %>%
+  include_text(value = "t", size = 45 , position = c(3.32, 2.7), color = "#a9518b", font) %>%
   include_shape(size = 5.08
                 , border_width = 3
                 , border_color = "black"
@@ -38,7 +38,8 @@ label <- label_layout(size = c(5.08, 5.08)
                , font
                ) 
 
-label %>% label_print()
+label %>% 
+  label_print(mode = "preview")
 
 logo <- label %>% 
   label_print(filename = tempfile()
@@ -57,7 +58,8 @@ stiker <- logo %>%
   image_transparent("blue") %>%
   image_write("pkgdown/favicon/img/huito.png")
 
-file.copy("pkgdown/favicon/img/huito.png", "man/figures/logo.png"
+file.copy("pkgdown/favicon/img/huito.png"
+          , "man/figures/logo.png"
           , overwrite = T)
 
 # -------------------------------------------------------------------------
