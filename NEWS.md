@@ -2,6 +2,7 @@
 
 - Change package title
 - logo update
+- Connect to Zenodo
 
 # huito 0.2.0
 

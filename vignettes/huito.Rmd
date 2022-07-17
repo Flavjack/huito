@@ -25,13 +25,12 @@ source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/d
 # open https://docs.google.com/document/d/1U_06RwkOWavq2O9CY5j9GRd3_2Ik8OTrfszK-ccbGmQ/edit
 ```
 
-```{r}
+```{r, eval=FALSE}
 file <- params$file
-doc <- gdoc2rmd(file = paste0(file, ".zip"), export = file)
+doc <- gdoc2qmd(file = paste0(file, ".zip"), export = file)
 ```
 
-```{r, echo=FALSE, results='asis', eval=T}
-res <- knitr::knit_child(doc, quiet = TRUE)
+```{r, results = 'asis'}
+res <- knitr::knit_child(file.path("huito/_doc.Rmd"), quiet = TRUE)
 cat(res, sep = '\n')
 ```
-
