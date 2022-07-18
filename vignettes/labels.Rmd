@@ -16,7 +16,7 @@ source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/d
 
 # Create fieldbook
 
-The fieldbook experimental design was deployed with `inti` package <https://inkaverse.com/articles/apps.html>
+The field-book experimental design was deployed with `inti` package <https://inkaverse.com/articles/apps.html>
 
 ```{r, echo = TRUE}
 library(inti)
@@ -37,7 +37,9 @@ fb %>% web_table()
 
 # Label design
 
-You can change any layer dynamically based in a column. In this case, the color of the text condition will change based in the treatments: "blue" for `irrigated` and "red" for `drought`.
+The layer options can change dynamically based in a column. In the following example the color of the text will change based in the treatments: "blue" for `irrigated` and "red" for `drought`.
+
+> You can find more fonts in <https://fonts.google.com/>
 
 ```{r, echo = TRUE}
 library(huito)
@@ -91,7 +93,7 @@ label <- fb %>%
                ) 
 ```
 
-After running the chunk the first time. You should comment `huito_fonts()` as we already imported the fonts. 
+You should comment `huito_fonts()` after the first running as we already imported the fonts. 
 
 ## Preview mode
 

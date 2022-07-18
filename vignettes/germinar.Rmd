@@ -17,6 +17,14 @@ source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/d
 
 More information from GerminaR project: <https://germinar.inkaverse.com/>
 
+# Sticker design
+
+In the layer `include_image(opts = "magick package")` you can add different arguments and combine them using asterisk (`*`).
+
+Options available in [magick package](https://cran.r-project.org/web/packages/magick/vignettes/intro.html)
+
+> Select different panel color for your sticker (i.e. `include_shape(panel_color = "color")`). 
+
 ```{r echo = TRUE}
 library(huito)
 
@@ -53,10 +61,6 @@ label <- label_layout(size = c(5.08, 5.08)
                )
 ```
 
-You can add more image option via `magick` R package functions `include_image(opts)` <https://CRAN.R-project.org/package=magick>. 
-
-Select at `panel_color()` different from the colors in your stickers background. 
-
 ## Preview mode
 
 ```{r, echo = TRUE}
@@ -65,6 +69,8 @@ label %>%
 ```
 
 ## Complete mode
+
+The final file is exported in `pdf` format.
 
 ```{r, echo = TRUE}
 sticker <- label %>%

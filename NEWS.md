@@ -3,6 +3,7 @@
 - Change package title
 - logo update
 - Connect to Zenodo
+- Vignettes updates
 
 # huito 0.2.0
 

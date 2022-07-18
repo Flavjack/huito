@@ -14,7 +14,13 @@ editor_options:
 source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/docs.r")
 ```
 
-More information and examples for a sticker you can find in the following link: http://hexb.in/
+Details and examples of more stickers you can find in the following link: <http://hexb.in/>
+
+# Sticker design
+
+You can design your sticker by layers. You can add each element individually in the design.
+
+> You can find more fonts in <https://fonts.google.com/>
 
 ```{r echo = TRUE}
 library(huito)
@@ -54,7 +60,7 @@ label <- label_layout(size = c(5.08, 5.08)
                ) 
 ```
 
-Select at `panel_color()` different from the colors in your stickers background. 
+> Select different panel color for your sticker (i.e. `include_shape(panel_color = "color")`). 
 
 ## Preview mode
 
@@ -64,6 +70,8 @@ label %>%
 ```
 
 ## Complete mode
+
+The final file is exported in `pdf` format.
 
 ```{r, echo = TRUE}
 sticker <- label %>% 
@@ -78,7 +86,7 @@ sticker <- label %>%
 
 # Transparent logo
 
-Import the image in pdf format and cut the border and make the `panel_color` transparent.
+Import the image in pdf and cut the border and make the `panel_color` transparent.
 
 ```{r, echo = TRUE}
 sticker %>% 

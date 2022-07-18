@@ -143,8 +143,8 @@
 <div class="section level2">
 <h2 id="create-fieldbook">Create fieldbook<a class="anchor" aria-label="anchor" href="#create-fieldbook"></a>
 </h2>
-<p>The fieldbook experimental design was deployed with <code>inti</code>
-package <a href="https://inkaverse.com/articles/apps.html" class="external-link uri">https://inkaverse.com/articles/apps.html</a></p>
+<p>The field-book experimental design was deployed with
+<code>inti</code> package <a href="https://inkaverse.com/articles/apps.html" class="external-link uri">https://inkaverse.com/articles/apps.html</a></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://inkaverse.com/" class="external-link">inti</a></span><span class="op">)</span></span>
 <span></span>
@@ -160,16 +160,19 @@ package <a href="https://inkaverse.com/articles/apps.html" class="external-link 
 <span><span class="va">fb</span> <span class="op">&lt;-</span> <span class="va">design</span><span class="op">$</span><span class="va">fieldbook</span></span>
 <span></span>
 <span><span class="va">fb</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://inkaverse.com/reference/web_table.html" class="external-link">web_table</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div id="htmlwidget-66f3ea1f8902a33f15fe" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-66f3ea1f8902a33f15fe">{"x":{"filter":"none","vertical":false,"extensions":["Buttons","Scroller"],"data":[["HUITO_101_1_irrigated_choclito","HUITO_102_1_irrigated_salcedo","HUITO_103_1_drought_pandela","HUITO_104_1_drought_puno","HUITO_105_1_drought_choclito","HUITO_106_1_irrigated_pandela","HUITO_107_1_irrigated_puno","HUITO_108_1_drought_salcedo","HUITO_109_2_irrigated_choclito","HUITO_110_2_drought_puno","HUITO_111_2_irrigated_salcedo","HUITO_112_2_irrigated_pandela","HUITO_113_2_irrigated_puno","HUITO_114_2_drought_pandela","HUITO_115_2_drought_salcedo","HUITO_116_2_drought_choclito","HUITO_117_3_irrigated_choclito","HUITO_118_3_drought_puno","HUITO_119_3_drought_pandela","HUITO_120_3_drought_salcedo","HUITO_121_3_irrigated_salcedo","HUITO_122_3_irrigated_puno","HUITO_123_3_drought_choclito","HUITO_124_3_irrigated_pandela"],[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124],["1","1","1","1","1","1","1","1","2","2","2","2","2","2","2","2","3","3","3","3","3","3","3","3"],["irrigated","irrigated","drought","drought","drought","irrigated","irrigated","drought","irrigated","drought","irrigated","irrigated","irrigated","drought","drought","drought","irrigated","drought","drought","drought","irrigated","irrigated","drought","irrigated"],["choclito","salcedo","pandela","puno","choclito","pandela","puno","salcedo","choclito","puno","salcedo","pandela","puno","pandela","salcedo","choclito","choclito","puno","pandela","salcedo","salcedo","puno","choclito","pandela"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>barcode<\/th>\n      <th>plots<\/th>\n      <th>block<\/th>\n      <th>condition<\/th>\n      <th>genotypes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bt","buttons":[{"extend":"copy"},{"extend":"excel","filename":"file"}],"deferRender":true,"scroller":true,"scrollX":true,"scrollY":"45vh","autoWidth":true,"columnDefs":[{"width":"200px","targets":"_all"},{"className":"dt-right","targets":1}],"initComplete":"function(settings, json) {\n$(this).addClass('compact');\n$(this.api().table().header()).css({'background-color': '#000', 'color': '#fff'});\n}","order":[],"orderClasses":false}},"evals":["options.initComplete"],"jsHooks":[]}</script>
+<div id="htmlwidget-046cc979512386e6511e" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-046cc979512386e6511e">{"x":{"filter":"none","vertical":false,"extensions":["Buttons","Scroller"],"data":[["HUITO_101_1_irrigated_choclito","HUITO_102_1_drought_salcedo","HUITO_103_1_irrigated_pandela","HUITO_104_1_drought_choclito","HUITO_105_1_irrigated_salcedo","HUITO_106_1_drought_puno","HUITO_107_1_drought_pandela","HUITO_108_1_irrigated_puno","HUITO_109_2_drought_puno","HUITO_110_2_drought_salcedo","HUITO_111_2_irrigated_salcedo","HUITO_112_2_irrigated_puno","HUITO_113_2_irrigated_pandela","HUITO_114_2_drought_pandela","HUITO_115_2_drought_choclito","HUITO_116_2_irrigated_choclito","HUITO_117_3_irrigated_salcedo","HUITO_118_3_drought_salcedo","HUITO_119_3_irrigated_puno","HUITO_120_3_irrigated_pandela","HUITO_121_3_irrigated_choclito","HUITO_122_3_drought_choclito","HUITO_123_3_drought_pandela","HUITO_124_3_drought_puno"],[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124],["1","1","1","1","1","1","1","1","2","2","2","2","2","2","2","2","3","3","3","3","3","3","3","3"],["irrigated","drought","irrigated","drought","irrigated","drought","drought","irrigated","drought","drought","irrigated","irrigated","irrigated","drought","drought","irrigated","irrigated","drought","irrigated","irrigated","irrigated","drought","drought","drought"],["choclito","salcedo","pandela","choclito","salcedo","puno","pandela","puno","puno","salcedo","salcedo","puno","pandela","pandela","choclito","choclito","salcedo","salcedo","puno","pandela","choclito","choclito","pandela","puno"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>barcode<\/th>\n      <th>plots<\/th>\n      <th>block<\/th>\n      <th>condition<\/th>\n      <th>genotypes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bt","buttons":[{"extend":"copy"},{"extend":"excel","filename":"file"}],"deferRender":true,"scroller":true,"scrollX":true,"scrollY":"45vh","autoWidth":true,"columnDefs":[{"width":"200px","targets":"_all"},{"className":"dt-right","targets":1}],"initComplete":"function(settings, json) {\n$(this).addClass('compact');\n$(this.api().table().header()).css({'background-color': '#000', 'color': '#fff'});\n}","order":[],"orderClasses":false}},"evals":["options.initComplete"],"jsHooks":[]}</script>
 </div>
 <div class="section level2">
 <h2 id="label-design">Label design<a class="anchor" aria-label="anchor" href="#label-design"></a>
 </h2>
-<p>You can change any layer dynamically based in a column. In this case,
-the color of the text condition will change based in the treatments:
-“blue” for <code>irrigated</code> and “red” for
+<p>The layer options can change dynamically based in a column. In the
+following example the color of the text will change based in the
+treatments: “blue” for <code>irrigated</code> and “red” for
 <code>drought</code>.</p>
+<blockquote>
+<p>You can find more fonts in <a href="https://fonts.google.com/" class="external-link uri">https://fonts.google.com/</a></p>
+</blockquote>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://huito.inkaverse.com/" class="external-link">huito</a></span><span class="op">)</span></span>
 <span></span>
@@ -220,8 +223,8 @@ the color of the text condition will change based in the treatments:
 <span>               , color <span class="op">=</span> <span class="st">"#009966"</span></span>
 <span>               , <span class="va">font</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
 <span>               <span class="op">)</span> </span></code></pre></div>
-<p>After running the chunk the first time. You should comment
-<code><a href="../reference/huito_fonts.html">huito_fonts()</a></code> as we already imported the fonts.</p>
+<p>You should comment <code><a href="../reference/huito_fonts.html">huito_fonts()</a></code> after the first running
+as we already imported the fonts.</p>
 <div class="section level3">
 <h3 id="preview-mode">Preview mode<a class="anchor" aria-label="anchor" href="#preview-mode"></a>
 </h3>
