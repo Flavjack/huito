@@ -1,6 +1,6 @@
 ***Huito** *es un software de código abierto implementado en el lenguaje de programación R para el diseño de etiquetas de forma flexible y reproducible. El paquete lleva este nombre, ya que el fruto del árbol del ***huito** *(*Genipa americana*) es usado por los nativos amazónicos por sus propiedades colorantes para teñir telas y pintarse el cuerpo ([Figure  @fig:id.bl2tuxtg6f7n]:).
 
-![El ***huito*** (*Genipa americana*) es una especie de árbol de la familia Rubiaceae. Originaria de los bosques tropicales de América. Los indígenas lo usan para realizar diseños en su cuerpo y teñir telares. {{out.width =  "50%"}}](img_0.jpg){#fig:id.bl2tuxtg6f7n}
+![El ***huito*** (*Genipa americana*) es una especie de árbol de la familia Rubiaceae. Originaria de los bosques tropicales de América. Los indígenas lo usan para realizar diseños en su cuerpo y teñir telares. {{out.width =  "70%"}}](img_0.jpg){#fig:id.bl2tuxtg6f7n}
 
 ## Problema
 

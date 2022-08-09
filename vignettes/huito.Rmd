@@ -27,10 +27,10 @@ source("https://raw.githubusercontent.com/Flavjack/inti/master/pkgdown/favicon/d
 
 ```{r, eval=FALSE}
 file <- params$file
-doc <- gdoc2qmd(file = paste0(file, ".zip"), export = file)
+doc <- inti::gdoc2qmd(file = "vignettes/huito.zip")
 ```
 
 ```{r, results = 'asis'}
-res <- knitr::knit_child(file.path("huito/_doc.Rmd"), quiet = TRUE)
+res <- knitr::knit_child("huito/_doc.Rmd", quiet = TRUE)
 cat(res, sep = '\n')
 ```
