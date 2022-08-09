@@ -4,6 +4,7 @@
 - logo update
 - Connect to Zenodo
 - Vignettes updates
+- Fix CRAN comments
 
 # huito 0.2.0
 
