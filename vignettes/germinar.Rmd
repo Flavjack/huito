@@ -21,7 +21,7 @@ More information from GerminaR project: <https://germinar.inkaverse.com/>
 
 In the layer `include_image(opts = "magick package")` you can add different arguments and combine them using asterisk (`*`).
 
-Options available in [magick package](https://cran.r-project.org/web/packages/magick/vignettes/intro.html)
+Options available in [magick package](https://CRAN.R-project.org/package=magick)
 
 > Select different panel color for your sticker (i.e. `include_shape(panel_color = "color")`). 
 
