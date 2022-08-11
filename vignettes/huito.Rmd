@@ -1,23 +1,20 @@
 ---
 title: "Huito"
 description: 'Labels designs for multiple porpouses'
-output:
-  bookdown::html_document2:
-    base_format: rmarkdown::html_vignette
-    toc: true
-    number_sections: false
-pkgdown:
-  as_is: true
+output: rmarkdown::html_vignette
+# output:
+#   bookdown::html_document2:
+#     base_format: rmarkdown::html_vignette
+#     toc: true
+#     number_sections: false
+# pkgdown:
+#   as_is: true
 vignette: >
   %\VignetteIndexEntry{Huito}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
   chunk_output_type: console
-params:
-  file: "huito"
-resource_files:
-  - params$file
 ---
 
 ```{r setup, include=FALSE}
