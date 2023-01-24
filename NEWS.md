@@ -1,3 +1,7 @@
+# huito 0.2.2
+
+- Update vignettes: labels 
+
 # huito 0.2.1
 
 - Change package title
