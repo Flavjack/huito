@@ -1,3 +1,7 @@
+# huito 0.2.3?
+
+- Include image from pdf
+
 # huito 0.2.2
 
 - Update vignettes: labels 
