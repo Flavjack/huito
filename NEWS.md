@@ -1,4 +1,4 @@
-# huito 0.2.3?
+# huito 0.2.3
 
 - Include image from pdf
 

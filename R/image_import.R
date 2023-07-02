@@ -45,10 +45,11 @@ image_import <- function(image
       unlist() 
   } 
   
-  
-  
-  img <- magick::image_read(image)
-  
+  img <- if(grepl(pattern = ".*pdf$", x = image)) { 
+    magick::image_read_pdf(image)
+  } else { 
+      magick::image_read(image) 
+    } 
 # -------------------------------------------------------------------------
 
   if(any(is.na(opts))) { return(img) }
