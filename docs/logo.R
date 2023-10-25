@@ -38,8 +38,7 @@ label <- label_layout(size = c(5.08, 5.08)
                , font
                ) 
 
-label %>% 
-  label_print(mode = "preview")
+label %>% label_print(mode = "preview")
 
 logo <- label %>% 
   label_print(filename = tempfile()
@@ -88,34 +87,25 @@ label <- label_layout(size = c(5.08, 5.08)
                 , position = c(2.54, 2.54)
                 , panel_color = "blue" 
                 ) %>%
-  include_shape(size = 4
-                , border_width = 0.1
-                , border_color = "black"
-                , position = c(2.54, 2.54)
-                , panel_color = NA
-                , background = "white"
-                ) %>%
-  include_text(value = "Flavio"
-               , position = "2.65*3.4"
-               , size = 27
+  include_text(value = "FL"
+               , position = c(2.65, 2.54)
+               , size = 77
                , font = font[1]
-               ) %>% 
-  include_text(value = "Lozano"
-               , position = "2.55*2.55"
-               , size = 27
+               , color = "white"
+               ) %>%
+  include_text(value = "FL"
+               , position = c(2.65, 2.54)
+               , size = 75
                , font = font[1]
-               ) %>% 
-  include_text(value = "Isla"
-               , position = "2.6*1.65"
-               , size = 27
-               , font = font[1]
+               , color = "black"
                ) %>%
   include_text(value = "lozanoisla.com"
                , size = 5
                , position = c(3.6, 0.72)
                , angle = 30
                , font = font[2]
-               , color = "white") 
+               , color = "white"
+               ) 
 
 label %>% label_print()
   
@@ -134,5 +124,61 @@ sticker <- logo %>%
   image_crop(geometry = "600x600+40") %>% 
   image_crop(geometry = "560x600-40") %>% 
   image_transparent("blue") %>%  
-  image_write("pkgdown/favicon/img/flozano.png")
+  image_write("pkgdown/favicon/img/FL.png")
 
+
+# -------------------------------------------------------------------------
+# slogan ------------------------------------------------------------------
+# -------------------------------------------------------------------------
+
+library(huito)
+
+font <- c("Inknut Antiqua"); huito_fonts(font)
+
+#  "Playfair Display" "Roboto Slab" "Young Serif" Lexend
+
+label <- label_layout(size = c(20, 5)
+                      , border_color = NA
+                      , border_width = 1
+                      ) %>% 
+  include_image(value = "pkgdown/favicon/img/FL.png"
+                , size = c(4.5, 4.5)
+                , position = c(2.1, 2.5)
+                ) %>% 
+  include_text(value = "Flavio Lozano Isla"
+               , size = 44
+               , position = c(4.2, 3.6)
+               , angle = 0
+               , color = "black"
+               , opts = list(hjust = 0)
+               , font[1]
+               ) %>% 
+  include_text(value = "Agronomist | Plant breeder | Bioinformatician"
+               , size = 16
+               , position = c(4.3, 2.3)
+               , angle = 0
+               , color = "darkgreen"
+               , opts = list(hjust = 0)
+               , font[1]
+               ) %>% 
+  include_text(value = "www.lozanoisla.com | flozano@lamolina.com"
+               , size = 14
+               , position = c(4.3, 1.4)
+               , angle = 0
+               , color = "black"
+               , opts = list(hjust = 0)
+               , font[1]
+               ) 
+
+label %>% label_print()
+
+logo <- label %>% 
+  label_print(filename = tempfile()
+              , margin = 0
+              , paper = c(20, 5)
+              , mode = "complete"
+              )
+
+sticker <- logo %>%
+  image_read_pdf()  %>% 
+  image_write("pkgdown/favicon/img/slogan.png")

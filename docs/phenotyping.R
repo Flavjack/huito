@@ -1,116 +1,135 @@
 source("http://inkaverse.com/setup.r")
 
-# import scale ------------------------------------------------------------
-
-scale <- image_read_pdf("pkgdown/favicon/img/scale.pdf", density = 600) %>% 
-  # image_rotate(-90) %>% 
-  image_write("pkgdown/favicon/img/scale.png")
-
 # phenotyping-blue --------------------------------------------------------
 # -------------------------------------------------------------------------
 
-label <- label_layout(size = c(100, 100)
+label <- label_layout(size = c(50, 30)
                       , border_color = "black"
                       , border_width = 5
                       , background = "#0099FF"
                       ) %>% 
   include_image(value = "https://inkaverse.com/img/inkaverse.png"
-                , size = c(10, 10)
-                , position = c(5, 94)
+                , size = c(2.5, 2.5)
+                , position = c(2, 28)
                 ) %>% 
-  include_image(value = "man/figures/logo.png"
-                , size = c(10, 10)
-                , position = c(95, 94)
+  include_image(value = "https://inkaverse.com/img/inkaverse.png"
+                , size = c(2.5, 2.5)
+                , position = c(48, 28)
+                ) %>% 
+  include_image(value = "https://huito.inkaverse.com/logo.png"
+                , size = c(2.5, 2.5)
+                , position = c(2, 2)
+                ) %>% 
+  include_image(value = "https://huito.inkaverse.com/logo.png"
+                , size = c(2.5, 2.5)
+                , position = c(48, 2)
+                ) %>% 
+  #> top
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(5, 1)
+                , position = c(25, 28)
+                ) %>% 
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(5, 1)
+                , position = c(12.5, 28)
+                ) %>% 
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(5, 1)
+                , position = c(37.5, 28)
+                ) %>% 
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(5, 1)
+                , position = c(18.75, 28)
+                ) %>% 
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(5, 1)
+                , position = c(31.25, 28)
+                ) %>% 
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(5, 1)
+                , position = c(6.25, 28)
+                ) %>%  
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(5, 1)
+                , position = c(43.75, 28)
+                ) %>%  
+  #> bottom
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(5, 1)
+                , position = c(25, 2)
+                ) %>% 
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(5, 1)
+                , position = c(12.5, 2)
+                ) %>% 
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(5, 1)
+                , position = c(37.5, 2)
+                ) %>% 
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(5, 1)
+                , position = c(18.75, 2)
+                ) %>% 
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(5, 1)
+                , position = c(31.25, 2)
+                ) %>%  
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(5, 1)
+                , position = c(6.25, 2)
+                ) %>%  
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(5, 1)
+                , position = c(43.75, 2)
+                ) %>%  
+  #> left 
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(1, 5)
+                , position = c(2, 6*1)
+                , opts = "image_rotate(-90)"
+                ) %>% 
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(1, 5)
+                , position = c(2, 6*2)
+                , opts = "image_rotate(-90)"
+                ) %>% 
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(1, 5)
+                , position = c(2, 6*3)
+                , opts = "image_rotate(-90)"
+                ) %>% 
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(1, 5)
+                , position = c(2, 6*4)
+                , opts = "image_rotate(-90)"
+                ) %>% 
+  # right
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(1, 5)
+                , position = c(48, 6*1)
+                , opts = "image_rotate(-90)"
+                ) %>% 
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(1, 5)
+                , position = c(48, 6*2)
+                , opts = "image_rotate(-90)"
+                ) %>% 
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(1, 5)
+                , position = c(48, 6*3)
+                , opts = "image_rotate(-90)"
+                ) %>% 
+  include_image(value = "https://huito.inkaverse.com/img/scale.pdf"
+                , size = c(1, 5)
+                , position = c(48, 6*4)
+                , opts = "image_rotate(-90)"
                 )
 
-# label %>% label_print()
+label %>% label_print()
 
 label %>% 
   label_print(mode = "c"
-              , paper = c(105, 105)
-              , filename = "pkgdown/favicon/img/phenobg")
+              , paper = c(55, 35)
+              , filename = "pkgdown/favicon/img/phenoboard")
 
-# scales ------------------------------------------------------------------
-# -------------------------------------------------------------------------
-
-label <- label_layout(size = c(12, 6)
-                      , border_color = NA
-                      , border_width = 0
-                      ) %>% 
-  include_image(value = scale
-                , size = c(11, 5)
-                , position = c(6, 3)
-                ) 
-
-label %>% label_print()
-
-label %>% label_print(mode = "c"
-                      , paper = c(100, 50)
-                      , margin = 0
-                      , filename = "pkgdown/favicon/img/scales2print"
-                      , nlabels = 8*8
-                      ) 
-
-# labels ------------------------------------------------------------------
-# -------------------------------------------------------------------------
-
-url <- "https://docs.google.com/spreadsheets/d/1jcXXUzoMsXEMeccfs2AeQLDvC_3_B9QjzeFvnx6AT3Y/edit#gid=1266812467"
-
-gs <- url %>% 
-  as_sheets_id()
-
-fb <- gs %>% 
-  range_read("fb") 
-
-font <- "Rubik"
-
-huito_fonts(font)
-
-label <- fb %>% 
-  label_layout(size = c(12, 5)
-               , border_color = "red"
-               , border_width = 2
-               ) %>%
-  include_barcode(
-    value = "barcode"
-    , size = c(4.5, 4.5)
-    , position = c(9, 2.5)
-    ) %>% 
-  include_text(value = "id"
-               , position = c(11.5, 2.5)
-               , angle = 90
-               , size = 20
-               , font[1]
-               ) %>% 
-  include_image(
-    value = "man/figures/logo.png"
-    , size = c(3, 3)
-    , position = c(4, 2.3)
-    ) %>% 
-  include_text(value = "PhenomQuinoa"
-               , position = c(4, 4.5)
-               , size = 20
-               , color = "brown"
-               , font[1]
-               ) %>% 
-  include_text(value = "barcode"
-               , position = c(0.5, 2.5)
-               , angle = 90
-               , size = 15
-               , font[1]
-               ) %>% 
-  include_text(value = "12x5 cm"
-               , position = c(4, 0.3)
-               , size = 10
-               , color = "brown"
-               , font[1]
-               )
-
-label %>% label_print()
-  
-label %>% 
-  label_print(mode = "c"
-              , filename = "pkgdown/favicon/labels"
-              , paper = c(100, 100)
-              )
 
