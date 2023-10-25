@@ -19,20 +19,19 @@ image_import <- function(image
   
   if (FALSE) {
 
-    image = "https://huito.inkaverse.com/reference/figures/logo.png"
+    image = "https://huito.inkaverse.com/img/scale.pdf"
     
-    opt = NA
+    opts = NA
     
     opts = list(
-      "image_rotate(0)"
+      "image_rotate(90)"
       , "image_flip()"
       , "image_charcoal()"
     )
     
-    opts <- "image_rotate(0)*image_flip()*image_charcoal()"
+    opts <- "image_rotate(90)"
 
   }
-  
 
 # -------------------------------------------------------------------------
   
@@ -45,25 +44,25 @@ image_import <- function(image
       unlist() 
   } 
   
-  img <- if(grepl(pattern = ".*pdf$", x = image)) { 
-    magick::image_read_pdf(image)
-  } else { 
-      magick::image_read(image) 
-    } 
-# -------------------------------------------------------------------------
-
-  if(any(is.na(opts))) { return(img) }
+  imgtype <- if(grepl(pattern = ".*pdf$", x = image)) { 
+    
+    "magick::image_read_pdf(image)"
+    
+    } else {
+      
+      "image_read(image)"
+      
+      }
   
-# -------------------------------------------------------------------------
-  
-  img_opts <- c("image_read(image)",opts) %>% 
+  img_opts <- c(imgtype, opts) %>% 
+    stats::na.omit(.) %>% 
     tibble::enframe() %>% 
     dplyr::select(.data$value) %>% 
     tibble::deframe() %>% 
     paste0(collapse = " %>% ")
-  
+
   img_final <- eval(parse(text = img_opts))
   
-  img_final
+  return(img_final)
 
 }
