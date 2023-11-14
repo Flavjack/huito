@@ -137,17 +137,19 @@ font <- c("Inknut Antiqua"); huito_fonts(font)
 
 #  "Playfair Display" "Roboto Slab" "Young Serif" Lexend
 
+r <- 0.5
+
 label <- label_layout(size = c(20, 5)
-                      , border_color = NA
+                      , border_color = "white"
                       , border_width = 1
                       ) %>% 
   include_image(value = "pkgdown/favicon/img/FL.png"
                 , size = c(4.5, 4.5)
-                , position = c(2.1, 2.5)
+                , position = c(2.1 + r, 2.5)
                 ) %>% 
-  include_text(value = "Flavio Lozano Isla"
-               , size = 44
-               , position = c(4.2, 3.6)
+  include_text(value = "Flavio Lozano-Isla"
+               , size = 40
+               , position = c(4.2 + r, 3.5)
                , angle = 0
                , color = "black"
                , opts = list(hjust = 0)
@@ -155,15 +157,15 @@ label <- label_layout(size = c(20, 5)
                ) %>% 
   include_text(value = "Agronomist | Plant breeder | Bioinformatician"
                , size = 16
-               , position = c(4.3, 2.3)
+               , position = c(4.3 + r, 2.2)
                , angle = 0
                , color = "darkgreen"
                , opts = list(hjust = 0)
                , font[1]
                ) %>% 
-  include_text(value = "www.lozanoisla.com | flozano@lamolina.com"
-               , size = 14
-               , position = c(4.3, 1.4)
+  include_text(value = "www.lozanoisla.com | flozanoisla@gmail.com"
+               , size = 16
+               , position = c(4.3 + r, 1.3)
                , angle = 0
                , color = "black"
                , opts = list(hjust = 0)
