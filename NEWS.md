@@ -1,6 +1,6 @@
 # huito 0.2.4
 
-- Avoid quality lost when rotate pdf
+- Avoid quality lost when rotate image from pdf
 
 # huito 0.2.3
 
