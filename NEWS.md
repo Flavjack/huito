@@ -1,3 +1,7 @@
+# huito 0.2.5
+
+- CRAN checks
+
 # huito 0.2.4
 
 - Avoid quality lost when rotate image from pdf

@@ -27,8 +27,7 @@ treats <- data.frame(condition = c("irrigated", "drought")
 fb <- tarpuy_design(data = treats
                         , nfactors = 2
                         , type = "rcbd"
-                        , rep = 3
-                        , fbname = "HUITO") 
+                        , rep = 3) 
 
 fb %>% web_table()
 ```
@@ -42,7 +41,7 @@ The layer options can change dynamically based in a column. In the following exa
 ```{r, echo = TRUE}
 library(huito)
 
-font <- c('Ceviche One', "Permanent Marker")
+font <- c("Permanent Marker", "Tillana", "Courgette")
 
 huito_fonts(font)
 
@@ -65,29 +64,30 @@ label <- fb %>%
      , size = c(2.5, 2.5)
      , position = c(8.2, 1.25)
      ) %>%
-  include_text(value = "plots"
-               , position = c(9.7, 1.25)
-               , angle = 90
-               , size = 15
-               , color = "red"
-               ) %>%
   include_text(value = "Inkaverse"
                , position = c(4.6, 2)
-               , size = 30
+               , size = 25
                , color = "brown"
                , font[1]
                ) %>%
   include_text(value = "condition"
                , position = c(4.6, 1.2)
-               , size = 13
+               , size = 18
                , color = "color" # dynamic column
                , font[2]
                ) %>%
   include_text(value = "genotypes"
                , position = c(4.6, 0.5)
-               , size = 13
+               , size = 12
                , color = "#009966"
-               , font[2]
+               , font[3]
+               ) %>% 
+  include_text(value = "plots"
+               , position = c(9.7, 1.25)
+               , angle = 90
+               , size = 15
+               , color = "red"
+               , font[1]
                ) 
 ```
 
