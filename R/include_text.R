@@ -3,8 +3,10 @@
 #' Insert text in label
 #'
 #' @param label label output
-#' @param type type of entry: dynamic or static
+#' @param type type of entry `[character: dynamic or static]`
+#' @param prefix Prefix for the dynamic text
 #' @param font font type
+#' @param fontface font type `[character: plain, bold, italic]`
 #' @param size text size
 #' @param position position coordinate
 #' @param color image color
@@ -16,11 +18,12 @@
 #'
 #' @export
 #'
-#'
 
 include_text <- function(label
                          , value
+                         , prefix = ""
                          , position = NA
+                         , fontface = "plain"
                          , size = 11
                          , font = NA
                          , type = "static"
@@ -35,6 +38,7 @@ include_text <- function(label
 
     label = label
     value = "Inkaverse"
+    prefix = "Test: "
     position = NA
     size = 11
     font = "Permanent Marker"
@@ -55,6 +59,15 @@ include_text <- function(label
   value <- if(any(is.null(value)) || any(is.na(value)) || any(value == "")) {
     "INKAVERSE"
   } else {value}
+  
+  fontface <- if(any(is.null(value)) || any(is.na(value)) || any(value == "")) {
+    ""
+  } else {fontface}
+  
+  prefix <- if(any(is.null(value)) || any(is.na(value)) || any(value == "")) {
+    ""
+  } else {prefix}
+  
 
   type <- if(value %in% names(label$data)) {
     "dynamic"
@@ -88,8 +101,10 @@ include_text <- function(label
 # options -----------------------------------------------------------------
 
   opt <- list(value = value
+              , prefix = prefix
               , size = size
               , font = font
+              , fontface = fontface
               , position = position %>% paste0(collapse = "*")
               , color = color
               , angle = angle
@@ -103,7 +118,7 @@ include_text <- function(label
     dplyr::mutate(nlayer = dplyr::case_when(
       is.na(nlayer) ~ length(unique(nlayer)) - 1
       , TRUE ~ nlayer
-    ))
+    )) 
 
 # result ------------------------------------------------------------------
 

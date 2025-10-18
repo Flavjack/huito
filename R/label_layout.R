@@ -14,12 +14,15 @@
 #' @export
 #'
 #' @examples
+#' 
+#' library(huito)
 #'
 #' label <- label_layout(size = c(10, 2.5)
 #'                    , border_color = "red"
 #'                    , border_width = 1
-#'                    ) %>% 
-#'                  label_print()
+#'                    ) 
+#'                    
+#' label %>% label_print()
 #'
 
 label_layout <- function(data = NA

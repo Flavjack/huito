@@ -7,7 +7,9 @@
 include_text(
   label,
   value,
+  prefix = "",
   position = NA,
+  fontface = "plain",
   size = 11,
   font = NA,
   type = "static",
@@ -21,13 +23,17 @@ include_text(
 
 \item{value}{column or string}
 
+\item{prefix}{Prefix for the dynamic text}
+
 \item{position}{position coordinate}
+
+\item{fontface}{font type \verb{[character: plain, bold, italic]}}
 
 \item{size}{text size}
 
 \item{font}{font type}
 
-\item{type}{type of entry: dynamic or static}
+\item{type}{type of entry \verb{[character: dynamic or static]}}
 
 \item{color}{image color}
 

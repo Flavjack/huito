@@ -1,3 +1,10 @@
+# huito 0.2.6
+
+- Update to new ggplot2 version
+- Include image options by list
+- Update vignettes
+- `include_text()` updated to use `prefix` and `[fontface - character: plain, bold, italic]`
+
 # huito 0.2.5
 
 - CRAN checks

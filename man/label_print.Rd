@@ -48,13 +48,14 @@ library(huito)
 fb <- fieldbook
 
 label <- fb \%>\% 
-label_layout(size = c(10, 2.5)
+  label_layout(size = c(10, 2.5)
              , border_color = "blue"
              ) \%>\%
   include_image(
     value = "https://flavjack.github.io/inti/img/inkaverse.png"
     , size = c(2.4, 2.4)
     , position = c(1.2, 1.25)
+    #, opts = list("image_rotate(0)", "image_charcoal()")
     ) \%>\%
   include_barcode(
     value = "barcode"
@@ -62,6 +63,7 @@ label_layout(size = c(10, 2.5)
     , position = c(8.2, 1.25)
     ) \%>\%
   include_text(value = "plots"
+               , prefix = "Plot: "
                , position = c(9.7, 1.25)
                , angle = 90
                , size = 15
@@ -71,17 +73,20 @@ label_layout(size = c(10, 2.5)
                , position = c(4.6, 2)
                , size = 30
                , color = "brown"
+               , fontface = "italic"
                ) \%>\%
   include_text(value = "condition"
                , position = c(4.6, 1.2)
                , size = 13
                , color = "orange"
+               , prefix = "Tratamiento: "
                ) \%>\%
   include_text(value = "genotypes"
                , position = c(4.6, 0.5)
                , size = 13
                , color = "#009966"
-               ) \%>\% 
-               label_print(mode = "sample")
+               )
+               
+label \%>\% label_print(mode = "sample")
   
 }

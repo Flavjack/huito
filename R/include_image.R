@@ -41,7 +41,6 @@ include_image <- function(label
       , "image_charcoal()"
     )
     
-
   }
 
   # param -------------------------------------------------------------------
@@ -76,7 +75,7 @@ include_image <- function(label
 
   opts <- if(any(is.null(opts)) || any(is.na(opts)) || any(opts == "") || any(opts == "NA")) {
     NA
-  } else if(is.character(opts)) {
+  } else if(is.character(opts) || is.list(opts)) {
     opts %>%
       gsub("[[:space:]]", "", .) %>%
       strsplit(., "[*]") %>%

@@ -1,8 +1,8 @@
 url: http://huito.inkaverse.com/
 
-# development:
-#   mode: auto
-  
+development:
+  mode: auto
+
 authors:
   Flavio Lozano-Isla:
     href: https://lozanoisla.com/
@@ -18,6 +18,8 @@ authors:
 template:
   bootstrap: 5
   bootswatch: sandstone
+  math-rendering: mathjax
+  light-switch: true
   params:
     ganalytics: G-CL5C51WC87
   opengraph:

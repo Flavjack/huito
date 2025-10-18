@@ -31,13 +31,14 @@
 #' fb <- fieldbook
 #' 
 #' label <- fb %>% 
-#' label_layout(size = c(10, 2.5)
+#'   label_layout(size = c(10, 2.5)
 #'              , border_color = "blue"
 #'              ) %>%
 #'   include_image(
 #'     value = "https://flavjack.github.io/inti/img/inkaverse.png"
 #'     , size = c(2.4, 2.4)
 #'     , position = c(1.2, 1.25)
+#'     #, opts = list("image_rotate(0)", "image_charcoal()")
 #'     ) %>%
 #'   include_barcode(
 #'     value = "barcode"
@@ -45,6 +46,7 @@
 #'     , position = c(8.2, 1.25)
 #'     ) %>%
 #'   include_text(value = "plots"
+#'                , prefix = "Plot: "
 #'                , position = c(9.7, 1.25)
 #'                , angle = 90
 #'                , size = 15
@@ -54,18 +56,21 @@
 #'                , position = c(4.6, 2)
 #'                , size = 30
 #'                , color = "brown"
+#'                , fontface = "italic"
 #'                ) %>%
 #'   include_text(value = "condition"
 #'                , position = c(4.6, 1.2)
 #'                , size = 13
 #'                , color = "orange"
+#'                , prefix = "Tratamiento: "
 #'                ) %>%
 #'   include_text(value = "genotypes"
 #'                , position = c(4.6, 0.5)
 #'                , size = 13
 #'                , color = "#009966"
-#'                ) %>% 
-#'                label_print(mode = "sample")
+#'                )
+#'                
+#' label %>% label_print(mode = "sample")
 #'   
 
 label_print <- function(label
@@ -81,7 +86,7 @@ label_print <- function(label
   
   if (FALSE) {
     
-    mode = "c"
+    mode = "s"
     filename = "labels"
     margin = 0
     paper = c(21.0, 29.7)
@@ -91,7 +96,6 @@ label_print <- function(label
     nlabels = NA
     
   }
-  
   
 # args ------------------------------------------------------------------
   
@@ -203,9 +207,11 @@ label_print <- function(label
             , position = NA_real_
             , size = NA_real_
             , font = NA_real_
+            , fontface = NA_real_
             , margin = NA_real_
             , panel_color = NA_real_
             , panel_size = NA_real_
+            , prefix = NA_real_
             , opts = NA_real_
             )
   
@@ -220,7 +226,7 @@ label_print <- function(label
     dplyr::mutate(border_width = dplyr::case_when(
       .data$border_width %in% 0 & .data$class %in% "label" ~ "element_blank()"
       , .data$border_width > 0 & .data$class %in% "label" ~ paste0("element_rect(fill = NA, colour = , '", .data$border_color ,"'"
-                                                                    , ", size =", .data$border_width, ")")
+                                                                    , ", linewidth =", .data$border_width, ")")
       , TRUE ~ as.character(.data$border_width)
     )) %>% 
     dplyr::mutate(margin = dplyr::case_when(
@@ -246,12 +252,13 @@ label_print <- function(label
                                             )
       
       , .data$class %in% "text" ~ paste0("do.call(cowplot::draw_label"
-                                          , ", list(label = '", .data$value, "'"
+                                          , ", list(label = '", paste0(.data$prefix,.data$value), "'"
                                           , ", x = ", .data$X
                                           , ", y = ", .data$Y
                                           , ", size = ", .data$size
                                           , ", angle = ", .data$angle
                                           , ", fontfamily = '", .data$font, "'"
+                                          , ", fontface = '", .data$fontface, "'"
                                           , ", color = '", .data$color, "'"
                                           , ", ", .data$opts
                                           , "))")
