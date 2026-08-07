@@ -77,5 +77,13 @@ navbar:
       menu:
       - text: "Huito"
         href: articles/stickers.html
+      - text: "Inti"
+        href: articles/inti.html
+      - text: "Inkaverse"
+        href: articles/inkaverse.html
       - text: "GerminaR"
         href: articles/germinar.html
+      - text: "Tarpuy"
+        href: articles/tarpuy.html
+      - text: "Yupana"
+        href: articles/yupana.html

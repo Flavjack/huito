@@ -115,11 +115,7 @@ label_print <- function(label
   } else {dpi}
   
   rasterize <- isTRUE(rasterize)
-  
-  # toma un pdf YA GENERADO (normal, vectorial) y lo re-procesa completo a
-  # la resolucion `dpi` pedida, sin tocar como se armo cada capa dentro de
-  # huito -- se aplica al archivo final, no a las capas individuales --------
-  
+
   rasterize_pdf_file <- function(pdf_path, dpi) {
     
     pdf_path %>%
