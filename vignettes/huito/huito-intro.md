@@ -11,4 +11,10 @@ La calidad de datos inicia desde la colecta de la información, y en muchos caso
 ***Huito*** permite el desarrollo de etiquetas reproducibles y personalizadas de acuerdo a los requerimientos del usuario. Cada elemento en la etiqueta es adicionado por capas, respetando el orden de acuerdo a su jerarquía en el código.
 
 ![Proceso de etiquetado y colecta de datos de experimentos. Los códigos QR permiten la colecta de datos con un dispositivo móvil de forma rápida y sencilla.](img_1.png){#fig:kix.vd7qxjm1q38u}
+## Casos de uso y aplicación
+
+Las etiquetas generadas con ***Huito*** integran códigos QR e información clave para garantizar la trazabilidad de materiales biológicos en diversas etapas del proceso de investigación. Esto incluye la identificación individual de plantas en campo e invernadero, el etiquetado de órganos cosechados y el seguimiento de muestras en fases de poscosecha y laboratorio.
+
+![Aplicación práctica de etiquetas con código QR en campo. {{out.width = "100%"}}](img_2.png){#fig:etiquetas-campo}
+
 

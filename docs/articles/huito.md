@@ -39,3 +39,17 @@ y sencilla.](huito/img_1.png)
 Figure 2: Proceso de etiquetado y colecta de datos de experimentos. Los
 códigos QR permiten la colecta de datos con un dispositivo móvil de
 forma rápida y sencilla.
+
+## Casos de Uso y Aplicación
+
+Las etiquetas generadas con ***Huito*** integran códigos QR e
+información clave para garantizar la trazabilidad de materiales
+biológicos en diversas etapas del proceso de investigación. Esto incluye
+la identificación individual de plantas en campo e invernadero, el
+etiquetado de órganos cosechados y el seguimiento de muestras en fases
+de poscosecha y laboratorio (Figure [3](#fig:etiquetas-campo)).
+
+![Aplicación práctica de etiquetas con código QR en
+campo.](huito/img_2.png)
+
+Figure 3: Aplicación práctica de etiquetas con código QR en campo.
