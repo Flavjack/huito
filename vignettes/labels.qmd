@@ -59,7 +59,7 @@ label <- fb %>%
                ) %>%
   include_image(
     value = "https://flavjack.github.io/inti/img/inkaverse.png"
-    , size = c(2.4, 2.4)
+    , size = c(2.1, 2.4)
     , position = c(1.2, 1.25)
     , opts = list("image_scale(200)", "image_noise()")
     ) %>%
@@ -118,7 +118,7 @@ If you want generate the complete labels list, change: `label_print(mode = "comp
 
 ```{r echo = TRUE}
 label %>% 
-  label_print(mode = "complete", filename = "etiquetas", nlabels = 10)
+  label_print(mode = "complete", filename = "etiquetas", nlabels = 10, dpi= 1200, rasterize= T)
 ```
 
 <embed src="etiquetas.pdf" height="600" width="100%" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">

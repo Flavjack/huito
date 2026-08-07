@@ -1,0 +1,79 @@
+# huito
+
+‘Huito’ is an open-source R package to deploys reproducible and flexible
+labels using layers. The ‘huito’ package is part of the ‘inkaverse’
+project for developing different procedures and tools used in plant
+science and experimental designs. Learn more about the ‘inkaverse’
+project at <https://inkaverse.com/>.
+
+## Installation
+
+You can install the released version of huito from
+[CRAN](https://cran.r-project.org/package=huito) with:
+
+``` r
+
+install.packages("huito")
+```
+
+And the development version from
+[GitHub](https://github.com/flavjack/huito) with:
+
+``` r
+
+if (!require("remotes"))
+  install.packages("remotes")
+remotes::install_github("Flavjack/huito")
+```
+
+# Package index
+
+## All functions
+
+- [`barcode_qr()`](http://huito.inkaverse.com/reference/barcode_qr.md) :
+  Barcode generator
+- [`fieldbook`](http://huito.inkaverse.com/reference/fieldbook.md) :
+  Fieldbook experimental design
+- [`huito_fonts()`](http://huito.inkaverse.com/reference/huito_fonts.md)
+  : Fonts import
+- [`image_import()`](http://huito.inkaverse.com/reference/image_import.md)
+  : Image import
+- [`include_barcode()`](http://huito.inkaverse.com/reference/include_barcode.md)
+  : Barcode layer
+- [`include_image()`](http://huito.inkaverse.com/reference/include_image.md)
+  : Image layer
+- [`include_shape()`](http://huito.inkaverse.com/reference/include_shape.md)
+  : Shape layer
+- [`include_text()`](http://huito.inkaverse.com/reference/include_text.md)
+  : Text layer
+- [`label_layout()`](http://huito.inkaverse.com/reference/label_layout.md)
+  : Label layout
+- [`label_print()`](http://huito.inkaverse.com/reference/label_print.md)
+  : Label print
+- [`shape_hexagon()`](http://huito.inkaverse.com/reference/shape_hexagon.md)
+  : Shape hexagon
+
+# Articles
+
+### All vignettes
+
+- [Field Labels](http://huito.inkaverse.com/articles/field-labels.md):
+
+  Design and printing of vertical field labels with QR codes,
+  institutional logos and customized layouts using huito.
+
+- [GerminaR](http://huito.inkaverse.com/articles/germinar.md):
+
+  GerminaR stickers
+
+- [Huito](http://huito.inkaverse.com/articles/huito.md):
+
+  Labels designs for multiple porpouses
+
+- [Labels](http://huito.inkaverse.com/articles/labels.md):
+
+  Label desig for multiple porpouses.
+
+- [Stickers](http://huito.inkaverse.com/articles/stickers.md):
+
+  Hexbin stickers

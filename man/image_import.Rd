@@ -7,7 +7,7 @@
 image_import(image, opts = NA)
 }
 \arguments{
-\item{image}{path or url}
+\item{image}{image path or URL}
 
 \item{opts}{R magick functions by layers}
 }
@@ -15,5 +15,5 @@ image_import(image, opts = NA)
 image
 }
 \description{
-Import images and include R magick options
+Import images and apply R magick functions
 }

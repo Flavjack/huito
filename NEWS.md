@@ -1,3 +1,10 @@
+# huito 0.2.7
+
+- Added `dpi` and `rasterize` arguments to `label_print()` for improved export quality.
+- Updated graphical layer functions to allow independent control of width and height through `size`.
+- Added a new vignette for field labels.
+- Updated label design documentation.
+
 # huito 0.2.6
 
 - Update to new ggplot2 version

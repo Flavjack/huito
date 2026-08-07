@@ -1,24 +1,21 @@
 #' Image import
 #'
-#' Import images and include R magick options
+#' Import images and apply R magick functions
 #'
-#' @param image path or url
+#' @param image image path or URL
 #' @param opts R magick functions by layers
 #'
 #' @return image
 #'
 #' @export
-#'
-#'
-
 image_import <- function(image
-                          , opts = NA
-                          ) {
-
+                         , opts = NA
+) {
+  
   # test --------------------------------------------------------------------
   
   if (FALSE) {
-
+    
     image = "https://huito.inkaverse.com/img/scale.pdf"
     
     opts = NA
@@ -30,10 +27,10 @@ image_import <- function(image
     )
     
     opts <- "image_rotate(90)"
-
+    
   }
-
-# -------------------------------------------------------------------------
+  
+  # -------------------------------------------------------------------------
   
   opts <- if(any(is.null(opts)) || any(is.na(opts)) || any(opts == "") || any(opts == "NA")) {
     NA
@@ -44,15 +41,17 @@ image_import <- function(image
       unlist() 
   } 
   
-  imgtype <- if(grepl(pattern = ".*pdf$", x = image)) { 
+  is_pdf <- grepl(pattern = "\\.pdf(\\?.*)?$", x = trimws(image), ignore.case = TRUE)
+  
+  imgtype <- if(is_pdf) { 
     
-    "magick::image_read_pdf(image)"
+    "magick::image_read_pdf(image, density = 300)"
     
-    } else {
-      
-      "image_read(image)"
-      
-      }
+  } else {
+    
+    "image_read(image)"
+    
+  }
   
   img_opts <- c(imgtype, opts) %>% 
     stats::na.omit(.) %>% 
@@ -60,9 +59,9 @@ image_import <- function(image
     dplyr::select(.data$value) %>% 
     tibble::deframe() %>% 
     paste0(collapse = " %>% ")
-
+  
   img_final <- eval(parse(text = img_opts))
   
   return(img_final)
-
+  
 }

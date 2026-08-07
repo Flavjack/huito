@@ -13,7 +13,9 @@ label_print(
   units = "cm",
   viewer = FALSE,
   smpres = 200,
-  nlabels = NA
+  nlabels = NA,
+  dpi = 300,
+  rasterize = FALSE
 )
 }
 \arguments{
@@ -34,6 +36,11 @@ label_print(
 \item{smpres}{Sample resolution if viewer = TRUE (numeric: 200)}
 
 \item{nlabels}{Number of labels to generate (numeric: NA)}
+
+\item{dpi}{Output resolution in dots per inch for rasterized elements}
+
+\item{rasterize}{Rasterize the entire label before exporting to PDF
+(logical: FALSE)}
 }
 \value{
 pdf

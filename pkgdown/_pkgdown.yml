@@ -66,10 +66,11 @@ navbar:
     labels:
       text: "Labels"
       icon: fa-qrcode fa-lg
-      href: articles/apps.html
       menu:
-      - text: "Experimental design"
+      - text: "Laboratory labels"
         href: articles/labels.html
+      - text: "Field labels"
+        href: articles/field-labels.html
     stickers:
       text: "stickers"
       icon: fa-pencil-alt fa-lg
@@ -78,4 +79,3 @@ navbar:
         href: articles/stickers.html
       - text: "GerminaR"
         href: articles/germinar.html
-

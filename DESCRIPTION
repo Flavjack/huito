@@ -1,6 +1,6 @@
 Package: huito
 Type: Package
-Version: 0.2.6
+Version: 0.2.7
 Title: Reproducible and Flexible Label Design
 Description: An open-source R package to deploys reproducible and flexible labels using layers. 
   The 'huito' package is part of the 'inkaverse' project for developing different procedures and
@@ -9,6 +9,8 @@ Description: An open-source R package to deploys reproducible and flexible label
 Authors@R: c(
     person("Flavio", "Lozano-Isla", email = "flozanoisla@gmail.com", role = c("aut", "cre")
           , comment = c(ORCID = "0000-0002-0714-669X")),
+    person("Victor-Hugo", "Baldera-Chapoñan", email = "victorhugobalderachaponan@gmail.com", role ="aut"
+          , comment = c(ORCID = "0009-0003-4321-7103")),
     person("Inkaverse", role = "cph")
     )
 License: GPL-3 | file LICENSE
@@ -42,4 +44,4 @@ LazyData: true
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 SystemRequirements: pandoc
-RoxygenNote: 7.3.3
+Config/roxygen2/version: 8.0.0

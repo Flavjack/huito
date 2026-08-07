@@ -8,26 +8,36 @@
 #' @param size image size
 #' @param position position coordinate
 #' @param value column or path
-#' @param opts R magick funtions
+#' @param opts R magick functions
 #'
 #' @return data frame
 #'
 #' @export
 #'
-
+#' @examples
+#'
+#' library(huito)
+#'
+#' label <- label_layout(size = c(10, 2.5), border_color = "blue") %>%
+#'   include_image(
+#'     value = "https://flavjack.github.io/inti/img/inkaverse.png"
+#'     , size = c(2.4, 2.4)
+#'     , position = c(1.2, 1.25)
+#'     )
+#'
 include_image <- function(label
-                  , value
-                  , size
-                  , position = NA
-                  , type = "static"
-                  , units = "cm"
-                  , opts = NA
-                  ) {
-
+                          , value
+                          , size
+                          , position = NA
+                          , type = "static"
+                          , units = "cm"
+                          , opts = NA
+) {
+  
   # test --------------------------------------------------------------------
-
+  
   if (FALSE) {
-
+    
     label = label
     value = "https://inkaverse.com/reference/figures/logo.png"
     size = c(2, 2)
@@ -42,17 +52,17 @@ include_image <- function(label
     )
     
   }
-
+  
   # param -------------------------------------------------------------------
-
+  
   value <- if(any(is.null(value)) || any(is.na(value)) || any(value == "")) {
     "https://inkaverse.com/reference/figures/logo.png"
   } else {value}
-
+  
   type <- if(value %in% names(label$data)) {
     "dynamic"
   } else {"static"}
-
+  
   size <- if(any(is.null(size)) || any(is.na(size)) || any(size == "")) {
     rep(2, times = 2)
   } else if(is.character(size)) {
@@ -61,7 +71,7 @@ include_image <- function(label
       strsplit(., "[*]") %>%
       unlist() %>% as.numeric()
   } else {size}
-
+  
   position <- if(any(is.null(position)) || any(is.na(position)) || any(position == "")) {
     c(0, 0)
   } else if(is.character(position)) {
@@ -70,9 +80,9 @@ include_image <- function(label
       strsplit(., "[*]") %>%
       unlist() %>% as.numeric()
   } else {position}
-
+  
   # -------------------------------------------------------------------------
-
+  
   opts <- if(any(is.null(opts)) || any(is.na(opts)) || any(opts == "") || any(opts == "NA")) {
     NA
   } else if(is.character(opts) || is.list(opts)) {
@@ -81,15 +91,15 @@ include_image <- function(label
       strsplit(., "[*]") %>%
       unlist() 
   } 
-
-# options -----------------------------------------------------------------
-
+  
+  # options -----------------------------------------------------------------
+  
   opt <- list(value = value
               , size = size %>% paste0(collapse = "*")
               , position = position %>% paste0(collapse = "*")
               , opts = opts %>% unlist() %>% paste0(collapse = "*")
               , units = units
-              ) %>%
+  ) %>%
     tibble::enframe(name = "option") %>%
     dplyr::mutate(element = "image") %>%
     dplyr::mutate(type = type) %>%
@@ -99,10 +109,10 @@ include_image <- function(label
       is.na(nlayer) ~ length(unique(nlayer)) - 1
       , TRUE ~ nlayer
     ))
-
+  
   # result ------------------------------------------------------------------
-
+  
   result <- list(opts = opt
                  , data = label$data)
-
+  
 }
