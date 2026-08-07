@@ -40,7 +40,7 @@ Figure 2: Proceso de etiquetado y colecta de datos de experimentos. Los
 códigos QR permiten la colecta de datos con un dispositivo móvil de
 forma rápida y sencilla.
 
-## Casos de Uso y Aplicación
+## Casos de uso y aplicación
 
 Las etiquetas generadas con ***Huito*** integran códigos QR e
 información clave para garantizar la trazabilidad de materiales

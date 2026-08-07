@@ -24,9 +24,11 @@ knitr::include_graphics('huito/img_1.png')
 
 ```
 
-## Casos de Uso y Aplicación
+## Casos de uso y aplicación
 
 Las etiquetas generadas con ***Huito*** integran códigos QR e información clave para garantizar la trazabilidad de materiales biológicos en diversas etapas del proceso de investigación. Esto incluye la identificación individual de plantas en campo e invernadero, el etiquetado de órganos cosechados  y el seguimiento de muestras en fases de poscosecha y laboratorio (Figure \@ref(fig:etiquetas-campo)).
 
 ```{r etiquetas-campo, echo=FALSE, fig.cap="Aplicación práctica de etiquetas con código QR en campo."}
 knitr::include_graphics('huito/img_2.png')
+
+```
