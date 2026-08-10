@@ -7,10 +7,9 @@ Description: An open-source R package to deploys reproducible and flexible label
   tools used in plant science and experimental designs. 
   Learn more about the 'inkaverse' project at <https://inkaverse.com/>.
 Authors@R: c(
-    person("Flavio", "Lozano-Isla", email = "flozanoisla@gmail.com", role = c("aut", "cre")
-          , comment = c(ORCID = "0000-0002-0714-669X")),
-    person("Inkaverse", role = "cph")
-    )
+  person("Flavio", "Lozano-Isla", email = "flozanoisla@gmail.com", role = c("aut", "cre")
+        , comment = c(ORCID = "0000-0002-0714-669X")),
+  person("Inkaverse", role = "cph"))
 License: GPL-3 | file LICENSE
 URL: https://huito.inkaverse.com/, https://github.com/flavjack/huito
 BugReports: https://github.com/flavjack/huito/issues/
