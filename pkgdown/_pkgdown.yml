@@ -48,7 +48,7 @@ navbar:
     intro:
       text: "Intro"
       icon: fa-seedling fa-lg
-      href: articles/huito.html
+      href: articles/package.html
     github:
       icon: fab fa-github fa-lg
       href: https://github.com/flavjack/huito/
@@ -66,16 +66,18 @@ navbar:
     labels:
       text: "Labels"
       icon: fa-qrcode fa-lg
-      href: articles/apps.html
       menu:
-      - text: "Experimental design"
-        href: articles/labels.html
+      - text: "Vertical labels"
+        href: articles/vertical.html
+      - text: "Horizontal labels"
+        href: articles/horizontal.html
     stickers:
       text: "stickers"
       icon: fa-pencil-alt fa-lg
       menu:
       - text: "Huito"
-        href: articles/stickers.html
+        href: articles/huito.html
       - text: "GerminaR"
-        href: articles/germinar.html
-
+        href: articles/GerminaR.html
+      - text: "Inkaverse"
+        href: articles/inkaverse.html

@@ -1,0 +1,44 @@
+# huito
+
+[![CRAN
+status](https://www.r-pkg.org/badges/version/huito.png)](https://CRAN.R-project.org/package=huito)
+[![DOI](https://zenodo.org/badge/423796397.svg)](https://zenodo.org/badge/latestdoi/423796397)
+[![R-CMD-check](https://github.com/Flavjack/huito/workflows/R-CMD-check/badge.svg)](https://github.com/Flavjack/huito/actions)
+[![CRAN RStudio mirror
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/huito?color=brightgreen.png)](https://r-pkg.org/pkg/huito)
+
+The **huito** package is an open-source R package designed to deploy
+reproducible and flexible labels using layers. It is part of the
+**inkaverse** project, which develops procedures and tools for plant
+science and experimental designs.
+
+More information about the **inkaverse** project is available at
+<https://inkaverse.com/>.
+
+## Installation
+
+The stable version of **huito** can be installed from CRAN:
+
+``` r
+
+install.packages("huito")
+```
+
+To install the latest development version directly from GitHub, it is
+recommended to use **pak**:
+
+``` r
+
+if (!requireNamespace("pak", quietly = TRUE)) {
+  install.packages("pak")
+}
+
+pak::pkg_install("Flavjack/huito")
+```
+
+After installation, load the package:
+
+``` r
+
+library(huito)
+```

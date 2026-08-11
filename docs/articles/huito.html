@@ -18,12 +18,12 @@
     }
   };
 </script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Huito">
-<meta name="description" content="Labels designs for multiple porpouses">
-<meta property="og:description" content="Labels designs for multiple porpouses">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="huito_files/libs/quarto-html/popper.min.js"></script><script src="huito_files/libs/quarto-html/tippy.umd.min.js"></script><link href="huito_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="huito_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Huito">
 <meta property="og:image" content="http://huito.inkaverse.com/reference/figures/logo.png">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-CL5C51WC87"></script><script>
   window.dataLayer = window.dataLayer || [];
@@ -51,18 +51,20 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="../index.html"><span class="fa fa-home fa-lg"></span></a></li>
-<li class="active nav-item"><a class="nav-link" href="../articles/huito.html"><span class="fa fa-seedling fa-lg"></span> Intro</a></li>
+<li class="nav-item"><a class="nav-link" href="../articles/package.html"><span class="fa fa-seedling fa-lg"></span> Intro</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-labels" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true"><span class="fa fa-qrcode fa-lg"></span> Labels</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-labels">
-<li><a class="dropdown-item" href="../articles/labels.html">Experimental design</a></li>
+<li><a class="dropdown-item" href="../articles/vertical.html">Vertical labels</a></li>
+    <li><a class="dropdown-item" href="../articles/horizontal.html">Horizontal labels</a></li>
   </ul>
 </li>
-<li class="nav-item dropdown">
+<li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-stickers" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true"><span class="fa fa-pencil-alt fa-lg"></span> stickers</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-stickers">
-<li><a class="dropdown-item" href="../articles/stickers.html">Huito</a></li>
-    <li><a class="dropdown-item" href="../articles/germinar.html">GerminaR</a></li>
+<li><a class="dropdown-item" href="../articles/huito.html">Huito</a></li>
+    <li><a class="dropdown-item" href="../articles/GerminaR.html">GerminaR</a></li>
+    <li><a class="dropdown-item" href="../articles/inkaverse.html">Inkaverse</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html"><span class="fa fa-file-code fa-lg"></span> Functions</a></li>
@@ -79,47 +81,232 @@
 
 
   </div>
-</nav><div class="container template-article">
-
-
+</nav><div class="container template-quarto">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Huito</h1>
-            
-      
-      <small class="dont-index">Source: <a href="https://github.com/flavjack/huito/blob/HEAD/vignettes/huito.Rmd" class="external-link"><code>vignettes/huito.Rmd</code></a></small>
-      <div class="d-none name"><code>huito.Rmd</code></div>
+
+
+
+
+      <small class="dont-index">Source: <a href="https://github.com/flavjack/huito/blob/HEAD/vignettes/huito.qmd" class="external-link"><code>vignettes/huito.qmd</code></a></small>
+      <div class="d-none name"><code></code></div>
     </div>
 
-    
-    
-<p><em><strong>Huito</strong> </em>es un software de código abierto implementado en el lenguaje de programación R para el diseño de etiquetas de forma flexible y reproducible. El paquete lleva este nombre, ya que el fruto del árbol del <em><strong>huito</strong> </em>(<em>Genipa americana</em>) es usado por los nativos amazónicos por sus propiedades colorantes para teñir telas y pintarse el cuerpo (Figure <a href="#fig:idbl2tuxtg6f7n">1</a>).</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:idbl2tuxtg6f7n"></span>
-<img src="huito/img_0.jpg" alt="El ***huito*** (*Genipa americana*) es una especie de árbol de la familia Rubiaceae. Originaria de los bosques tropicales de América. Los indígenas lo usan para realizar diseños en su cuerpo y teñir telares." width="70%"><p class="caption">
-Figure 1: El <strong><em>huito</em></strong> (<em>Genipa americana</em>) es una especie de árbol de la familia Rubiaceae. Originaria de los bosques tropicales de América. Los indígenas lo usan para realizar diseños en su cuerpo y teñir telares.
-</p>
-</div>
-<div class="section level2">
-<h2 id="problema">Problema<a class="anchor" aria-label="anchor" href="#problema"></a>
+
+
+
+
+
+    <p>Details and examples of more stickers you can find in the following link: <a href="https://github.com/GuangchuangYu/hexSticker" class="external-link uri">https://github.com/GuangchuangYu/hexSticker</a></p>
+<section class="section level2"><h2 id="sticker-design">Sticker design<a class="anchor" aria-label="anchor" href="#sticker-design"></a>
 </h2>
-<p>La calidad de datos inicia desde la colecta de la información, y en muchos casos no se le presta la debida importancia a este proceso. El desarrollo de etiquetas puede ayudar a reducir el error en la colecta y también acelerar el análisis de los datos (Figure <a href="#fig:kixvd7qxjm1q38u">2</a>).</p>
-</div>
-<div class="section level2">
-<h2 id="alternativa">Alternativa<a class="anchor" aria-label="anchor" href="#alternativa"></a>
+<p>You can design your sticker by layers. You can add each element individually in the design.</p>
+</section><section class="section level2"><h2 id="package-setup">Package setup<a class="anchor" aria-label="anchor" href="#package-setup"></a>
 </h2>
-<p><strong><em>Huito</em></strong> permite el desarrollo de etiquetas reproducibles y personalizadas de acuerdo a los requerimientos del usuario. Cada elemento en la etiqueta es adicionado por capas, respetando el orden de acuerdo a su jerarquía en el código.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:kixvd7qxjm1q38u"></span>
-<img src="huito/img_1.png" alt="Proceso de etiquetado y colecta de datos de experimentos. Los códigos QR permiten la colecta de datos con un dispositivo móvil de forma rápida y sencilla." width="98%"><p class="caption">
-Figure 2: Proceso de etiquetado y colecta de datos de experimentos. Los códigos QR permiten la colecta de datos con un dispositivo móvil de forma rápida y sencilla.
-</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://huito.inkaverse.com/" class="external-link">huito</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">font</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Permanent Marker"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/huito_fonts.html">huito_fonts</a></span><span class="op">(</span><span class="va">font</span><span class="op">)</span></span></code></pre></div>
+</div>
+<blockquote>
+<p>You can find more fonts in <a href="https://fonts.google.com/" class="external-link uri">https://fonts.google.com/</a></p>
+</blockquote>
+</section><section class="section level2"><h2 id="sticker-design-1">Sticker design<a class="anchor" aria-label="anchor" href="#sticker-design-1"></a>
+</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">label</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/label_layout.html">label_layout</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5.08</span>, <span class="fl">5.08</span><span class="op">)</span></span>
+<span>                      , border_width <span class="op">=</span> <span class="fl">0</span></span>
+<span>                      <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/include_image.html">include_image</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"https://flavjack.github.io/huito/img/shipibo.png"</span></span>
+<span>                , size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">7</span><span class="op">)</span></span>
+<span>                , position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.55</span>, <span class="fl">2.52</span><span class="op">)</span></span>
+<span>                , opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"image_scale(600)"</span><span class="op">)</span></span>
+<span>                <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/include_text.html">include_text</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"H"</span></span>
+<span>               , size <span class="op">=</span> <span class="fl">45</span> </span>
+<span>               , position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.15</span>, <span class="fl">2.7</span><span class="op">)</span></span>
+<span>               , color <span class="op">=</span> <span class="st">"#00a85a"</span></span>
+<span>               , font <span class="op">=</span> <span class="va">font</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>               <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/include_text.html">include_text</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"u"</span></span>
+<span>               , size <span class="op">=</span> <span class="fl">45</span> </span>
+<span>               , position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.07</span>, <span class="fl">2.7</span><span class="op">)</span></span>
+<span>               , color <span class="op">=</span> <span class="st">"#f58735"</span></span>
+<span>               , font <span class="op">=</span> <span class="va">font</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>               <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/include_text.html">include_text</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"i"</span></span>
+<span>               , size <span class="op">=</span> <span class="fl">45</span> </span>
+<span>               , position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.73</span>, <span class="fl">2.7</span><span class="op">)</span></span>
+<span>               , color <span class="op">=</span> <span class="st">"#4774b8"</span></span>
+<span>               , font <span class="op">=</span> <span class="va">font</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>               <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/include_image.html">include_image</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"https://flavjack.github.io/huito/img/huito_fruit.png"</span></span>
+<span>                , size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.3</span>, <span class="fl">1.3</span><span class="op">)</span> </span>
+<span>                , position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4.06</span>, <span class="fl">2.6</span><span class="op">)</span></span>
+<span>                <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/include_text.html">include_text</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"t"</span></span>
+<span>               , size <span class="op">=</span> <span class="fl">45</span> </span>
+<span>               , position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3.33</span>, <span class="fl">2.7</span><span class="op">)</span></span>
+<span>               , color <span class="op">=</span> <span class="st">"#a9518b"</span></span>
+<span>               , font <span class="op">=</span> <span class="va">font</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>               <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/include_shape.html">include_shape</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">5.08</span></span>
+<span>                , border_width <span class="op">=</span> <span class="fl">3</span></span>
+<span>                , border_color <span class="op">=</span> <span class="st">"black"</span></span>
+<span>                , position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.54</span>, <span class="fl">2.54</span><span class="op">)</span></span>
+<span>                , panel_color <span class="op">=</span> <span class="st">"blue"</span></span>
+<span>                <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/include_text.html">include_text</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"inkaverse.com"</span></span>
+<span>               , size <span class="op">=</span> <span class="fl">6</span></span>
+<span>               , position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3.6</span>, <span class="fl">0.75</span><span class="op">)</span></span>
+<span>               , angle <span class="op">=</span> <span class="fl">30</span></span>
+<span>               , color <span class="op">=</span> <span class="st">"white"</span></span>
+<span>               , font <span class="op">=</span> <span class="va">font</span></span>
+<span>               <span class="op">)</span> </span></code></pre></div>
+</div>
+<blockquote>
+<p>Select different panel color for your sticker (i.e. <code>include_shape(panel_color = "color")</code>).</p>
+</blockquote>
+<section class="level2"><h3 id="preview-mode">Preview mode<a class="anchor" aria-label="anchor" href="#preview-mode"></a>
+</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">label</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/label_print.html">label_print</a></span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"preview"</span><span class="op">)</span></span></code></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img src="huito_files/figure-html/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center" style="width:98.0%"></p>
+</figure>
 </div>
 </div>
-  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+</div>
+</section><section class="level2"><h3 id="complete-mode">Complete mode<a class="anchor" aria-label="anchor" href="#complete-mode"></a>
+</h3>
+<p>The final file is exported in <code>pdf</code> format.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sticker</span> <span class="op">&lt;-</span> <span class="va">label</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/label_print.html">label_print</a></span><span class="op">(</span>filename <span class="op">=</span> <span class="st">"huito"</span></span>
+<span>              , margin <span class="op">=</span> <span class="fl">0</span></span>
+<span>              , paper <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5.5</span>, <span class="fl">5.5</span><span class="op">)</span></span>
+<span>              , mode <span class="op">=</span> <span class="st">"complete"</span></span>
+<span>              <span class="op">)</span></span></code></pre></div>
+</div>
+<embed src="huito.pdf" height="500" width="100%" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html"></embed></section></section><section class="section level2"><h2 id="transparent-logo">Transparent logo<a class="anchor" aria-label="anchor" href="#transparent-logo"></a>
+</h2>
+<p>Import the image in pdf and cut the border and make the <code>panel_color</code> transparent.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sticker</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://docs.ropensci.org/magick/reference/editing.html" class="external-link">image_read_pdf</a></span><span class="op">(</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://docs.ropensci.org/magick/reference/color.html" class="external-link">image_transparent</a></span><span class="op">(</span><span class="st">"blue"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://docs.ropensci.org/magick/reference/transform.html" class="external-link">image_crop</a></span><span class="op">(</span>geometry <span class="op">=</span> <span class="st">"600x600+40"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://docs.ropensci.org/magick/reference/transform.html" class="external-link">image_crop</a></span><span class="op">(</span>geometry <span class="op">=</span> <span class="st">"560x600-40"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://docs.ropensci.org/magick/reference/editing.html" class="external-link">image_write</a></span><span class="op">(</span><span class="st">"huito.png"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<section class="level2"><h3 id="final-sticker-result">Final sticker result<a class="anchor" aria-label="anchor" href="#final-sticker-result"></a>
+</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">include_graphics</span><span class="op">(</span><span class="st">"huito.png"</span><span class="op">)</span></span></code></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img src="huito.png" class="quarto-figure quarto-figure-center" style="width:35.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section></section><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config);
+    }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script></main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
-
 
 
     <footer><div class="pkgdown-footer-left">
@@ -127,7 +314,7 @@ Figure 2: Proceso de etiquetado y colecta de datos de experimentos. Los códigos
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

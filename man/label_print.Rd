@@ -13,7 +13,9 @@ label_print(
   units = "cm",
   viewer = FALSE,
   smpres = 200,
-  nlabels = NA
+  nlabels = NA,
+  dpi = 300,
+  rasterize = FALSE
 )
 }
 \arguments{
@@ -34,6 +36,11 @@ label_print(
 \item{smpres}{Sample resolution if viewer = TRUE (numeric: 200)}
 
 \item{nlabels}{Number of labels to generate (numeric: NA)}
+
+\item{dpi}{Output resolution in dots per inch for rasterized elements}
+
+\item{rasterize}{Rasterize the entire label before exporting to PDF
+(logical: FALSE)}
 }
 \value{
 pdf
@@ -53,7 +60,7 @@ label <- fb \%>\%
              ) \%>\%
   include_image(
     value = "https://flavjack.github.io/inti/img/inkaverse.png"
-    , size = c(2.4, 2.4)
+    , size = c(2.2, 2.4)
     , position = c(1.2, 1.25)
     #, opts = list("image_rotate(0)", "image_charcoal()")
     ) \%>\%

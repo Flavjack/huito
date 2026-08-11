@@ -27,11 +27,23 @@ include_image(
 
 \item{units}{units for the label options}
 
-\item{opts}{R magick funtions}
+\item{opts}{R magick functions}
 }
 \value{
 data frame
 }
 \description{
 Insert image in label
+}
+\examples{
+
+library(huito)
+
+label <- label_layout(size = c(10, 2.5), border_color = "blue") \%>\%
+  include_image(
+    value = "https://flavjack.github.io/inti/img/inkaverse.png"
+    , size = c(2.4, 2.4)
+    , position = c(1.2, 1.25)
+    )
+
 }

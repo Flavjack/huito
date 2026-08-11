@@ -18,8 +18,8 @@
     }
   };
 </script><script src="lightswitch.js"></script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Huito">
 <meta name="description" content="Flexible and Reproducible Label Designs">
@@ -51,18 +51,20 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="active nav-item"><a class="nav-link" href="index.html"><span class="fa fa-home fa-lg"></span></a></li>
-<li class="nav-item"><a class="nav-link" href="articles/huito.html"><span class="fa fa-seedling fa-lg"></span> Intro</a></li>
+<li class="nav-item"><a class="nav-link" href="articles/package.html"><span class="fa fa-seedling fa-lg"></span> Intro</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-labels" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true"><span class="fa fa-qrcode fa-lg"></span> Labels</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-labels">
-<li><a class="dropdown-item" href="articles/labels.html">Experimental design</a></li>
+<li><a class="dropdown-item" href="articles/vertical.html">Vertical labels</a></li>
+    <li><a class="dropdown-item" href="articles/horizontal.html">Horizontal labels</a></li>
   </ul>
 </li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-stickers" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true"><span class="fa fa-pencil-alt fa-lg"></span> stickers</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-stickers">
-<li><a class="dropdown-item" href="articles/stickers.html">Huito</a></li>
-    <li><a class="dropdown-item" href="articles/germinar.html">GerminaR</a></li>
+<li><a class="dropdown-item" href="articles/huito.html">Huito</a></li>
+    <li><a class="dropdown-item" href="articles/GerminaR.html">GerminaR</a></li>
+    <li><a class="dropdown-item" href="articles/inkaverse.html">Inkaverse</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="reference/index.html"><span class="fa fa-file-code fa-lg"></span> Functions</a></li>
@@ -86,20 +88,25 @@
 <img src="logo.png" class="logo" alt=""><h1 id="huito-">huito <a class="anchor" aria-label="anchor" href="#huito-"></a>
 </h1>
 </div>
-<!-- badges: start -->
-
-<p>‘Huito’ is an open-source R package to deploys reproducible and flexible labels using layers. The ‘huito’ package is part of the ‘inkaverse’ project for developing different procedures and tools used in plant science and experimental designs. Learn more about the ‘inkaverse’ project at <a href="https://inkaverse.com/" class="external-link uri">https://inkaverse.com/</a>.</p>
+<p><a href="https://CRAN.R-project.org/package=huito" class="external-link"><img src="https://www.r-pkg.org/badges/version/huito.png" alt="CRAN status"></a> <a href="https://zenodo.org/badge/latestdoi/423796397" class="external-link"><img src="https://zenodo.org/badge/423796397.svg" alt="DOI"></a> <a href="https://github.com/Flavjack/huito/actions" class="external-link"><img src="https://github.com/Flavjack/huito/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a> <a href="https://r-pkg.org/pkg/huito" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/huito?color=brightgreen.png" alt="CRAN RStudio mirror downloads"></a></p>
+<p>The <strong>huito</strong> package is an open-source R package designed to deploy reproducible and flexible labels using layers. It is part of the <strong>inkaverse</strong> project, which develops procedures and tools for plant science and experimental designs.</p>
+<p>More information about the <strong>inkaverse</strong> project is available at <a href="https://inkaverse.com/" class="external-link uri">https://inkaverse.com/</a>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the released version of huito from <a href="https://cran.r-project.org/package=huito" class="external-link">CRAN</a> with:</p>
+<p>The stable version of <strong>huito</strong> can be installed from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"huito"</span><span class="op">)</span></span></code></pre></div>
-<p>And the development version from <a href="https://github.com/flavjack/huito" class="external-link">GitHub</a> with:</p>
+<p>To install the latest development version directly from GitHub, it is recommended to use <strong>pak</strong>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Flavjack/huito"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"pak"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pak"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pkg_install.html" class="external-link">pkg_install</a></span><span class="op">(</span><span class="st">"Flavjack/huito"</span><span class="op">)</span></span></code></pre></div>
+<p>After installation, load the package:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://huito.inkaverse.com/" class="external-link">huito</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -135,6 +142,7 @@
 <ul class="list-unstyled">
 <li>
 <a href="https://lozanoisla.com/" class="external-link">Flavio Lozano-Isla</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-0714-669X" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Victor-Hugo Baldera-Chapoñan <br><small class="roles"> Author </small> <a href="https://orcid.org/0009-0003-4321-7103" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 <li>
 <a href="https://inkaverse.com/" class="external-link"><img src="https://inkaverse.com/img/inkaverse.png" align="middle" width="70"></a> <br><small class="roles"> Copyright holder </small>   </li>
 </ul>
@@ -151,7 +159,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>
