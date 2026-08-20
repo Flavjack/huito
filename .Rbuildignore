@@ -12,3 +12,4 @@ test.R
 .quarto
 ^\.positai$
 ^\.claude$
+^ReadMe\.qmd$
