@@ -81,6 +81,7 @@ label <- fb %>%
                , size = 20
                , font = font[1]
                , fontface = "bold"
+               , color = "red"
                ) %>%
   include_text(value = "condition"
                , position = c(2.4, 1.2)
@@ -103,7 +104,7 @@ label <- fb %>%
                , position = c(9.7, 1.25)
                , angle = 90
                , size = 12
-               , color = "red"
+               , color = "brown"
                , font = font[3]
                , prefix = "Plot: "
                ) 
