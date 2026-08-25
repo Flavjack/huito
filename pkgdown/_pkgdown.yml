@@ -39,7 +39,7 @@ navbar:
   bg: dark
   type: light
   structure:
-    left: [home, intro, labels, stickers, reference, news]
+    left: [home, intro, labels, stickers, tocapu, reference, news]
     right: [search, github, sponsor]
   components:
     home:
@@ -81,3 +81,7 @@ navbar:
         href: articles/GerminaR.html
       - text: "Inkaverse"
         href: articles/inkaverse.html
+    tocapu:
+      text: "Tocapu"
+      icon: fa-gamepad fa-lg
+      href: articles/tocapu.html

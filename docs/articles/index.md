@@ -22,6 +22,10 @@
 
   Labels designs for multiple porpouses
 
+- [Tocapu](http://huito.inkaverse.com/articles/tocapu.md):
+
+  Tocapu.
+
 - [vertical](http://huito.inkaverse.com/articles/vertical.md):
 
   Design and printing of vertical labels using huito.

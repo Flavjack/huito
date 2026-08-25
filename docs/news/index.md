@@ -2,6 +2,8 @@
 
 ## huito 0.2.7
 
+CRAN release: 2026-08-21
+
 - Added `dpi` and `rasterize` arguments to
   [`label_print()`](http://huito.inkaverse.com/reference/label_print.md)
   for improved export quality.
