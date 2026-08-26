@@ -19,8 +19,7 @@ it.
 Demo
 
 [![Tocapu for
-R](https://huito.inkaverse.com/logo.png "Tocapu")](https://vyxugo.shinyapps.io/tocapu/)
-Tocapu
+R](tocapu-1.png "Tocapu")](https://vyxugo.shinyapps.io/tocapu/) Tocapu
 
 ## App modules
 

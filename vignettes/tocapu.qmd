@@ -36,7 +36,7 @@ Data quality starts at data collection, but this step is often underestimated. W
 
 <div style="display:inline-block; width:48%">
 <p style="text-align:center">
-<a target="_blank" href="https://vyxugo.shinyapps.io/tocapu/"><img src="https://huito.inkaverse.com/logo.png" style="height:80px" title="Tocapu" alt="Tocapu for R"></a>
+<a target="_blank" href="https://vyxugo.shinyapps.io/tocapu/"><img src="tocapu-1.png" style="height:80px" title="Tocapu" alt="Tocapu for R"></a>
 <span style="display:block;"><small>Tocapu</small></span>
 </p></div>
 
