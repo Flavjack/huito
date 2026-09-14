@@ -1,5 +1,9 @@
 # Changelog
 
+## huito 0.2.8
+
+- CRAN comments
+
 ## huito 0.2.7
 
 CRAN release: 2026-08-21

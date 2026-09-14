@@ -19,29 +19,23 @@ More information about the **inkaverse** project is available at
 
 The stable version of **huito** can be installed from CRAN:
 
-``` r
-
-install.packages("huito")
-```
+\
+[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"huito"``)`
 
 To install the latest development version directly from GitHub, it is
 recommended to use **pak**:
 
-``` r
-
-if (!requireNamespace("pak", quietly = TRUE)) {
-  install.packages("pak")
-}
-
-pak::pkg_install("Flavjack/huito")
-```
+\
+`if`` ``(``!`[`requireNamespace`](https://rdrr.io/r/base/ns-load.html)`(``"pak"``, quietly ``=`` ``TRUE``)``)`` ``{`\
+`  `[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"pak"``)`\
+`}`\
+\
+`pak``::`[`pkg_install`](https://pak.r-lib.org/reference/pkg_install.html)`(``"Flavjack/huito"``)`
 
 After installation, load the package:
 
-``` r
-
-library(huito)
-```
+\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`huito`](https://huito.inkaverse.com/)`)`
 
 # Package index
 

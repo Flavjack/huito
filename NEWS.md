@@ -1,3 +1,7 @@
+# huito 0.2.8
+
+- CRAN comments
+
 # huito 0.2.7
 
 - Added `dpi` and `rasterize` arguments to `label_print()` for improved export quality.

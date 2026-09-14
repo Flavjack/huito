@@ -1,4 +1,4 @@
 # License
 
-    YEAR: 2021
-    COPYRIGHT HOLDER: Flavio Lozano-Isla
+YEAR: 2021\
+COPYRIGHT HOLDER: Flavio Lozano-Isla\
