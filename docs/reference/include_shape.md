@@ -88,15 +88,15 @@ label %>% label_print("sample")
 #> Warning: The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.
 #> ℹ Please use the `linewidth` argument instead.
 #> ℹ The deprecated feature was likely used in the huito package.
-#>   Please report the issue at <https://github.com/flavjack/huito/issues/>.
+#>   Please report the issue at <https://github.com/Flavjack/huito/issues>.
 #> Warning: `aes_()` was deprecated in ggplot2 3.0.0.
 #> ℹ Please use tidy evaluation idioms with `aes()`
 #> ℹ The deprecated feature was likely used in the huito package.
-#>   Please report the issue at <https://github.com/flavjack/huito/issues/>.
+#>   Please report the issue at <https://github.com/Flavjack/huito/issues>.
 #> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 #> ℹ Please use `linewidth` instead.
 #> ℹ The deprecated feature was likely used in the huito package.
-#>   Please report the issue at <https://github.com/flavjack/huito/issues/>.
+#>   Please report the issue at <https://github.com/Flavjack/huito/issues>.
 
 
 ts <- label$opts

@@ -14,7 +14,7 @@ Authors@R: c(
     person("Inkaverse", role = "cph")
     )
 License: GPL-3 | file LICENSE
-URL: https://huito.inkaverse.com/, https://github.com/flavjack/huito, https://github.com/Flavjack/huito
+URL: https://huito.inkaverse.com/, https://github.com/Flavjack/huito
 BugReports: https://github.com/Flavjack/huito/issues
 Depends: 
   magick,

@@ -15,7 +15,7 @@ label per row, e.g. for field tags) or **designed freely** as a
 standalone template (e.g. a logo or sticker), without any data behind
 it.
 
-[![Demo](https://lozanoisla.com/img/youtube.png "Demo")](http://huito.inkaverse.com/articles/)
+[![Demo](https://lozanoisla.com/img/youtube.png "Demo")](https://www.youtube.com/playlist?list=PLZVasfsF8pv0)
 Demo
 
 [![Tocapu for
