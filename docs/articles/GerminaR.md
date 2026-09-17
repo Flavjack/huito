@@ -30,7 +30,7 @@ package](https://CRAN.R-project.org/package=magick)
 `                      , border_width ``=`` ``0`\
 `                      , background ``=`` ``"#b1d842"`\
 `                      ``)`` `[`%>%`](https://magrittr.tidyverse.org/reference/pipe.html)` `\
-`  `[`include_image`](http://huito.inkaverse.com/reference/include_image.md)`(``value ``=`` ``"https://germinar.inkaverse.com/img/seed_germination.png"`\
+`  `[`include_image`](http://huito.inkaverse.com/reference/include_image.md)`(``value ``=`` ``"https://flavjack.github.io/GerminaR/img/seed_germination.png"`\
 `                , size ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``5.5``, ``5.5``)`\
 `                , position ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``2.55``, ``1.26``)`\
 `                , opts ``=`` `[`list`](https://rdrr.io/r/base/list.html)`(``'image_transparent("white")'`\
